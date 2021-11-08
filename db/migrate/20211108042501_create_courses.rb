@@ -4,7 +4,7 @@ class CreateCourses < ActiveRecord::Migration[6.1]
       t.string :title, null: false
       t.text :contents
       t.string :image_url
-      t.references :creator, null: false, foreign_key: true
+      # t.references :creator, null: false, foreign_key: true
       t.timestamps
     end
 
