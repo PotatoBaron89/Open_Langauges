@@ -10,6 +10,23 @@ class CoursesController < ApplicationController
   # GET /courses/1 or /courses/1.json
   def show
     @user = [current_user]
+
+    ### There must be a cleaner way
+    # Find All Students
+    list = Course.find(params[:id]).class_list
+    student_list = []
+    list.each do |user|
+      student_list << user.user_id
+    end
+    @students = User.find(student_list)
+
+    # Find All Educators
+    list = Course.find(params[:id]).class_educator
+    educator_list = []
+    list.each do |user|
+      educator_list << user.user_id
+    end
+    @educators = User.find(educator_list)
   end
 
   # GET /courses/new
@@ -31,7 +48,7 @@ class CoursesController < ApplicationController
   def create
     @user = [current_user]
     @course = Course.new(course_params)
-    raise
+
 
     respond_to do |format|
       if @course.save

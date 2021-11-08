@@ -32,5 +32,8 @@ class User < ApplicationRecord
          # :omniauthable
 
   has_many :course, foreign_key: 'creator_id'
+  has_many :class_list
+  has_many :courses, through: :class_list
+  has_many :courses, through: :class_educator
 
 end

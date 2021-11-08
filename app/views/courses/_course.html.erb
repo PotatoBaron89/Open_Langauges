@@ -9,6 +9,27 @@
     <%= course.contents %>
   </p>
 
+  <strong class="block font-medium mb-1">Students:</strong>
+  <ul>
+    <% @students.each do |f| %>
+      <li>
+
+        <%= f.email %>
+      </li>
+    <% end %>
+  </ul>
+
+  <strong class="block font-medium mb-1">Educators:</strong>
+  <ul>
+    <% @students.each do |f| %>
+      <li>
+        <%= f.email %>
+      </li>
+    <% end %>
+  </ul>
+
+
+
   <% if action_name != "show" %>
     <%= link_to "Show this course", course, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to 'Edit this course', edit_course_path(course), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>

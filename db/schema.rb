@@ -10,15 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_08_075216) do
+ActiveRecord::Schema.define(version: 2021_11_08_092801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "class_educators", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "course_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_class_educators_on_course_id"
+    t.index ["user_id"], name: "index_class_educators_on_user_id"
+  end
+
   create_table "class_lists", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "course_id", null: false
-    t.bigint "organisation_id", null: false
+    t.bigint "organisation_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["course_id"], name: "index_class_lists_on_course_id"
@@ -74,6 +83,8 @@ ActiveRecord::Schema.define(version: 2021_11_08_075216) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "class_educators", "courses"
+  add_foreign_key "class_educators", "users"
   add_foreign_key "class_lists", "courses"
   add_foreign_key "class_lists", "organisations"
   add_foreign_key "class_lists", "users"

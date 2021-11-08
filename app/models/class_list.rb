@@ -1,5 +1,5 @@
 class ClassList < ApplicationRecord
   belongs_to :user
   belongs_to :course
-  belongs_to :organisation
+  has_one :organisation
 end
