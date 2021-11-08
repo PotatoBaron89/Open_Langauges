@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: %i[ show edit update destroy ]
+  before_action :check_auth
 
   # GET /courses or /courses.json
   def index
@@ -16,7 +17,9 @@ class CoursesController < ApplicationController
     @course = Course.new
 
     # May want to add options later to pass in more options. Don't want to pass in entire list of users, however.
+    # For now just provide current user.
     @user = [current_user]
+    # @user = User.all
   end
 
   # GET /courses/1/edit
@@ -26,7 +29,9 @@ class CoursesController < ApplicationController
 
   # POST /courses or /courses.json
   def create
+    @user = [current_user]
     @course = Course.new(course_params)
+    raise
 
     respond_to do |format|
       if @course.save
@@ -69,6 +74,14 @@ class CoursesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def course_params
-      params.require(:course).permit(:title, :contents, :user_id)
+      params.require(:course).permit(:title, :contents, :creator_id)
     end
+
+  private
+
+  def check_auth
+    return true if user_signed_in?
+    flash[:notice] = "Insufficient privileges"
+    redirect_to root_path
+  end
 end

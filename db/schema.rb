@@ -10,16 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_08_045913) do
+ActiveRecord::Schema.define(version: 2021_11_08_075216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "class_lists", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "course_id", null: false
+    t.bigint "organisation_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_class_lists_on_course_id"
+    t.index ["organisation_id"], name: "index_class_lists_on_organisation_id"
+    t.index ["user_id"], name: "index_class_lists_on_user_id"
+  end
+
   create_table "courses", force: :cascade do |t|
-    t.string "title"
+    t.string "title", null: false
     t.text "contents"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "image_url"
+    t.integer "difficulty"
+    t.bigint "creator_id", null: false
+    t.index ["creator_id"], name: "index_courses_on_creator_id"
+  end
+
+  create_table "organisations", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.bigint "user_id", null: false
+    t.bigint "courses_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["courses_id"], name: "index_organisations_on_courses_id"
+    t.index ["user_id"], name: "index_organisations_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -48,4 +74,9 @@ ActiveRecord::Schema.define(version: 2021_11_08_045913) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "class_lists", "courses"
+  add_foreign_key "class_lists", "organisations"
+  add_foreign_key "class_lists", "users"
+  add_foreign_key "organisations", "courses", column: "courses_id"
+  add_foreign_key "organisations", "users"
 end

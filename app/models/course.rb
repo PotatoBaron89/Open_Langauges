@@ -1,3 +1,3 @@
 class Course < ApplicationRecord
-  belongs_to :user, dependent: :destroy
+  belongs_to :creator, class_name: 'User'
 end

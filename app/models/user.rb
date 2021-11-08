@@ -31,5 +31,6 @@ class User < ApplicationRecord
          # :confirmable, :lockable, :timeoutable, :trackable,
          # :omniauthable
 
-  has_many :courses
+  has_many :course, foreign_key: 'creator_id'
+
 end
