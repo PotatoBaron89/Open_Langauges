@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   private
 
   def set_timezone
-    current_user[:timezone] = User.find(current_user[:id]).timezone
+    if current_user && !current_user[:timezone]
+      current_user[:timezone] = User.find(current_user[:id]).timezone
+    end
   end
 end
