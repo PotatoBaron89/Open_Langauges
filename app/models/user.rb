@@ -22,12 +22,18 @@
 #  failed_attempts        :integer          default(0), not null
 #  unlock_token           :string
 #  locked_at              :datetime
+#  first_name             :string(25)
+#  timezone               :string
 #
 class User < ApplicationRecord
+
+  before_save :default_values
+
   # Include default devise modules. Others available are:
   #
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :trackable
          # :confirmable, :lockable, :timeoutable, :trackable,
          # :omniauthable
 
@@ -36,4 +42,11 @@ class User < ApplicationRecord
   has_many :courses, through: :class_list
   has_many :courses, through: :class_educator
 
+  def name
+    return first_name
+  end
+
+  def default_values
+    self.first_name ||= 'Anon'
+  end
 end
