@@ -12,12 +12,18 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+  <body class="overflow-x-hidden ml-5 mr-5">
+  <div>
+    <%=  render 'shared/header' %>
+  </div>
+  <div>
+    <%= render '/shared/Notifications/header_notification_box' %>
+  </div>
+    <main class="container  mt-28 flex">
 
-      <%= yield %>
+      <div>
+        <%= yield %>
+      </div>
     </main>
   </body>
 </html>

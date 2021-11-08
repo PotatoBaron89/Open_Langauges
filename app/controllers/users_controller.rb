@@ -19,6 +19,11 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def account
+    @user = User.find(current_user[:id])
+    @timezones = ActiveSupport::TimeZone.all
+  end
+
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
@@ -53,6 +58,8 @@ class UsersController < ApplicationController
       end
     end
   end
+
+
 
   # DELETE /users/1 or /users/1.json
   def destroy
