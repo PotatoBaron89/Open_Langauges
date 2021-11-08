@@ -30,4 +30,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          # :confirmable, :lockable, :timeoutable, :trackable,
          # :omniauthable
+
+  has_many :courses
 end

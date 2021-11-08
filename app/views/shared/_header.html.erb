@@ -1,0 +1,47 @@
+<nav class="fixed top-0 w-screen bg-white px-8 pt-2 shadow-md bg-yellow-100">
+  <div class="-mb-px flex justify-between items-center">
+    <div>
+
+    </div>
+    <div class="justify-self-center ">
+      <a class="no-underline text-teal-dark border-b-2 border-teal-dark uppercase tracking-wide font-bold text-s py-3 mr-8" href="<%= root_path %>">
+        Home
+      </a>
+      <a class="no-underline text-grey-dark border-b-2 border-transparent uppercase tracking-wide font-bold text-s py-3 mr-8" href="<%= courses_path %>">
+        Courses
+      </a>
+      <a class="no-underline text-grey-dark border-b-2 border-transparent uppercase tracking-wide font-bold text-s py-3 mr-8" href="#">
+        Link 2
+      </a>
+      <a class="no-underline text-grey-dark border-b-2 border-transparent uppercase tracking-wide font-bold text-s py-3" href="#">
+        Link 3
+      </a>
+      <% if !user_signed_in? %>
+        <a href="<%= new_user_registration_path %>" data-method="delete" class="mb-1 ml-8 whitespace-nowrap inline-flex items-center justify-center bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:from-purple-700 hover:to-indigo-700">
+          Sign up
+        </a>
+        <% end %>
+    </div>
+
+    <div class="-mb-px flex justify-self-end">
+      <% if !user_signed_in? %>
+
+        <%= link_to 'Sign Up', new_user_registration_path, method: :get, class: "mb-2 ml-8 whitespace-nowrap inline-flex items-center justify-center bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:from-purple-700 hover:to-indigo-700" %>
+        <%= link_to 'Login', new_user_session_path, method: :get, class: "mb-2 ml-8 whitespace-nowrap inline-flex items-center justify-center bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:from-purple-700 hover:to-indigo-700" %>
+      <% end %>
+      <% if user_signed_in? %>
+        <%= link_to 'Account', user_path(current_user.id), method: :get, class: "mb-2 ml-8 whitespace-nowrap inline-flex items-center justify-center bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:from-purple-700 hover:to-indigo-700" %>
+
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "mb-2 ml-8 whitespace-nowrap inline-flex items-center justify-center bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:from-purple-700 hover:to-indigo-700" %>
+      <% end %>
+
+      <% if current_user && current_user.has_any_role?(:admin, :super_user) %>
+        <%#= current_user.email %>
+        <%# raise %>
+        <%= link_to 'Admin', "#", method: :get, class: "mb-2 ml-8 whitespace-nowrap inline-flex items-center justify-center bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:from-purple-700 hover:to-indigo-700" %>
+      <% end %>
+    </div>
+  </div>
+
+
+</nav>
