@@ -20,9 +20,9 @@ User.create!(email: "Love_Potatoes@gmail.com", password: 'potato', password_conf
 User.create!(email: "Poooo-taaaa-toooooo@gmail.com", password: 'potato', password_confirmation: 'potato')
 
 
-Course.create(title: "Random Title", contents: "Words here", creator_id: 1)
-Course.create(title: "Another Title", contents: "Words go here", creator_id: 1)
-Course.create(title: "This is interesting", contents: "Words ... here", creator_id: 2)
+Course.create(title: "Random Title", contents: "Words here", user_id: 1)
+Course.create(title: "Another Title", contents: "Words go here", user_id: 1)
+Course.create(title: "This is interesting", contents: "Words ... here", user_id: 2)
 
 ClassList.create(user_id:2, course_id: 1)
 ClassList.create(user_id:2, course_id: 2)

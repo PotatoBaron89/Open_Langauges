@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_09_010815) do
+ActiveRecord::Schema.define(version: 2021_11_09_051456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2021_11_09_010815) do
   create_table "class_lists", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "course_id", null: false
-    t.bigint "organisation_id"
+    t.bigint "organisation_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["course_id"], name: "index_class_lists_on_course_id"
@@ -38,12 +38,11 @@ ActiveRecord::Schema.define(version: 2021_11_09_010815) do
   create_table "courses", force: :cascade do |t|
     t.string "title", null: false
     t.text "contents"
+    t.string "image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "image_url"
-    t.integer "difficulty"
-    t.bigint "creator_id", null: false
-    t.index ["creator_id"], name: "index_courses_on_creator_id"
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_courses_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -78,6 +77,12 @@ ActiveRecord::Schema.define(version: 2021_11_09_010815) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.date "dob"
+    t.string "display_name"
+    t.text "about"
+    t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "email", default: "", null: false
@@ -97,10 +102,7 @@ ActiveRecord::Schema.define(version: 2021_11_09_010815) do
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.datetime "locked_at"
-    t.string "first_name", limit: 25
     t.string "timezone"
-    t.string "display_name"
-    t.text "about"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -122,6 +124,7 @@ ActiveRecord::Schema.define(version: 2021_11_09_010815) do
   add_foreign_key "class_lists", "courses"
   add_foreign_key "class_lists", "organisations"
   add_foreign_key "class_lists", "users"
+  add_foreign_key "courses", "users"
   add_foreign_key "likes", "courses"
   add_foreign_key "likes", "users"
   add_foreign_key "organisations", "courses", column: "courses_id"

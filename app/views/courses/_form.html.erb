@@ -24,8 +24,8 @@
   </div>
 
   <div class="my-5">
-    <%= form.label :creator_id %>
-    <%= form.collection_select :creator_id, @user, :id, :email, { value: current_user.email }, selected: current_user.email, class: "border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" %>
+    <%= form.label :user_id %>
+    <%= form.collection_select :user_id, @user, :id, :email, { value: current_user.email }, selected: current_user.email, class: "border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" %>
   </div>
 
   <div class="inline">
