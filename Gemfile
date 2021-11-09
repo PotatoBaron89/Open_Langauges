@@ -63,3 +63,5 @@ gem 'image_processing'
 
 
 gem "store_attribute", "~> 0.9.2"
+
+gem "sentry-raven", "~> 3.1"
