@@ -3,6 +3,12 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
+#  first_name             :string
+#  last_name              :string
+#  dob                    :date
+#  display_name           :string
+#  about                  :text
+#  image                  :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  email                  :string           default(""), not null
@@ -22,7 +28,6 @@
 #  failed_attempts        :integer          default(0), not null
 #  unlock_token           :string
 #  locked_at              :datetime
-#  first_name             :string(25)
 #  timezone               :string
 #
 class User < ApplicationRecord
@@ -38,13 +43,16 @@ class User < ApplicationRecord
          # :confirmable, :lockable, :timeoutable, :trackable,
          # :omniauthable
 
+  # JOIN TABLES
+  has_many :class_list
+  has_many :class_educator
+
   # COURSE ROLES
   has_many :course, foreign_key: 'user_id', dependent: :destroy
   has_many :courses, through: :class_list, dependent: :destroy
   has_many :courses, through: :class_educator, dependent: :destroy
 
-  # JOIN TABLES
-  has_many :class_list
+
 
 
   # SOCIAL / FEATURES

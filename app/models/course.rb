@@ -5,11 +5,10 @@
 #  id         :bigint           not null, primary key
 #  title      :string           not null
 #  contents   :text
+#  image_url  :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  image_url  :string
-#  difficulty :integer
-#  creator_id :bigint           not null
+#  user_id    :bigint           not null
 #
 class Course < ApplicationRecord
   # belongs_to :creator, class_name: 'User'
@@ -23,6 +22,9 @@ class Course < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :subscribes, dependent: :destroy
   has_many :wishes, dependent: :destroy
+
+  #CONTENT
+
 
 
   has_rich_text :contents

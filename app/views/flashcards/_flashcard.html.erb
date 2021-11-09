@@ -1,0 +1,17 @@
+<div id="<%= dom_id flashcard %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Side one:</strong>
+    <%= flashcard.side_one %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Side two:</strong>
+    <%= flashcard.side_two %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this flashcard", flashcard, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this flashcard', edit_flashcard_path(flashcard), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

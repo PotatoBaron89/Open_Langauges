@@ -3,6 +3,7 @@
 
 Rails.application.routes.draw do
 
+  resources :flashcards
   resources :lessons
   # USERS
   devise_for :users

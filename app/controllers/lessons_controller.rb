@@ -13,10 +13,12 @@ class LessonsController < ApplicationController
   # GET /lessons/new
   def new
     @lesson = Lesson.new
+    @user = [current_user]
   end
 
   # GET /lessons/1/edit
   def edit
+    @user = [current_user]
   end
 
   # POST /lessons or /lessons.json

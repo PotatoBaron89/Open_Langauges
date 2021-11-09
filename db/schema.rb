@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_09_061202) do
+ActiveRecord::Schema.define(version: 2021_11_09_093230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,11 +65,9 @@ ActiveRecord::Schema.define(version: 2021_11_09_061202) do
   create_table "class_lists", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "course_id", null: false
-    t.bigint "organisation_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["course_id"], name: "index_class_lists_on_course_id"
-    t.index ["organisation_id"], name: "index_class_lists_on_organisation_id"
     t.index ["user_id"], name: "index_class_lists_on_user_id"
   end
 
@@ -81,6 +79,22 @@ ActiveRecord::Schema.define(version: 2021_11_09_061202) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_courses_on_user_id"
+  end
+
+  create_table "flashcard_courses", force: :cascade do |t|
+    t.bigint "flashcard_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "lesson_id"
+    t.index ["flashcard_id"], name: "index_flashcard_courses_on_flashcard_id"
+    t.index ["lesson_id"], name: "index_flashcard_courses_on_lesson_id"
+  end
+
+  create_table "flashcards", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "side_one"
+    t.string "side_two"
   end
 
   create_table "lessons", force: :cascade do |t|
@@ -170,9 +184,10 @@ ActiveRecord::Schema.define(version: 2021_11_09_061202) do
   add_foreign_key "class_educators", "courses"
   add_foreign_key "class_educators", "users"
   add_foreign_key "class_lists", "courses"
-  add_foreign_key "class_lists", "organisations"
   add_foreign_key "class_lists", "users"
   add_foreign_key "courses", "users"
+  add_foreign_key "flashcard_courses", "flashcards"
+  add_foreign_key "flashcard_courses", "lessons"
   add_foreign_key "lessons", "users"
   add_foreign_key "likes", "courses"
   add_foreign_key "likes", "users"
