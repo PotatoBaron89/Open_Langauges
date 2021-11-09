@@ -1,17 +1,21 @@
-<div class="mx-auto md:w-2/3 w-full flex bg-yellow-100">
+<div class="w-full flex bg-indigo-100">
   <div class="mx-auto">
-
+fdaf
     <!--      LIKE BUTTON-->
-    <div class="p-3">
+    <div class="p-3 flex gap-x-2">
+      <div class="flex "></div>
       <%= render '/shared/Components/like' %>
       <%= render '/shared/Components/subscribe' %>
       <%= render '/shared/Components/wish' %>
     </div>
 
 
-    <%= render @course %>
+    <section class="w-full">
+      <%= render @course %>
+    </section>
 
-    <div class="rounded overflow-hidden shadow-lg rounded-b-md fd-cl p-5 bg-white">
+
+    <div class="rounded overflow-hidden shadow-lg rounded-b-md fd-cl p-5 bg-white ">
     <strong class="block font-medium mb-1">Students:</strong>
     <% if @students %>
       <ul class="divide-y divide-gray-200">
@@ -46,5 +50,5 @@
       <%= link_to 'Back to courses', courses_path, class: "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
     </div>
   </div>
-  </div>
 </div>
+

@@ -58,5 +58,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "tailwindcss-rails", "~> 0.5.1"
 gem 'geocoder'
+gem 'image_processing'
 
 
+
+gem "store_attribute", "~> 0.9.2"

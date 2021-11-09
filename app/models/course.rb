@@ -24,4 +24,6 @@ class Course < ApplicationRecord
   has_many :subscribes, dependent: :destroy
   has_many :wishes, dependent: :destroy
 
+
+  has_rich_text :contents
 end

@@ -3,6 +3,7 @@
 
 Rails.application.routes.draw do
 
+  resources :lessons
   # USERS
   devise_for :users
   resources :users
