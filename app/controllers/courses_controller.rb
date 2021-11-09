@@ -13,6 +13,7 @@ class CoursesController < ApplicationController
     @like = current_user.likes.find_by(course: @course)
     @subscribe = current_user.subscribes.find_by(course: @course)
     @wish = current_user.wishes.find_by(course: @course)
+    @lessons = Lesson.where(course_id: params[:id])
 
     ### There must be a cleaner way
     # Find All Students

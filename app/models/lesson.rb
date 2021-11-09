@@ -10,6 +10,7 @@
 #
 class Lesson < ApplicationRecord
   belongs_to :user
+  belongs_to :course
   has_rich_text :content
 
   has_many :flashcards, dependent: :delete_all

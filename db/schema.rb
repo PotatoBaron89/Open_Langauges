@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_09_093230) do
+ActiveRecord::Schema.define(version: 2021_11_09_121821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,8 @@ ActiveRecord::Schema.define(version: 2021_11_09_093230) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "course_id", null: false
+    t.index ["course_id"], name: "index_lessons_on_course_id"
     t.index ["user_id"], name: "index_lessons_on_user_id"
   end
 
@@ -188,6 +190,7 @@ ActiveRecord::Schema.define(version: 2021_11_09_093230) do
   add_foreign_key "courses", "users"
   add_foreign_key "flashcard_courses", "flashcards"
   add_foreign_key "flashcard_courses", "lessons"
+  add_foreign_key "lessons", "courses"
   add_foreign_key "lessons", "users"
   add_foreign_key "likes", "courses"
   add_foreign_key "likes", "users"

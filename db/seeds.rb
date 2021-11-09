@@ -8,6 +8,7 @@
 
 ClassList.destroy_all
 ClassEducator.destroy_all
+
 Course.destroy_all
 
 Like.destroy_all
@@ -110,15 +111,27 @@ Wish.create(user_id: @users[4].id, course_id: @courses[2].id)
 Wish.create(user_id: @users[2].id, course_id: @courses[3].id)
 Wish.create(user_id: @users[6].id, course_id: @courses[1].id)
 Wish.create(user_id: @users[1].id, course_id: @courses[0].id)
-Wish.create(user_id: @users[0].id, course_id: @courses[0].id)
+Wish.create(user_id: @users[0].id, course_id: @courses[4].id)
 
 
 
 
-Subscribe.create(user_id: @users[0], course_id: @courses[0])
-Subscribe.create(user_id: @users[1], course_id: @courses[0])
-Subscribe.create(user_id: @users[2], course_id: @courses[0])
-Subscribe.create(user_id: @users[3], course_id: @courses[1])
-Subscribe.create(user_id: @users[2], course_id: @courses[1])
-Subscribe.create(user_id: @users[4], course_id: @courses[1])
+Subscribe.create(user_id: @users[0].id, course_id: @courses[0].id)
+Subscribe.create(user_id: @users[1].id, course_id: @courses[0].id)
+Subscribe.create(user_id: @users[2].id, course_id: @courses[0].id)
+Subscribe.create(user_id: @users[3].id, course_id: @courses[1].id)
+Subscribe.create(user_id: @users[2].id, course_id: @courses[1].id)
+Subscribe.create(user_id: @users[4].id, course_id: @courses[1].id)
 
+
+Lesson.create!(user_id: @users[0].id, course_id: @courses[0].id, title: "Intriguing Lesson", content: "Sample Content")
+Lesson.create!(user_id: @users[0].id, course_id: @courses[0].id, title: "Dolphin Dancing", content: "Sample Content")
+Lesson.create!(user_id: @users[0].id, course_id: @courses[0].id, title: "Lion Taming", content: "Sample Content")
+Lesson.create!(user_id: @users[0].id, course_id: @courses[0].id, title: "Basket Weaving", content: "Sample Content")
+Lesson.create!(user_id: @users[0].id, course_id: @courses[0].id, title: "How to burn potatoes", content: "Sample Content")
+Lesson.create!(user_id: @users[0].id, course_id: @courses[0].id, title: "How to avoid police in a wheelchair", content: "Sample Content")
+Lesson.create!(user_id: @users[0].id, course_id: @courses[2].id, title: "Stuff made here", content: "Sample Content")
+Lesson.create!(user_id: @users[0].id, course_id: @courses[2].id, title: "I am strugglign to think of lessons", content: "Sample Content")
+Lesson.create!(user_id: @users[0].id, course_id: @courses[1].id, title: "Rails on Ruby", content: "Sample Content")
+Lesson.create!(user_id: @users[0].id, course_id: @courses[1].id, title: "VUE is the best", content: "Sample Content")
+Lesson.create!(user_id: @users[0].id, course_id: @courses[0].id, title: "No no no not vim!", content: "Sample Content")

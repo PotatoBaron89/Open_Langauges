@@ -1,21 +1,46 @@
-<div class="w-full flex ">
-  <div class="mx-auto">
+<div class="w-full flex min-h-screen ">
+  <div class="mx-auto min-w-full bg-pink-50 p-5 rounded-3xl">
 
-    <!--      LIKE BUTTON-->
-    <div class="p-3 flex gap-x-2">
+<!--     SOCIALS -->
+    <div class="p-3 flex gap-x-2 min-w-full ">
       <div class="flex "></div>
       <%= render '/shared/Components/like' %>
       <%= render '/shared/Components/subscribe' %>
       <%= render '/shared/Components/wish' %>
     </div>
 
+    <%= render '/shared/Components/divider', content: 'Course Information' %>
 
-    <section class="w-full">
+<!--    COURSE INFO-->
+    <section class="min-w-full">
       <%= render @course %>
     </section>
 
+    <%= render '/shared/Components/divider', content: 'Lessons' %>
 
-    <div class="rounded overflow-hidden shadow-lg rounded-b-md fd-cl p-5 bg-white ">
+<!--    LESSONS-->
+    <section class="min-w-full">
+      <% if @lessons %>
+
+        <div class="bg-white shadow overflow-hidden rounded-md">
+          <ul role="list" class="divide-y divide-gray-200">
+            <% @lessons.each do |l| %>
+              <li class="px-6 py-4">
+                <a href="<%= lesson_path(l.id) %>" class="no-underline text-black">
+                  <%= l.title %>
+                </a>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </section>
+
+    <%= render '/shared/Components/divider', content: 'Further Information' %>
+
+<!--    FURTHER INFO-->
+
+    <div class="rounded overflow-hidden shadow-lg rounded-b-md fd-cl p-5 bg-white min-w-full mt-12">
     <strong class="block font-medium mb-1">Students:</strong>
     <% if @students %>
       <ul class="divide-y divide-gray-200">
