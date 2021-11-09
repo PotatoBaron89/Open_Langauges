@@ -39,8 +39,8 @@ class User < ApplicationRecord
          # :omniauthable
 
   # COURSE ROLES
-  has_many :course, foreign_key: 'creator_id'
-  has_many :courses, through: :class_list
+  has_many :course, foreign_key: 'creator_id', dependent: :destroy
+  has_many :courses, through: :class_list, dependent: :destroy
   has_many :courses, through: :class_educator
 
   # JOIN TABLES
