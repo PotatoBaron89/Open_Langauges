@@ -12,7 +12,7 @@ class Lesson < ApplicationRecord
   belongs_to :user
   has_rich_text :content
 
-  has_many :flashcards
-  has_many :flashcard_courses, through: :flashcards
-  has_many :flashcards, through: :flashcard_courses
+  has_many :flashcards, dependent: :delete_all
+  has_many :flashcard_courses, through: :flashcards, dependent: :delete_all
+  has_many :flashcards, through: :flashcard_courses, dependent: :delete_all
 end

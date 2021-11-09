@@ -44,21 +44,21 @@ class User < ApplicationRecord
          # :omniauthable
 
   # JOIN TABLES
-  has_many :class_list
-  has_many :class_educator
+  has_many :class_list, dependent: :delete_all
+  has_many :class_educator, dependent: :delete_all
 
   # COURSE ROLES
-  has_many :course, foreign_key: 'user_id', dependent: :destroy
-  has_many :courses, through: :class_list, dependent: :destroy
-  has_many :courses, through: :class_educator, dependent: :destroy
+  has_many :course, foreign_key: 'user_id', dependent: :delete_all
+  has_many :courses, through: :class_list, dependent: :delete_all
+  has_many :courses, through: :class_educator, dependent: :delete_all
 
 
 
 
   # SOCIAL / FEATURES
-  has_many :likes
-  has_many :subscribes
-  has_many :wishes
+  has_many :likes, dependent: :delete_all
+  has_many :subscribes, dependent: :delete_all
+  has_many :wishes, dependent: :delete_all
 
   def name
     return first_name

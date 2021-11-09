@@ -14,14 +14,14 @@ class Course < ApplicationRecord
   # belongs_to :creator, class_name: 'User'
   belongs_to :user
   has_many :class_list, dependent: :destroy
-  has_many :class_educator, dependent: :destroy
-  has_many :users, through: :class_list
-  has_many :users, through: :class_educator
+  has_many :class_educator, dependent: :delete_all
+  has_many :users, through: :class_list, dependent: :delete_all
+  has_many :users, through: :class_educator, dependent: :delete_all
 
   # SOCIAL / FEATURES
-  has_many :likes, dependent: :destroy
-  has_many :subscribes, dependent: :destroy
-  has_many :wishes, dependent: :destroy
+  has_many :likes, dependent: :delete_all
+  has_many :subscribes, dependent: :delete_all
+  has_many :wishes, dependent: :delete_all
 
   #CONTENT
 

@@ -4,23 +4,19 @@
 
     </div>
     <div class="justify-self-center ">
-      <a class="no-underline text-teal-dark border-b-2 border-teal-dark uppercase tracking-wide font-bold text-s py-3 mr-8" href="<%= root_path %>">
+      <a class="no-underline text-white border-b-2 border-teal-dark uppercase tracking-wide font-bold text-s py-3 mr-8" href="<%= root_path %>">
         Home
       </a>
-      <a class="no-underline text-grey-dark border-b-2 border-transparent uppercase tracking-wide font-bold text-s py-3 mr-8" href="<%= courses_path %>">
+      <a class="no-underline text-white border-b-2 border-transparent uppercase tracking-wide font-bold text-s py-3 mr-8" href="<%= courses_path %>">
         Courses
       </a>
-      <a class="no-underline text-grey-dark border-b-2 border-transparent uppercase tracking-wide font-bold text-s py-3 mr-8" href="<%= lessons_path %>">
+      <a class="no-underline text-white border-b-2 border-transparent uppercase tracking-wide font-bold text-s py-3 mr-8" href="<%= lessons_path %>">
         Lessons
       </a>
-      <a class="no-underline text-grey-dark border-b-2 border-transparent uppercase tracking-wide font-bold text-s py-3" href="#">
+      <a class="no-underline text-white border-b-2 border-transparent uppercase tracking-wide font-bold text-s py-3" href="#">
         Link 3
       </a>
-      <% if !user_signed_in? %>
-        <a href="<%= new_user_registration_path %>" data-method="delete" class="mb-1 ml-8 whitespace-nowrap inline-flex items-center justify-center bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:from-purple-700 hover:to-indigo-700">
-          Sign up
-        </a>
-        <% end %>
+
     </div>
 
     <div class="-mb-px flex justify-self-end">
