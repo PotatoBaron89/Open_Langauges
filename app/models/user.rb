@@ -28,7 +28,7 @@
 class User < ApplicationRecord
 
   before_save :default_values
-  validates :user, uniqueness: { scope: :course_id }
+  # validates :user, uniqueness: { scope: :course_id }
 
   # Include default devise modules. Others available are:
   #
