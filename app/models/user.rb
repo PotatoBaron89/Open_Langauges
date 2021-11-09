@@ -28,6 +28,7 @@
 class User < ApplicationRecord
 
   before_save :default_values
+  validates :user, uniqueness: { scope: :course_id }
 
   # Include default devise modules. Others available are:
   #
@@ -37,10 +38,19 @@ class User < ApplicationRecord
          # :confirmable, :lockable, :timeoutable, :trackable,
          # :omniauthable
 
+  # COURSE ROLES
   has_many :course, foreign_key: 'creator_id'
-  has_many :class_list
   has_many :courses, through: :class_list
   has_many :courses, through: :class_educator
+
+  # JOIN TABLES
+  has_many :class_list
+
+
+  # SOCIAL / FEATURES
+  has_many :likes
+  has_many :subscribes
+  has_many :wishes
 
   def name
     return first_name

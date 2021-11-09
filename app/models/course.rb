@@ -17,4 +17,10 @@ class Course < ApplicationRecord
   has_many :class_educator
   has_many :users, through: :class_list
   has_many :users, through: :class_educator
+
+  # SOCIAL / FEATURES
+  has_many :likes
+  has_many :subscribes
+  has_many :wishes
+
 end

@@ -10,6 +10,9 @@ class CoursesController < ApplicationController
   # GET /courses/1 or /courses/1.json
   def show
     @user = [current_user]
+    @like = current_user.likes.find_by(course: @course)
+    @subscribe = current_user.subscribes.find_by(course: @course)
+    @wish = current_user.wishes.find_by(course: @course)
 
     ### There must be a cleaner way
     # Find All Students

@@ -3,10 +3,18 @@
 
 Rails.application.routes.draw do
 
-  resources :organisations
-  resources :courses
+  # USERS
   devise_for :users
   resources :users
+
+  # COURSES + CATEGORIES
+  resources :organisations
+  resources :courses
+
+  # SOCIAL
+  resources :likes, only: [ :create, :destroy ]
+  resources :wishes, only: [ :create, :destroy ]
+  resources :subscribes, only: [ :create, :destroy ]
 
   # ACCOUNTS
   post '/users/:id/edit', to: 'users#update'

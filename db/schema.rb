@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_08_132055) do
+ActiveRecord::Schema.define(version: 2021_11_09_010815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,16 @@ ActiveRecord::Schema.define(version: 2021_11_08_132055) do
     t.index ["creator_id"], name: "index_courses_on_creator_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "course_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_likes_on_course_id"
+    t.index ["user_id", "course_id"], name: "index_likes_on_user_id_and_course_id", unique: true
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "organisations", force: :cascade do |t|
     t.string "name"
     t.string "location"
@@ -55,6 +65,16 @@ ActiveRecord::Schema.define(version: 2021_11_08_132055) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["courses_id"], name: "index_organisations_on_courses_id"
     t.index ["user_id"], name: "index_organisations_on_user_id"
+  end
+
+  create_table "subscribes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "course_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_subscribes_on_course_id"
+    t.index ["user_id", "course_id"], name: "index_subscribes_on_user_id_and_course_id", unique: true
+    t.index ["user_id"], name: "index_subscribes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -87,11 +107,27 @@ ActiveRecord::Schema.define(version: 2021_11_08_132055) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  create_table "wishes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "course_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_wishes_on_course_id"
+    t.index ["user_id", "course_id"], name: "index_wishes_on_user_id_and_course_id", unique: true
+    t.index ["user_id"], name: "index_wishes_on_user_id"
+  end
+
   add_foreign_key "class_educators", "courses"
   add_foreign_key "class_educators", "users"
   add_foreign_key "class_lists", "courses"
   add_foreign_key "class_lists", "organisations"
   add_foreign_key "class_lists", "users"
+  add_foreign_key "likes", "courses"
+  add_foreign_key "likes", "users"
   add_foreign_key "organisations", "courses", column: "courses_id"
   add_foreign_key "organisations", "users"
+  add_foreign_key "subscribes", "courses"
+  add_foreign_key "subscribes", "users"
+  add_foreign_key "wishes", "courses"
+  add_foreign_key "wishes", "users"
 end
