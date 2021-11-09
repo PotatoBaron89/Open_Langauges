@@ -1,9 +1,15 @@
 
 
-<%= @course.likes.count %> Likes
+
 <% if @like.nil? %>
-  <%= button_to "Like", likes_path, params: { like: { course_id: @course.id }}, method: :post, class: "inline-flex items-center px-5 py-2 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
+  <div class="flex flex-col items-center">
+    <%= button_to "Like", likes_path, params: { like: { course_id: @course.id }}, method: :post, class: "inline-flex items-center px-5 py-2 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
+    <span class="w-max italic"><%= @course.likes.count %> Likes</span>
+  </div>
 <% else %>
   <!--      Normal likes_path(@like.id) creating url with .id for some reason-->
-  <%= button_to "Unlike", "#{likes_path}/#{@like.id}", method: :delete, class: "inline-flex items-center px-5 py-2 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
+  <div class="flex flex-col items-center">
+    <%= button_to "Unlike", "#{likes_path}/#{@like.id}", method: :delete, class: "inline-flex items-center px-5 py-2 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
+    <span class="w-max italic"><%= @course.likes.count %> Likes</span>
+  </div>
 <% end %>
