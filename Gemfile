@@ -38,7 +38,6 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'dotenv-rails'
 end
 
 group :development do
@@ -66,7 +65,4 @@ gem "store_attribute", "~> 0.9.2"
 gem "sentry-ruby"
 gem "sentry-rails"
 gem "friendly_id", "~> 5.4"
-gem "gravatar_image_tag", "~> 1.2", github: 'mdeering/gravatar_image_tag'
-gem "cloudinary", "~> 1.21"
-gem "activestorage-cloudinary-service", "~> 0.2.3"
 gem "aws-sdk-s3", "~> 1.105"
