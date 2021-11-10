@@ -15,6 +15,22 @@
  */
 
 
+/*Tailwinds Components - Currently not working. need to figure out why */
+
+h1 {
+    @apply mb-5 text-5xl font-black;
+}
+
+.list_wrapper {
+    @apply space-y-3;
+}
+
+.list_item {
+    @apply bg-white shadow overflow-hidden px-4 py-4 sm:px-6 sm:rounded-md flex justify-around;
+}
+
+
+
 /*RESETS*/
 
 /* CSS reset */

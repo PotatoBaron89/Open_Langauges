@@ -1,6 +1,4 @@
 
-\
-,app/views/shared/Components/_avatar.html.erb,6\e\6e978cd4d649fd636a9da7dd3a711dac2a59cc77
 Z
 *app/controllers/static_pages_controller.rb,e\4\e411ad7eefd53bf4aa08f4a552ee9cbdb8f5a0f2
 ^
@@ -15,10 +13,6 @@ O
 0app/controllers/user/registrations_controller.rb,e\9\e973796e453afc690aeeeafce8032abf1813ad69
 [
 +app/controllers/user/sessions_controller.rb,d\0\d03dfb878280d2c1de38cf8fe0bf6f7267e6fd3c
-V
-&app/assets/stylesheets/application.css,5\6\565e1651e502b72ad76ed27e8f0a562fea115987
-^
-.app/views/shared/_simple_card_w_title.html.erb,2\7\2727310d90387e16f967b6d93eb5c9903e23859e
 T
 $app/controllers/wishes_controller.rb,e\b\eb7b681d51e73d53cf3bcaa42082c4850b0afcf5
 X
@@ -45,8 +39,6 @@ e
 5db/migrate/20211108132017_add_displayname_to_users.rb,f\1\f1db337884e2a21d44ef36ea1a47bf6249cb74e1
 _
 /db/migrate/20211108132055_add_about_to_users.rb,b\4\b40d47e5f33f4cf898f89d6ec8d623aa979adf7c
-V
-&app/assets/stylesheets/actiontext.scss,9\4\94a00e25fdd0b585e2b9e32adc7e097130dce158
 :
 
 bin/bundle,8\d\8d6a126d12d5381c7693c27cad5d2eca28213623
@@ -58,8 +50,6 @@ Bdb/migrate/20211109055060_create_action_text_tables.action_text.rb,9\e\9eea876
 +db/migrate/20211109061202_create_lessons.rb,e\e\eefef3b23f80ab36f9d530bfbd02de4cb7ceb739
 P
  app/views/courses/_form.html.erb,1\b\1bd3388ced05d6124ae969f8ae989c05bdad91e6
-P
- app/views/lessons/_form.html.erb,9\0\902ff8db9298bc00797a1ec4134d8e04d3f5cd06
 B
 app/models/wish.rb,d\3\d3b3ba8beafb565e269d0dadf2eedb10ea22036c
 g
@@ -90,8 +80,6 @@ V
 +app/views/devise/registrations/new.html.erb,3\f\3f5f33da115bf173e0bae0a1ac8ef10f2438c0c8
 H
 app/models/class_list.rb,c\b\cbf7b5403199b2d19a458fa2f58f627d3bfb2d52
-R
-"app/views/courses/_course.html.erb,6\8\68578e1cd7b291bfa97b18551b7d10f8fa9b1103
 Z
 *app/views/shared/Components/_like.html.erb,4\4\44b1a14e29fa4c611584a05c29fe213583cb3138
 ]
@@ -108,8 +96,6 @@ D
 app/models/course.rb,4\3\43d653af1788821635516fba3b9ffeaea02f5f07
 U
 %app/controllers/lessons_controller.rb,1\c\1c7764799b3d2c1fdea77615d37776c3204f2f4f
-U
-%app/controllers/courses_controller.rb,2\b\2b53543ac73a22049e440023acaa6f025453b5f5
 _
 /app/views/shared/Components/_subscribe.html.erb,c\3\c3a9d76c9cff572417ed64b9bdd84a9d10f29e8d
 ;

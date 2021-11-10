@@ -74,4 +74,8 @@ class User < ApplicationRecord
     self.add_role(:User)
   end
 
+  def name
+    self.first_name
+  end
+
 end

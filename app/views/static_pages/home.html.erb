@@ -60,7 +60,7 @@
     <div class="bg-indigo-100">
       <div id="guides" class="shadow-lg group container  rounded-md bg-white flex justify-center flex-wrap items-center  mx-auto content-div p-5 bg-gradient-to-r from-yellow-300 to-indigo-300 w-11/12 ">
         <% courses = @course.sample(3); courses.each do |course| %>
-          <%= render '/shared/simple_card_w_title', content: course %>
+          <%= render '/shared/simple_card_w_title', local: {contents: course, path: course_path(course.id) } %>
         <% end %>
       </div>
       <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
