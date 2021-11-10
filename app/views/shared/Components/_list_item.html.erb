@@ -1,7 +1,7 @@
 <% if local[:path] %>
   <a href="<%= local[:path] %>" class="no-underline">
 <% end %>
-  <li class="bg-white shadow overflow-hidden px-4 py-4 sm:px-6 sm:rounded-md flex justify-around item-center no-underline ">
+  <li class="bg-gray-50 shadow overflow-hidden px-4 py-4 sm:px-6 sm:rounded-md flex justify-around item-center no-underline hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50">
     <% local[:contents].each do |item| %>
       <strong><%= item[1] %></strong>
     <% end %>

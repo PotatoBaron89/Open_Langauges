@@ -42,8 +42,6 @@ _
 :
 
 bin/bundle,8\d\8d6a126d12d5381c7693c27cad5d2eca28213623
-P
- app/views/courses/index.html.erb,d\4\d46b2f3c8467289b3bc0cf0dbc7bf58b88efdc13
 r
 Bdb/migrate/20211109055060_create_action_text_tables.action_text.rb,9\e\9eea876d8a5691b53255b4971e4553f1967223b9
 [

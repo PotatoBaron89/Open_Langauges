@@ -9,9 +9,12 @@
   </p>
 
 
+<div class="border-2 border-purple-300 bg-gray-200 drop-shadow-xl hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50 w-max  px-5 rounded-xl my-2">
+  <%= render 'shared/Components/avatar', content: { user: course.user, path: user_path(course.user.id) } %>
+</div>
 
 
-  <%= render 'shared/Components/avatar', user: course.user %>
+
   <% if action_name != "show" %>
     <%= link_to "Show this course", course, class: "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
     <%= link_to 'Edit this course', edit_course_path(course), class: "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
