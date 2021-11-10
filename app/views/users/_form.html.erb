@@ -17,6 +17,22 @@
     <%= current_user.email %>
   </div>
 
+  <!--  AVATAR-->
+  <section class="mt-3 max-w-3xl mx-auto bg-white filter drop-shadow-lg rounded">
+    <% if @user.image.attached? %>
+      <%= form.label :Avatar %>
+      <%= image_tag @user.image, width: 200, class: 'inline-block h-14 w-14 rounded-full object-cover m-1' %>
+    <% end %>
+
+    <div class="field">
+      <%#= image_tag(resource.avatar_thumbnail) if resource.avatar.attached? %>
+    </div>
+
+    <div class="field">
+      <%= form.file_field :image %>
+    </div>
+  </section>
+
   <!--  NAME-->
   <div class="my-5">
     <%= form.label :first_name %>

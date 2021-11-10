@@ -46,8 +46,8 @@ Course.create(title: "This is interesting", contents: "Words here", user_id: @us
 Course.create(title: "Oh wow", contents: "Words here", user_id: @users.sample.id)
 Course.create(title: "How to tie your shoelaces", contents: "Words here", user_id: @users.sample.id)
 Course.create(title: "How to tie your shoelaces", contents: "Words here", user_id: @users.sample.id)
-Course.create(title: "How to tie your shoelaces", contents: "Words here", user_id: @users.sample.id)
-Course.create(title: "How to tie your shoelaces", contents: "Words here", user_id: @users.sample.id)
+Course.create(title: "How read gibberish", contents: "Words here", user_id: @users.sample.id)
+Course.create(title: "How to eat a cake in under 3 seconds", contents: "Words here", user_id: @users.sample.id)
 Course.create(title: "How to peel a potato", contents: "Words here", user_id: @users.sample.id)
 
 @courses = Course.all

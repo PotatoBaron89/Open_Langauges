@@ -43,6 +43,9 @@ class User < ApplicationRecord
          # :confirmable, :lockable, :timeoutable, :trackable,
          # :omniauthable
 
+  # FILES
+  has_one_attached :image, dependent: :purge_later
+
   # JOIN TABLES
   has_many :class_list, dependent: :delete_all
   has_many :class_educator, dependent: :delete_all
@@ -66,5 +69,13 @@ class User < ApplicationRecord
 
   def default_values
     self.first_name ||= 'Anon'
+  end
+
+  def avatar_thumbnail
+    if avatar.attached?
+      avatar.variant(resize: "100x100!").processed
+    else
+      "/default_avatar.png"
+    end
   end
 end
