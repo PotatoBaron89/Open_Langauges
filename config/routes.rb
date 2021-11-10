@@ -9,6 +9,12 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
 
+  # ADMIN
+  get '/admin', to: 'admin#dashboard'
+  # Roles
+  get '/admin/roles', to: 'admin#roles'
+  resources :roles
+
   # COURSES + CATEGORIES
   resources :organisations
   resources :courses

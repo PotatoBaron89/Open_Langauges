@@ -33,7 +33,7 @@ gem 'dotenv-rails', require: 'dotenv/rails-now'
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.4', require: false
+gem 'bootsnap', '>= 1.4.4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -69,3 +69,7 @@ gem "gravatar_image_tag", "~> 1.2", github: 'mdeering/gravatar_image_tag'
 gem "cloudinary", "~> 1.21"
 gem "activestorage-cloudinary-service", "~> 0.2.3"
 gem "aws-sdk-s3", "~> 1.105"
+
+# gem "gem", "~> 0.0.1.alpha"
+gem "rolify", "~> 6.0"
+gem "public_activity"

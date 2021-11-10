@@ -1,0 +1,24 @@
+<div class="w-screen flex justify-center">
+  <div class="lg:w-8/12 sm:w-full">
+<!--    HEADING-->
+    <h1 class="mb-5 text-5xl font-black">Roles Management</h1>
+
+<!--    ROLES-->
+    <p class="mb-3">
+      <strong>Roles: </strong> <%= @roles.count %>
+    </p>
+    <ul role="list" class="space-y-3">
+        <% if @roles %>
+          <% @roles.each do |role| %>
+          <li class="bg-white shadow overflow-hidden px-4 py-4 sm:px-6 sm:rounded-md flex justify-around">
+            <strong><%= role.name %></strong>
+            <%= button_to 'Delete', role_path(role.id), method: :delete, data: { confirm: "Are you sure you want to delete this flashcard?" }, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+          </li>
+          <% end %>
+        <% end %>
+    </ul>
+
+
+
+  </div>
+</div>

@@ -33,8 +33,9 @@
 
 <!--      && current_user.has_any_role?(:admin, :super_user)-->
       <% if current_user  %>
-        <%# raise %>
-        <%= link_to 'Admin', "#", method: :get, class: "mb-2 ml-8 whitespace-nowrap inline-flex items-center justify-center bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:from-purple-700 hover:to-indigo-700" %>
+        <% if current_user.has_role? :admin %>
+        <%= link_to 'Admin', admin_path, method: :get, class: "mb-2 ml-8 whitespace-nowrap inline-flex items-center justify-center bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:from-purple-700 hover:to-indigo-700" %>
+          <% end %>
       <% end %>
     </div>
   </div>

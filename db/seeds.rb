@@ -50,6 +50,13 @@ Course.create(title: "How read gibberish", contents: "Words here", user_id: @use
 Course.create(title: "How to eat a cake in under 3 seconds", contents: "Words here", user_id: @users.sample.id)
 Course.create(title: "How to peel a potato", contents: "Words here", user_id: @users.sample.id)
 
+Role.create(name: "User")
+Role.create(name: "Student")
+Role.create(name: "Educator")
+Role.create(name: "Moderator")
+Role.create(name: "Admin")
+Role.create(name: "Super User")
+
 @courses = Course.all
 
 ClassList.create(user_id:@users.sample.id, course_id: @courses.sample.id)

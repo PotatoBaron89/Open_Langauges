@@ -31,8 +31,10 @@
 #  timezone               :string
 #
 class User < ApplicationRecord
+  rolify
 
   before_save :default_values
+  after_create :assign_default_role
   # validates :user, uniqueness: { scope: :course_id }
 
   # Include default devise modules. Others available are:
@@ -63,19 +65,13 @@ class User < ApplicationRecord
   has_many :subscribes, dependent: :delete_all
   has_many :wishes, dependent: :delete_all
 
-  def name
-    return first_name
-  end
 
   def default_values
     self.first_name ||= 'Anon'
   end
 
-  def avatar_thumbnail
-    if avatar.attached?
-      avatar.variant(resize: "100x100!").processed
-    else
-      "/default_avatar.png"
-    end
+  def assign_default_role
+    self.add_role(:User)
   end
+
 end

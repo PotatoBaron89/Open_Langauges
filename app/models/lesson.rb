@@ -7,6 +7,7 @@
 #  user_id    :bigint           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  course_id  :bigint           not null
 #
 class Lesson < ApplicationRecord
   belongs_to :user

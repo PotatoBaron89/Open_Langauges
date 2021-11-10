@@ -19,8 +19,6 @@ V
 &app/assets/stylesheets/application.css,5\6\565e1651e502b72ad76ed27e8f0a562fea115987
 ^
 .app/views/shared/_simple_card_w_title.html.erb,2\7\2727310d90387e16f967b6d93eb5c9903e23859e
-S
-#app/controllers/likes_controller.rb,c\6\c6d1185a1721c3e8a8de6e0b4d1d61d0e6afb5b5
 T
 $app/controllers/wishes_controller.rb,e\b\eb7b681d51e73d53cf3bcaa42082c4850b0afcf5
 X
@@ -64,8 +62,6 @@ P
  app/views/lessons/_form.html.erb,9\0\902ff8db9298bc00797a1ec4134d8e04d3f5cd06
 B
 app/models/wish.rb,d\3\d3b3ba8beafb565e269d0dadf2eedb10ea22036c
-X
-(app/controllers/flashcards_controller.rb,2\4\2486318c80ebe7b817b8a485732c0d7c21513668
 g
 7db/migrate/20211109082037_add_side_one_to_flashcards.rb,8\a\8ab66413dd35c183f42b5b613e2648bef72b1ee6
 l
@@ -126,18 +122,12 @@ K
 app/helpers/likes_helper.rb,0\2\02d919acd2a5140bcd03c71e516dcc24c1a42d94
 \
 ,app/views/devise/registrations/edit.html.erb,e\f\ef09dda087d9d83c6ee88e4530bd3c6a8722109b
-Q
-!app/views/shared/_header.html.erb,7\6\76d1a11ee1e940c5ee3f38422c24188edb0fe433
-@
-config/routes.rb,e\8\e801163eb9182955dca3eb9817d59af634f6665d
 M
 config/initializers/devise.rb,f\c\fc4baf9840b8a1ebe46afd7dce3b9656c1c51c47
 f
 6config/initializers/application_controller_renderer.rb,d\a\da67dd480ab205e55745e3ea422f34b095877f3b
 M
 config/initializers/assets.rb,b\9\b9304298674f06982ff2a82bda90ab13d28c5cbd
-E
-config/application.rb,7\f\7ff7049c1c8745b54f0a9ef78996f60b38f36268
 ^
 .config/initializers/content_security_policy.rb,1\1\114e2cbb4b8f1d6fd040739efe38b2b28967b2c8
 Z
