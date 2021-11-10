@@ -80,14 +80,10 @@ H
 app/models/class_list.rb,c\b\cbf7b5403199b2d19a458fa2f58f627d3bfb2d52
 Z
 *app/views/shared/Components/_like.html.erb,4\4\44b1a14e29fa4c611584a05c29fe213583cb3138
-]
--app/views/shared/Components/_divider.html.erb,0\3\03d720ee4361fb99853a02167f24d0b69695c24d
 Z
 *app/views/shared/Components/_wish.html.erb,4\3\43ab31d5ca26bdde47c572911a613c018a66ce9a
 R
 "app/views/lessons/_lesson.html.erb,2\1\21cd7c5211b3496c632ad2db163ff23103f918e2
-O
-app/views/courses/show.html.erb,f\e\febdf8643d1d0f37f73c809045435e63b20fb29e
 D
 app/models/lesson.rb,3\0\30260448563ea29a154da8304c64a046b27e6868
 D

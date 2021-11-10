@@ -23,11 +23,13 @@
       <% if @lessons %>
 
         <div class="bg-white shadow overflow-hidden rounded-md">
-          <ul role="list" class="divide-y divide-gray-200">
+          <ul role="list" class="divide-y divide-gray-200 ">
             <% @lessons.each do |l| %>
-              <li class="px-6 py-4">
-                <a href="<%= lesson_path(l.id) %>" class="no-underline text-black">
+              <li class=" hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50">
+                <a href="<%= lesson_path(l.id) %>" class="no-underline text-black ">
+                  <div class="w-full h-full px-6 py-4">
                   <%= l.title %>
+                  </div>
                 </a>
               </li>
             <% end %>
