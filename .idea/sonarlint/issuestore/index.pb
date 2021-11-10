@@ -89,13 +89,9 @@ Bdb/migrate/20211109093230_remove_organisationid_from_class_list.rb,b\8\b88946a
 P
  app/views/lessons/index.html.erb,7\f\7fdeaad7f1c31b4870e72ddefb11010d61271492
 V
-&app/views/layouts/application.html.erb,e\8\e82294e631b91cb53fe2e362dfd3b8e4a3924ae2
-V
 &app/views/devise/sessions/new.html.erb,0\8\08409c853905fab195e12ec49b3d919f3d6a2b9c
 [
 +app/views/devise/registrations/new.html.erb,3\f\3f5f33da115bf173e0bae0a1ac8ef10f2438c0c8
-T
-$app/views/static_pages/home.html.erb,3\f\3f5e61ffd63c9aa71b19651f2f9a556a610ab4e2
 H
 app/models/class_list.rb,c\b\cbf7b5403199b2d19a458fa2f58f627d3bfb2d52
 R

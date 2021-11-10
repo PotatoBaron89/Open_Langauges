@@ -1,6 +1,5 @@
-<div class="  w-screen">
-
-  <div class="lg:w-8/12">
+<div class="w-screen flex justify-center">
+  <div class="lg:w-8/12 sm:w-full">
     <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
@@ -8,7 +7,7 @@
     <h1 class="mb-5 text-5xl font-black">Account Settings</h1>
 
 
-    <div class="p-12 bg-white overflow-hidden shadow rounded-lg w-11/12 grid-cols-2 bg-gradient-to-r from-blue-100 to-blue-200 mt-5">
+    <div class="p-12 bg-white overflow-hidden shadow rounded-lg  grid-cols-2 bg-gradient-to-r from-blue-100 to-blue-200 mt-5">
       <!--    USER OPTIONS-->
       <%= render "account_form", user: @user %>
     </div>
