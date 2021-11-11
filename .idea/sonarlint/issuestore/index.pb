@@ -118,16 +118,12 @@ K
 config/environments/test.rb,f\5\f52903eb564521c5ab86ad6edd6582a3b5f15b2f
 B
 config/storage.yml,9\8\98fb829828f5d6f179e3be17f70e2491a1b76852
-R
-"config/environments/development.rb,e\5\e54c3d8d363f5b004526c7fcab8f8eb31da5a209
 S
 #app/views/users/index.json.jbuilder,6\d\6dd560d81019fc8c1a60b9224987b22ae6242b38
 L
 app/views/users/new.html.erb,0\d\0dad2ae568e6e543c7b3773f6343332c883889a4
 N
 app/views/users/_form.html.erb,6\0\609b2a98004a46d75f0bbcdce0cfdaca785a1f99
-V
-&app/views/layouts/application.html.erb,e\8\e82294e631b91cb53fe2e362dfd3b8e4a3924ae2
 E
 config/application.rb,7\f\7ff7049c1c8745b54f0a9ef78996f60b38f36268
 M
@@ -164,7 +160,5 @@ N
 app/views/users/index.html.erb,e\a\eab56d002bf9bd5f65a4f88c6e0cd08a9ad74b0c
 ;
 db/seeds.rb,8\1\816631bad3665c05f73dd7befe12c619677d6d62
-R
-"app/views/courses/_course.html.erb,6\8\68578e1cd7b291bfa97b18551b7d10f8fa9b1103
 B
 app/models/role.rb,e\9\e917ad92a9cb12a731c1627ad7e5b16a44fc19e7

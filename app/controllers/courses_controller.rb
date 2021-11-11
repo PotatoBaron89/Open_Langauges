@@ -71,9 +71,10 @@ class CoursesController < ApplicationController
 
   # PATCH/PUT /courses/1 or /courses/1.json
   def update
+
     respond_to do |format|
       if @course.update(course_params)
-        format.html { redirect_to @course, notice: "Course was successfully updated." }
+        format.html { redirect_to course_list_path, notice: "Course was successfully updated." }
         format.json { render :show, status: :ok, location: @course }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -99,7 +100,7 @@ class CoursesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def course_params
-      params.require(:course).permit(:title, :contents, :user_id, :cover_image)
+      params.require(:course).permit(:title, :contents, :user_id, :cover_image, :price, :Ispremium, :isarchived)
     end
 
   private

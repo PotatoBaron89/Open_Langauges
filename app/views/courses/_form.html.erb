@@ -15,7 +15,7 @@
 
   <!--  COVER IMAGE-->
   <section class="container w-full bg-gray-50 flex items-center justify-center align-center py-3 mt-12 border-4 border-gray-300">
-    <%= render '/courses/course_card' %>
+    <%= render '/courses/course_card', course: @course, link: course_path(@course.id) %>
   </section>
 
   <div class="field mt-12">
@@ -30,11 +30,36 @@
   </div>
 
 <!--  OPTIONS-->
-  <%= form.label :premium %>
-    <%= form.check_box :Ispremium %>
+
+  <section class="flex gap-5">
+    <div>
+      <%= form.label :premium %>
+      <%= form.check_box :Ispremium %>
+      <div class="text-gray-500">Premium must be enabled for pricing to take effect.</div>
+    </div>
+    <div>
+      <%= form.label :archive %>
+      <%= form.check_box :isarchived %>
+      <div class="text-gray-500">People who have paid will still have access.</div>
+    </div>
+  </section>
+
+  <div class="form-control">
+    <div class="flex">
+      <label class=" ">
+        <span>Price</span>
+          <% if @course.price %>
+            <%= form.text_field :price, value: @course.price, class: "input input-bordered input-md input-primary" %>
+          <% else %>
+          <%= form.text_field :price, value: "4.99", class: "input input-bordered input-md input-primary" %>
+          <% end %>
+        <span>USD</span>
+      </label>
+    </div>
+  </div>
 
 
-<!--  CONTENTS-->
+  <!--  CONTENTS-->
   <div class="my-5">
     <%= form.label :contents %>
     <%= form.rich_text_area :contents, rows: 12, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>

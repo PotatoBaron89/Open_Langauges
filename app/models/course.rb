@@ -9,6 +9,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :bigint           not null
+#  cover      :string
+#  Ispremium  :boolean
+#  price      :decimal(8, 2)
+#  isarchived :boolean
 #
 class Course < ApplicationRecord
   # belongs_to :creator, class_name: 'User'

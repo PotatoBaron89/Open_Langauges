@@ -1,26 +1,9 @@
 <section class="flex flex-wrap gap-3">
-  <div class="card shadow-xl image-full flex flex-col w-96">
-    <figure>
-      <img src="https://picsum.photos/id/1005/400/250">
-    </figure>
-    <div class="justify-end card-body">
-      <h2 class="card-title">Image overlay</h2>
-      <p>Rerum reiciendis beatae tenetur excepturi aut pariatur est eos. Sit sit necessitatibus veritatis sed molestiae voluptates incidunt iure sapiente.</p>
-      <div class="card-actions">
-        <button class="btn btn-primary">Get Started</button>
-      </div>
-    </div>
-  </div>
-  <div class="card shadow-xl image-full flex flex-col w-96">
-    <figure>
-      <img src="https://picsum.photos/id/1005/400/250">
-    </figure>
-    <div class="justify-end card-body">
-      <h2 class="card-title">Image overlay</h2>
-      <p>Rerum reiciendis beatae tenetur excepturi aut pariatur est eos. Sit sit necessitatibus veritatis sed molestiae voluptates incidunt iure sapiente.</p>
-      <div class="card-actions">
-        <button class="btn btn-primary">Get Started</button>
-      </div>
-    </div>
+  <div class="flex flex-col w-11/12 gap-3 bg-gray-100">
+  <% @courses.each do |c| %>
+
+    <%= render 'courses/course_card', course: c, link: course_path(c) %>
+  <% end %>
   </div>
 </section>
+
