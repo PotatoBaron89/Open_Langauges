@@ -130,8 +130,6 @@ S
 #app/controllers/admin_controller.rb,8\b\8bb233bdca31b94b80d479014819350b2ea395ff
 ^
 .app/views/shared/_simple_card_w_title.html.erb,2\7\2727310d90387e16f967b6d93eb5c9903e23859e
-P
- app/views/users/account.html.erb,9\1\910c77bdfc62233dfd1bf5a61bfa7478e7fc8a4d
 T
 $app/views/static_pages/home.html.erb,3\f\3f5e61ffd63c9aa71b19651f2f9a556a610ab4e2
 V

@@ -1,5 +1,5 @@
 <%= form_with(model: course, class: "contents") do |form| %>
-
+  <div class="p-12 bg-white overflow-hidden shadow rounded-lg  grid-cols-2 bg-gradient-to-r from-blue-100 to-blue-200 mt-5">
 
   <% if course.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
@@ -15,7 +15,9 @@
 
   <!--  COVER IMAGE-->
   <section class="container w-full bg-gray-50 flex items-center justify-center align-center py-3 mt-12 border-4 border-gray-300">
-    <%= render '/courses/course_card', course: @course, link: course_path(@course.id) %>
+    <% if @course.id %>
+      <%= render '/courses/course_card', course: @course, link: course_path(@course.id) %>
+    <% end %>
   </section>
 
   <div class="field mt-12">
@@ -60,9 +62,12 @@
 
 
   <!--  CONTENTS-->
-  <div class="my-5">
+  <div class="my-5 ">
     <%= form.label :contents %>
-    <%= form.rich_text_area :contents, rows: 12, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <div class="bg-white">
+      <%= form.rich_text_area :contents, rows: 12, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full rounded-lg" %>
+    </div>
+
   </div>
 
 <!--  USER-->
@@ -76,3 +81,4 @@
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium" %>
   </div>
 <% end %>
+</div>
