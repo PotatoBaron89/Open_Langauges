@@ -1,5 +1,9 @@
 <section class="flex flex-wrap gap-3">
   <div class="flex flex-col w-11/12 gap-3 bg-gray-100">
+<!--    Broken, haven't figured out why-->
+<!--    undefined method `total_pages' for #<ActiveRecord::Relation-->
+    <%#= paginate @courses %>
+
   <% @courses.each do |c| %>
 
     <%= render 'courses/course_card', course: c, link: course_path(c) %>

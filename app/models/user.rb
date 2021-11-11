@@ -32,6 +32,7 @@
 #
 class User < ApplicationRecord
   rolify
+  paginates_per 12
 
   before_save :default_values
   after_create :assign_default_role

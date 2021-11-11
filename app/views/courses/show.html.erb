@@ -26,11 +26,25 @@
           <ul role="list" class="divide-y divide-gray-200 ">
             <% @lessons.each do |l| %>
               <li class=" hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50">
-                <a href="<%= lesson_path(l.id) %>" class="no-underline text-black ">
-                  <div class="w-full h-full px-6 py-4">
-                  <%= l.title %>
+                <% if @course.Ispremium? %>
+                  <div class="no-underline text-black ">
+                    <div class="w-full h-full px-6 py-4">
+                      <%= l.title %>
+                      <%= render 'shared/Components/avatar', content: { user: l.user, path: user_path(l.user.id) } %>
+                    </div>
                   </div>
-                </a>
+                <% else %>
+                  <a href="<%= lesson_path(l.id) %>" class="no-underline text-black ">
+                    <div class="w-full h-full px-6 py-4 flex">
+                      <div class="flex-grow">
+                        <%= l.title %>
+                      </div>
+                      <div class="w-1/5">
+                        <%= render 'shared/Components/avatar', content: { user: l.user, path: user_path(l.user.id) } %>
+                      </div>
+                    </div>
+                  </a>
+                <% end %>
               </li>
             <% end %>
           </ul>

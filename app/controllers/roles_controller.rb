@@ -1,6 +1,7 @@
 class RolesController < ApplicationController
   def index
-
+    @roles = Role.all
+               .page(params[:page])
   end
 
   def show

@@ -52,14 +52,10 @@ l
 <db/migrate/20211109084433_add_lesson_to_flashcard_courses.rb,0\b\0bbcd34769ec74103a20d1ea37316c4db52d2db9
 e
 5db/migrate/20211109081241_create_flashcard_courses.rb,f\e\fe97cbea8e19bace0d0b5c48cb4a78ef83366b13
-G
-app/models/flashcard.rb,e\f\ef326be5ccde03c73dddc77136b98d7b31f694b6
 B
 app/models/like.rb,d\0\d03a6b306e5c9b08754d0fdde8fd93d5c44bb92c
 N
 app/models/flashcard_course.rb,9\8\9865bc1c9864ab98998868863bba08eebe44530d
-L
-app/models/class_educator.rb,5\9\5968b2eb3d4d15331d4712914ffe1a59263bdb6a
 _
 /db/migrate/20211108075216_create_class_lists.rb,b\5\b5f10d6d02cc367af9b2224a9027e9e4fbedb666
 c
@@ -72,8 +68,6 @@ V
 &app/views/devise/sessions/new.html.erb,0\8\08409c853905fab195e12ec49b3d919f3d6a2b9c
 [
 +app/views/devise/registrations/new.html.erb,3\f\3f5f33da115bf173e0bae0a1ac8ef10f2438c0c8
-H
-app/models/class_list.rb,c\b\cbf7b5403199b2d19a458fa2f58f627d3bfb2d52
 Z
 *app/views/shared/Components/_like.html.erb,4\4\44b1a14e29fa4c611584a05c29fe213583cb3138
 Z
@@ -82,8 +76,6 @@ R
 "app/views/lessons/_lesson.html.erb,2\1\21cd7c5211b3496c632ad2db163ff23103f918e2
 D
 app/models/lesson.rb,3\0\30260448563ea29a154da8304c64a046b27e6868
-U
-%app/controllers/lessons_controller.rb,1\c\1c7764799b3d2c1fdea77615d37776c3204f2f4f
 _
 /app/views/shared/Components/_subscribe.html.erb,c\3\c3a9d76c9cff572417ed64b9bdd84a9d10f29e8d
 ;
@@ -140,14 +132,10 @@ S
 .app/views/shared/_simple_card_w_title.html.erb,2\7\2727310d90387e16f967b6d93eb5c9903e23859e
 P
  app/views/users/account.html.erb,9\1\910c77bdfc62233dfd1bf5a61bfa7478e7fc8a4d
-7
-Gemfile,d\e\de3150c01c3a946a6168173c4116741379fe3579
 T
 $app/views/static_pages/home.html.erb,3\f\3f5e61ffd63c9aa71b19651f2f9a556a610ab4e2
 V
 &app/assets/stylesheets/actiontext.scss,9\4\94a00e25fdd0b585e2b9e32adc7e097130dce158
-S
-#app/controllers/likes_controller.rb,c\6\c6d1185a1721c3e8a8de6e0b4d1d61d0e6afb5b5
 W
 'app/views/admin/_add_role_form.html.erb,b\e\be6114bf9a057a92beacc6f388cae72577fb3cc8
 P
@@ -156,9 +144,5 @@ M
 app/views/users/show.html.erb,6\8\68cf7821b7096974273803f96c10233fd50dbf5d
 N
 app/views/users/_user.html.erb,5\4\548e615f123e03babcfd51ac655a28c7ae9a17f3
-N
-app/views/users/index.html.erb,e\a\eab56d002bf9bd5f65a4f88c6e0cd08a9ad74b0c
-;
-db/seeds.rb,8\1\816631bad3665c05f73dd7befe12c619677d6d62
 B
 app/models/role.rb,e\9\e917ad92a9cb12a731c1627ad7e5b16a44fc19e7

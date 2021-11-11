@@ -4,6 +4,7 @@ class LessonsController < ApplicationController
   # GET /lessons or /lessons.json
   def index
     @lessons = Lesson.all
+                 .page(params[:page])
   end
 
   # GET /lessons/1 or /lessons/1.json

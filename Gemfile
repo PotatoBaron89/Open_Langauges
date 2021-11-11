@@ -70,6 +70,7 @@ gem "cloudinary", "~> 1.21"
 gem "activestorage-cloudinary-service", "~> 0.2.3"
 gem "aws-sdk-s3", "~> 1.105"
 
-# gem "gem", "~> 0.0.1.alpha"
+
 gem "rolify", "~> 6.0"
 gem "public_activity"
+gem "kaminari", :git => 'https://github.com/kaminari/kaminari'
