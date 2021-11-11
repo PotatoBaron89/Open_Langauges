@@ -1,0 +1,12 @@
+<section class="flex-col flex">
+  <div>
+    <h1 class="text-xl font-bold mb-12">Definition for <span class="text-primary"><%= @definition.word.word %></span></h1>
+
+    <h3><%= @definition.title %></h3>
+    <p class="pb-5"><%= @definition.text %>></p>
+  </div>
+
+  <div class="btn">
+    <%= link_to 'Back to Word', word_path(@definition.word_id) %>
+  </div>
+</section>

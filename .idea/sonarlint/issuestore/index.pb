@@ -134,8 +134,6 @@ T
 $app/views/static_pages/home.html.erb,3\f\3f5e61ffd63c9aa71b19651f2f9a556a610ab4e2
 V
 &app/assets/stylesheets/actiontext.scss,9\4\94a00e25fdd0b585e2b9e32adc7e097130dce158
-W
-'app/views/admin/_add_role_form.html.erb,b\e\be6114bf9a057a92beacc6f388cae72577fb3cc8
 P
  app/views/lessons/_form.html.erb,9\0\902ff8db9298bc00797a1ec4134d8e04d3f5cd06
 M

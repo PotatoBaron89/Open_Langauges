@@ -3,8 +3,14 @@
 
 Rails.application.routes.draw do
 
+  # get 'definitions/index'
+  # get 'definitions/show'
+  # get 'definitions/delete'
+  # get 'definitions/edit'
+  resources :words
   resources :flashcards
   resources :lessons
+  resources :definitions
   # USERS
   devise_for :users
   resources :users

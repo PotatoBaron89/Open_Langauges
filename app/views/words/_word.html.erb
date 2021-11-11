@@ -1,0 +1,17 @@
+<div id="<%= dom_id word %>" class="flex gap-5">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Word:</strong>
+    <%= word.word %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Class:</strong>
+    <%= word.class %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this word", word, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this word', edit_word_path(word), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

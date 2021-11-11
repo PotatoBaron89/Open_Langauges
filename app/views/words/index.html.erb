@@ -1,0 +1,36 @@
+
+  <%= paginate @words %>
+
+
+<div class="w-screen flex justify-center">
+  <div class="lg:w-8/12 sm:w-full">
+    <!--    HEADING-->
+    <h1 class="mb-5 text-5xl font-black">Words Management</h1>
+
+    <!--    ROLES-->
+    <p class="mb-3">
+      <strong>Words: </strong> <%= @words.count %>
+    </p>
+
+    <!--    CREATE NEW ROLES-->
+    <ul role="list" class="space-y-3">
+      <% @word = Word.new %>
+      <%= render 'words/add_word' %>
+
+      <!--    LIST CURRENT ROLES-->
+
+      <% if @words %>
+        <% @words.each do |word| %>
+          <%= render 'shared/Components/list_item', local: { contents:
+                                                               { first: "ID: #{ word.id }",
+                                                                 second: word.word },
+                                                             edit: true, edit_path: edit_word_path(word.id),
+                                                             delete: true, path: word_path(word.id)} %>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+
+

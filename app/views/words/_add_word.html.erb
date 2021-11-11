@@ -1,0 +1,12 @@
+
+<%= form_with(model: @word, class: "contents") do |form| %>
+  <li class=" h-24 bg-gradient-to-r from-green-400 via-pink-500 to-yellow-500 shadow overflow-hidden px-4 py-4 sm:px-6 sm:rounded-md flex justify-around item-center bg-red-100 items-center">
+    <div class="my-5">
+      <%= form.text_field :word, placeholder: 'New Word', class: "w-4/6 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
+
+    <div class="inline">
+      <%= form.submit class: "inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-green-100 text-green-800 w-max" %>
+    </div>
+  </li>
+<% end %>

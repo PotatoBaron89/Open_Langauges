@@ -1,0 +1,45 @@
+
+
+<%= paginate @definitions %>
+
+
+<div class="w-screen flex justify-center">
+  <div class="lg:w-8/12 sm:w-full">
+    <!--    HEADING-->
+    <h1 class="mb-5 text-5xl font-black">Words Management</h1>
+    <div class="mx-auto md:w-2/3 w-full flex flex-row">
+      <div class="mx-auto">
+
+        <%= render @word %>
+      </div>
+    </div>
+    <!--    ROLES-->
+    <p class="mb-3">
+      <strong>Words: </strong> <%= @definitions.count %>
+    </p>
+
+    <!--    CREATE NEW ROLES-->
+    <ul role="list" class="space-y-3">
+      <% @definition = Definition.new %>
+      <%= render '/definitions/add_definition' %>
+
+      <!--    LIST CURRENT ROLES-->
+
+      <% if @definitions %>
+        <% @definitions.each do |definition| %>
+          <%= render 'shared/Components/list_item', local: { contents:
+                                                               { first: "ID: #{ definition.id }",
+                                                                 second: definition.title },
+                                                             edit: true, edit_path: edit_definition_path(definition.id),
+                                                             delete: true, path: definition_path(definition.id)} %>
+        <% end %>
+      <% end %>
+    </ul>
+    <%= link_to 'Edit this word', edit_word_path(@word), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <div class="inline-block ml-2">
+      <%= button_to 'Delete this word', word_path(@word), method: :delete, data: { confirm: "Are you sure you want to delete this word?" }, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    </div>
+    <%= link_to 'Back to words', words_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  </div>
+
+</div>
