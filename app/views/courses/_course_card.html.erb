@@ -1,0 +1,19 @@
+
+
+<div class="card shadow-xl image-full flex flex-col w-96 ">
+  <figure>
+    <% if @course.cover_image.attached? %>
+      <%= image_tag @course.cover_image, width: 400, class: 'object-cover flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden h-64 w-96' %>
+    <% else %>
+      <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('https://images.unsplash.com/photo-1552661397-4233881ea8c8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=730&q=80')" title="Mountain"></div>
+    <% end %>
+  </figure>
+  <h2 class="card-title mb-5 text-xl font-black text-center">Image overlay</h2>
+  <div class="justify-end card-body h-52 flex flex-col justify-between">
+
+    <p>Rerum reiciendis beatae tenetur excepturi aut pariatur est eos. Sit sit necessitatibus veritatis sed molestiae voluptates incidunt iure sapiente.</p>
+    <div class="card-actions">
+      <button class="btn btn-primary">Get Started</button>
+    </div>
+  </div>
+</div>

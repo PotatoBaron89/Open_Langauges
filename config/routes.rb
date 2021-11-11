@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   # COURSES + CATEGORIES
   resources :organisations
   resources :courses
+  get '/course/list', to: 'courses#courselist'
 
   # SOCIAL
   resources :likes, only: [ :create, :destroy ]

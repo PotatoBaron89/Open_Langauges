@@ -13,21 +13,40 @@
     </div>
   <% end %>
 
+  <!--  COVER IMAGE-->
+  <section class="container w-full bg-gray-50 flex items-center justify-center align-center py-3 mt-12 border-4 border-gray-300">
+    <%= render '/courses/course_card' %>
+  </section>
+
+  <div class="field mt-12">
+    <%= form.label :cover_image %>
+    <%= form.file_field :cover_image, multiple: false, accept:'image/*' %>
+  </div>
+
+<!--  TITLE-->
   <div class="my-5">
     <%= form.label :title %>
     <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
+<!--  OPTIONS-->
+  <%= form.label :premium %>
+    <%= form.check_box :Ispremium %>
+
+
+<!--  CONTENTS-->
   <div class="my-5">
     <%= form.label :contents %>
     <%= form.rich_text_area :contents, rows: 12, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
+<!--  USER-->
   <div class="my-5">
     <%= form.label :user_id %>
     <%= form.collection_select :user_id, @user, :id, :email, { value: current_user.email }, selected: current_user.email, class: "border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" %>
   </div>
 
+<!--  SUBMIT-->
   <div class="inline">
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium" %>
   </div>

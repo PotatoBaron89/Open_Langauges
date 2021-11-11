@@ -25,7 +25,7 @@ class Course < ApplicationRecord
   has_many :wishes, dependent: :delete_all
 
   #CONTENT
-
+  has_one_attached :cover_image, dependent: :purge_later
 
 
   has_rich_text :contents
