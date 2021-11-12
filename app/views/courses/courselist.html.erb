@@ -1,21 +1,19 @@
-<section class="flex flex-wrap gap-3">
-  <div class="flex flex-col w-11/12 gap-3 bg-gray-100">
+<section class="flex flex-wrap gap-3 w-full">
+  <div class="flex flex-col w-full gap-3 bg-gray-100">
 <!--    Broken, haven't figured out why-->
 <!--    undefined method `total_pages' for #<ActiveRecord::Relation-->
-    <%= paginate @courses %>
-
-    <%= form_with url: course_list_path, method: :get, local: true do |f| %>
-      <%= f.text_field(:search) %>
-      <%= f.select "options", @options, class: "border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" %>
-      <%= f.submit("Search") %>
-    <% end %>
-
+<!--    SEARCHBAR-->
     <%= render '/shared/Components/search_bar', path: course_list_path, options: @options %>
 
-  <% @courses.each do |c| %>
+    <div class="">
+      <%= paginate @courses, outer_window: 16 %>
+    </div>
 
-    <%#= render 'courses/course_card', course: c, link: course_path(c) %>
-  <% end %>
+    <div class="flex flex-col gap-3">
+      <% @courses.each do |c| %>
+        <%= render 'courses/course_card', course: c, link: course_path(c) %>
+      <% end %>
+    </div>
   </div>
 </section>
 

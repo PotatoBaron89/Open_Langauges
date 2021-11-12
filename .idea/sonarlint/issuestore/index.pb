@@ -62,8 +62,6 @@ c
 3db/migrate/20211108092801_create_class_educators.rb,8\9\892916ee9741602d42ff44783ac999d3e0076dd5
 r
 Bdb/migrate/20211109093230_remove_organisationid_from_class_list.rb,b\8\b88946a1de82c77aa839fc836bdccee0803a0fd3
-P
- app/views/lessons/index.html.erb,7\f\7fdeaad7f1c31b4870e72ddefb11010d61271492
 V
 &app/views/devise/sessions/new.html.erb,0\8\08409c853905fab195e12ec49b3d919f3d6a2b9c
 [
@@ -72,8 +70,6 @@ Z
 *app/views/shared/Components/_like.html.erb,4\4\44b1a14e29fa4c611584a05c29fe213583cb3138
 Z
 *app/views/shared/Components/_wish.html.erb,4\3\43ab31d5ca26bdde47c572911a613c018a66ce9a
-R
-"app/views/lessons/_lesson.html.erb,2\1\21cd7c5211b3496c632ad2db163ff23103f918e2
 D
 app/models/lesson.rb,3\0\30260448563ea29a154da8304c64a046b27e6868
 _
@@ -132,38 +128,24 @@ T
 $app/views/static_pages/home.html.erb,3\f\3f5e61ffd63c9aa71b19651f2f9a556a610ab4e2
 V
 &app/assets/stylesheets/actiontext.scss,9\4\94a00e25fdd0b585e2b9e32adc7e097130dce158
-P
- app/views/lessons/_form.html.erb,9\0\902ff8db9298bc00797a1ec4134d8e04d3f5cd06
 M
 app/views/users/show.html.erb,6\8\68cf7821b7096974273803f96c10233fd50dbf5d
 N
 app/views/users/_user.html.erb,5\4\548e615f123e03babcfd51ac655a28c7ae9a17f3
 B
 app/models/role.rb,e\9\e917ad92a9cb12a731c1627ad7e5b16a44fc19e7
-O
-app/views/courses/show.html.erb,f\e\febdf8643d1d0f37f73c809045435e63b20fb29e
-V
-&config/initializers/kaminari_config.rb,f\3\f321f466c8b24b216237f41e1fa131c765ae17c1
-R
-"app/views/courses/_course.html.erb,6\8\68578e1cd7b291bfa97b18551b7d10f8fa9b1103
 i
 9app/views/shared/Components/_current_user_avatar.html.erb,7\6\763fe6b191562d5a2ac70d9006c4c1363055e3f0
 `
 0app/views/shared/Components/_pagination.html.erb,e\4\e49bd65cb44fd1eee9af782ddabd0390ab6405f9
-V
-&app/views/kaminari/_paginator.html.erb,2\9\294d5d13f4d95173d61d06068f5e676a5deb7a6c
 V
 &app/views/kaminari/_prev_page.html.erb,0\f\0f058014577fe4b922813827a374dd57ecb08d00
 W
 'app/views/kaminari/_first_page.html.erb,8\6\86b85c44233c6ce113850ce2ce573165d562bfe3
 Q
 !app/views/kaminari/_page.html.erb,4\9\49decc025443b7496bcd89aabaae8e2b1eaa360f
-V
-&app/views/kaminari/_next_page.html.erb,e\c\ece207e9fdb0a21d02afbd99cb1e410cfc9495a7
 S
 #app/controllers/likes_controller.rb,c\6\c6d1185a1721c3e8a8de6e0b4d1d61d0e6afb5b5
-U
-%app/controllers/lessons_controller.rb,1\c\1c7764799b3d2c1fdea77615d37776c3204f2f4f
 S
 #app/controllers/roles_controller.rb,1\0\10eb6ad358d487b77c7e79e0175145bce622b586
 L
@@ -172,8 +154,6 @@ G
 app/models/flashcard.rb,e\f\ef326be5ccde03c73dddc77136b98d7b31f694b6
 H
 app/models/class_list.rb,c\b\cbf7b5403199b2d19a458fa2f58f627d3bfb2d52
-W
-'app/views/courses/_course_card.html.erb,4\4\446218bf2b5496fe9db872f8fee14503a8d28491
 N
 app/views/users/index.html.erb,e\a\eab56d002bf9bd5f65a4f88c6e0cd08a9ad74b0c
 V
@@ -215,7 +195,5 @@ B
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 D
 app/models/course.rb,4\3\43d653af1788821635516fba3b9ffeaea02f5f07
-;
-db/seeds.rb,8\1\816631bad3665c05f73dd7befe12c619677d6d62
 Y
 )app/controllers/definitions_controller.rb,7\2\72d589df429d74fe7060fa4efb16f9e1975807e5

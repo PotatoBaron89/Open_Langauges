@@ -10,11 +10,12 @@ ClassList.destroy_all
 ClassEducator.destroy_all
 
 Course.destroy_all
-
+Role.destroy_all
 Like.destroy_all
 Subscribe.destroy_all
 Wish.destroy_all
-
+Word.destroy_all
+Definition.destroy_all
 User.destroy_all
 
 

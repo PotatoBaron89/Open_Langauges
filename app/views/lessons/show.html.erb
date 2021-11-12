@@ -11,5 +11,6 @@
       <%= button_to 'Delete this lesson', lesson_path(@lesson), method: :delete, data: { confirm: "Are you sure you want to delete this lesson?" }, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
     </div>
     <%= link_to 'Back to lessons', lessons_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Back to Course', course_path(@lesson.course.id), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
 </div>

@@ -3,39 +3,53 @@ class LessonsController < ApplicationController
 
   # GET /lessons or /lessons.json
   def index
+
     @lessons = Lesson.all
                  .page(params[:page])
+    @user = current_user
   end
 
   # GET /lessons/1 or /lessons/1.json
   def show
-
+    @user = current_user
   end
 
   # GET /lessons/new
   def new
+
     @lesson = Lesson.new
+
     @user = [current_user]
+    if params[:format]
+      @course = [Course.find(params[:format])]
+    else
+      raise
+    end
   end
 
   # GET /lessons/1/edit
   def edit
     @user = [current_user]
+    @course = [Course.find(@lesson.course.id)]
   end
 
   # POST /lessons or /lessons.json
   def create
+    @user = [current_user]
     @lesson = Lesson.new(lesson_params)
 
     respond_to do |format|
       if @lesson.save
-        format.html { redirect_to @lesson, notice: "Lesson was successfully created." }
+
+        format.html { redirect_to course_path(@lesson.course.id), notice: "Lesson was successfully created." }
         format.json { render :show, status: :created, location: @lesson }
       else
+
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @lesson.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /lessons/1 or /lessons/1.json
@@ -68,6 +82,6 @@ class LessonsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def lesson_params
-      params.require(:lesson).permit(:title, :content, :user_id)
+      params.require(:lesson).permit(:title, :content, :user_id, :course_id)
     end
 end

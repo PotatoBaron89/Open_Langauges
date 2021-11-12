@@ -1,5 +1,6 @@
 <%= form_with(model: lesson, class: "contents") do |form| %>
   <div class="my-5">
+
     <%= form.label :title %>
     <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
@@ -9,9 +10,16 @@
     <%= form.rich_text_area :content, class: "h-5/6 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :user_id %>
-    <%= form.collection_select :user_id, @user, :id, :email, { value: current_user.email }, selected: current_user.email, class: "border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" %>
+  <div class="flex flex-wrap w-full gap-3">
+    <div class="my-5">
+      <%= form.label :user_id %>
+      <%= form.collection_select :user_id, @user, :id, :email, { value: current_user.email }, selected: current_user.email, class: "border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" %>
+    </div>
+
+    <div class="my-5">
+      <%= form.label :course_id %>
+      <%= form.collection_select :course_id, @course, :id, :title, { value: :id }, selected: :id, class: "border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" %>
+    </div>
   </div>
 
   <div class="inline">
