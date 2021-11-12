@@ -21,52 +21,41 @@ User.destroy_all
 
 
 
+# CREATE USERS
 User.create!(email: "potato@gmail.com", password: 'potato', password_confirmation: 'potato')
-User.create!(email: "potato123@gmail.com", password: 'potato', password_confirmation: 'potato')
-User.create!(email: "samboy29@gmail.com", password: 'potato', password_confirmation: 'potato')
-User.create!(email: "user12@gmail.com", password: 'potato', password_confirmation: 'potato')
-User.create!(email: "user42gerg435@gmail.com", password: 'potato', password_confirmation: 'potato')
-User.create!(email: "user3@gmail.com", password: 'potato', password_confirmation: 'potato')
-User.create!(email: "use23@gmil.com", password: 'potato', password_confirmation: 'potato')
-User.create!(email: "user423@gmail.com", password: 'potato', password_confirmation: 'potato')
-User.create!(email: "use423@gmail.com", password: 'potato', password_confirmation: 'potato')
-User.create!(email: "user42432243@gmail.com", password: 'potato', password_confirmation: 'potato')
-User.create!(email: "use@gmail.com", password: 'potato', password_confirmation: 'potato')
-User.create!(email: "user42afdadsf3@gmail.com", password: 'potato', password_confirmation: 'potato')
-User.create!(email: "use234234r423@gmail.com", password: 'potato', password_confirmation: 'potato')
-User.create!(email: "er423@gmail.com", password: 'potato', password_confirmation: 'potato')
-User.create!(email: "user23233232423@gmail.com", password: 'potato', password_confirmation: 'potato')
-User.create!(email: "user@gmail.com", password: 'potato', password_confirmation: 'potato')
-User.create!(email: "user42@ail.com", password: 'potato', password_confirmation: 'potato')
-User.create!(email: "ur423@gmail.com", password: 'potato', password_confirmation: 'potato')
-User.create!(email: "usadfasfdafdsfaser@gmail.com", password: 'potato', password_confirmation: 'potato')
-User.create!(email: "us423@gmail.com", password: 'potato', password_confirmation: 'potato')
-User.create!(email: "usr423@gmail.com", password: 'potato', password_confirmation: 'potato')
-User.create!(email: "ur423432423@gmail.com", password: 'potato', password_confirmation: 'potato')
-User.create!(email: "user422133@gmail.com", password: 'potato', password_confirmation: 'potato')
-User.create!(email: "user412412423@gmail.com", password: 'potato', password_confirmation: 'potato')
-User.create!(email: "user424123@gmail.com", password: 'potato', password_confirmation: 'potato')
-User.create!(email: "I_Am_Potato3@gmail.com", password: 'potato', password_confirmation: 'potato')
-User.create!(email: "Love_Potatoes@gmail.com", password: 'potato', password_confirmation: 'potato')
-User.create!(email: "Poooo-taaaa-toooooo@gmail.com", password: 'potato', password_confirmation: 'potato')
 User.first.add_role :admin
+
+i = 0
+while i < 150 do
+  User.create!([{
+                  email: Faker::Internet.email,
+                  password: "potato",
+                  password_confirmation: "potato",
+                  first_name: Faker::Name.name,
+                  dob: Faker::Date.birthday(min_age: 18, max_age: 95),
+                  about: Faker::Lorem.sentence(word_count: rand(30...300))
+                }])
+  i += 1
+end
 
 @users = User.all
 
-Course.create(title: "Random Title", contents: "Words here", user_id: @users.sample.id)
-Course.create(title: "Another Title", contents: "Words here", user_id: @users.sample.id)
-Course.create(title: "This is interesting", contents: "Words here", user_id: @users.sample.id)
-Course.create(title: "Oh wow", contents: "Words here", user_id: @users.sample.id)
-Course.create(title: "How to tie your shoelaces", contents: "Words here", user_id: @users.sample.id, isarchived: true)
-Course.create(title: "How do the thing", contents: "Words here", user_id: @users.sample.id)
-Course.create(title: "How read gibberish", contents: "Words here", user_id: @users.sample.id)
-Course.create(title: "How to eat a cake in under 3 seconds", contents: "Words here", user_id: @users.sample.id)
-Course.create(title: "How to peel a potato", contents: "Words here", user_id: @users.sample.id)
-Course.create(title: "How to peel a carrots", contents: "Words here", user_id: @users.sample.id, Ispremium: true)
-Course.create(title: "How to eat a mango", contents: "Words here", user_id: @users.sample.id, Ispremium: true)
-Course.create(title: "how to refill your blinker fluid", contents: "Words here", user_id: @users.sample.id, Ispremium: true)
-Course.create(title: "how to refill your blinker fluid part: 2", contents: "Words here", user_id: @users.sample.id, Ispremium: true)
+# CREATE COURSES
+i = 0
 
+while i < 150 do
+  Course.create!([{
+                    title: Faker::Educator.course_name,
+                    contents: Faker::TvShows::GameOfThrones.quote,
+                    user: @users.sample,
+                    isarchived: rand(2),
+                    Ispremium: rand(2),
+                    price: Faker::Number.between(from: 2.0, to: 15.0).round(2)
+                  }])
+  i += 1
+end
+
+# CREATE ROLES
 Role.create(name: "User")
 Role.create(name: "Student")
 Role.create(name: "Educator")
@@ -76,86 +65,57 @@ Role.create(name: "Super User")
 
 @courses = Course.all
 
-ClassList.create(user_id:@users.sample.id, course_id: @courses.sample.id)
-ClassList.create(user_id:@users.sample.id, course_id: @courses.sample.id)
-ClassList.create(user_id:@users.sample.id, course_id: @courses.sample.id)
-ClassList.create(user_id:@users.sample.id, course_id: @courses.sample.id)
-ClassList.create(user_id:@users.sample.id, course_id: @courses.sample.id)
-ClassList.create(user_id:@users.sample.id, course_id: @courses.sample.id)
-ClassList.create(user_id:@users.sample.id, course_id: @courses.sample.id)
-ClassList.create(user_id:@users.sample.id, course_id: @courses.sample.id)
-ClassList.create(user_id:@users.sample.id, course_id: @courses.sample.id)
-ClassList.create(user_id:@users.sample.id, course_id: @courses.sample.id)
-ClassList.create(user_id:@users.sample.id, course_id: @courses.sample.id)
-ClassList.create(user_id:@users.sample.id, course_id: @courses.sample.id)
-ClassList.create(user_id:@users.sample.id, course_id: @courses.sample.id)
-ClassList.create(user_id:@users.sample.id, course_id: @courses.sample.id)
-ClassList.create(user_id:@users.sample.id, course_id: @courses.sample.id)
-ClassList.create(user_id:@users.sample.id, course_id: @courses.sample.id)
-ClassList.create(user_id:@users.sample.id, course_id: @courses.sample.id)
-ClassList.create(user_id:@users.sample.id, course_id: @courses.sample.id)
-ClassList.create(user_id:@users.sample.id, course_id: @courses.sample.id)
-ClassList.create(user_id:@users.sample.id, course_id: @courses.sample.id)
-ClassList.create(user_id:@users.sample.id, course_id: @courses.sample.id)
-ClassList.create(user_id:@users.sample.id, course_id: @courses.sample.id)
+350.times do
+  ClassList.create(user_id:@users.sample.id, course_id: @courses.sample.id)
+end
 
-ClassEducator.create(user_id: @users.sample.id, course_id: @courses.sample.id)
-ClassEducator.create(user_id: @users.sample.id, course_id: @courses.sample.id)
-ClassEducator.create(user_id: @users.sample.id, course_id: @courses.sample.id)
-ClassEducator.create(user_id: @users.sample.id, course_id: @courses.sample.id)
-ClassEducator.create(user_id: @users.sample.id, course_id: @courses.sample.id)
-ClassEducator.create(user_id: @users.sample.id, course_id: @courses.sample.id)
-ClassEducator.create(user_id: @users.sample.id, course_id: @courses.sample.id)
-ClassEducator.create(user_id: @users.sample.id, course_id: @courses.sample.id)
-ClassEducator.create(user_id: @users.sample.id, course_id: @courses.sample.id)
-ClassEducator.create(user_id: @users.sample.id, course_id: @courses.sample.id)
+120.times do
+  ClassEducator.create(user_id: @users.sample.id, course_id: @courses.sample.id)
+end
 
-Like.create(user_id: @users[0].id, course_id: @courses[0].id)
-Like.create(user_id: @users[0].id, course_id: @courses[1].id)
-Like.create(user_id: @users[0].id, course_id: @courses[3].id)
-Like.create(user_id: @users[0].id, course_id: @courses[5].id)
-Like.create(user_id: @users[1].id, course_id: @courses[4].id)
-Like.create(user_id: @users[1].id, course_id: @courses[0].id)
-Like.create(user_id: @users[1].id, course_id: @courses[3].id)
-Like.create(user_id: @users[2].id, course_id: @courses[0].id)
-Like.create(user_id: @users[2].id, course_id: @courses[5].id)
-Like.create(user_id: @users[2].id, course_id: @courses[4].id)
-Like.create(user_id: @users[2].id, course_id: @courses[3].id)
-Like.create(user_id: @users[3].id, course_id: @courses[0].id)
-Like.create(user_id: @users[3].id, course_id: @courses[1].id)
-Like.create(user_id: @users[3].id, course_id: @courses[7].id)
-Like.create(user_id: @users[4].id, course_id: @courses[0].id)
-Like.create(user_id: @users[5].id, course_id: @courses[8].id)
-Like.create(user_id: @users[6].id, course_id: @courses[0].id)
-Like.create(user_id: @users[7].id, course_id: @courses[0].id)
+650.times do
+  begin
+    Like.create(user_id: @users.sample.id, course_id: @courses.sample.id)
+  rescue
+    next
+  end
+end
 
+130.times do
+  begin
+    Wish.create(user_id: @users.sample.id, course_id: @courses.sample.id)
+  rescue
+    next
+  end
+end
 
-Wish.create(user_id: @users[3].id, course_id: @courses[3].id)
-Wish.create(user_id: @users[4].id, course_id: @courses[2].id)
-Wish.create(user_id: @users[2].id, course_id: @courses[3].id)
-Wish.create(user_id: @users[6].id, course_id: @courses[1].id)
-Wish.create(user_id: @users[1].id, course_id: @courses[0].id)
-Wish.create(user_id: @users[0].id, course_id: @courses[4].id)
+250.times do
+  begin
+    Subscribe.create(user_id: @users.sample.id, course_id: @courses.sample.id)
+  rescue
+    next
+  end
+end
 
+@courses = Course.all
+i = 0
+while i < 550 do
+  Lesson.create!([{
+                    title: Faker::Educator.subject,
+                    content: Faker::TvShows::GameOfThrones.quote,
+                    user: @users.sample,
+                    course_id: @courses.sample.id
+                  }])
+  i += 1
+end
 
+150.times do
+  Word.create(word: Faker::Verb.base)
+end
 
+@words = Word.all
 
-Subscribe.create(user_id: @users[0].id, course_id: @courses[0].id)
-Subscribe.create(user_id: @users[1].id, course_id: @courses[0].id)
-Subscribe.create(user_id: @users[2].id, course_id: @courses[0].id)
-Subscribe.create(user_id: @users[3].id, course_id: @courses[1].id)
-Subscribe.create(user_id: @users[2].id, course_id: @courses[1].id)
-Subscribe.create(user_id: @users[4].id, course_id: @courses[1].id)
-
-
-Lesson.create!(user_id: @users[0].id, course_id: @courses[0].id, title: "Intriguing Lesson", content: "Sample Content")
-Lesson.create!(user_id: @users[0].id, course_id: @courses[0].id, title: "Dolphin Dancing", content: "Sample Content")
-Lesson.create!(user_id: @users[0].id, course_id: @courses[0].id, title: "Lion Taming", content: "Sample Content")
-Lesson.create!(user_id: @users[0].id, course_id: @courses[0].id, title: "Basket Weaving", content: "Sample Content")
-Lesson.create!(user_id: @users[0].id, course_id: @courses[0].id, title: "How to burn potatoes", content: "Sample Content")
-Lesson.create!(user_id: @users[0].id, course_id: @courses[0].id, title: "How to avoid police in a wheelchair", content: "Sample Content")
-Lesson.create!(user_id: @users[0].id, course_id: @courses[2].id, title: "Stuff made here", content: "Sample Content")
-Lesson.create!(user_id: @users[0].id, course_id: @courses[2].id, title: "I am strugglign to think of lessons", content: "Sample Content")
-Lesson.create!(user_id: @users[0].id, course_id: @courses[1].id, title: "Rails on Ruby", content: "Sample Content")
-Lesson.create!(user_id: @users[0].id, course_id: @courses[1].id, title: "VUE is the best", content: "Sample Content")
-Lesson.create!(user_id: @users[0].id, course_id: @courses[0].id, title: "No no no not vim!", content: "Sample Content")
+450.times do
+  Definition.create(title: Faker::Lorem.sentence(word_count: rand(20...50)))
+  Definition.create(word_id: @words.sample)
+end

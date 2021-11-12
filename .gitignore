@@ -5,6 +5,7 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 .env
+.npmrc
 
 # Ignore bundler config.
 /.bundle

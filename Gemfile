@@ -52,6 +52,7 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem 'annotate'
+  gem "faker"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -74,3 +75,8 @@ gem "aws-sdk-s3", "~> 1.105"
 gem "rolify", "~> 6.0"
 gem "public_activity"
 gem "kaminari", :git => 'https://github.com/kaminari/kaminari'
+
+
+# TEMP INCLUDE FOLLOWING IN PRODUCTION
+gem "faker"
+

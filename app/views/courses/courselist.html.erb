@@ -2,7 +2,12 @@
   <div class="flex flex-col w-11/12 gap-3 bg-gray-100">
 <!--    Broken, haven't figured out why-->
 <!--    undefined method `total_pages' for #<ActiveRecord::Relation-->
-    <%#= paginate @courses %>
+    <%= paginate @courses %>
+
+    <%= form_tag(course_list_path, method: :get) do %>
+      <%= text_field_tag(:search, params[:search]) %>
+      <%= submit_tag ("Search") %>
+    <% end %>
 
   <% @courses.each do |c| %>
 
