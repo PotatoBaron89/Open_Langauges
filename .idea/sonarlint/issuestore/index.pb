@@ -212,8 +212,6 @@ M
 	resize.sh,b\2\b2bc67738aa91fac9ce68876b59879ca92d57901
 B
 config/storage.yml,9\8\98fb829828f5d6f179e3be17f70e2491a1b76852
-=
-.npmrc.sample,8\a\8ae42c0372fc6105a88c84b1f71324f5677b9c1e
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
