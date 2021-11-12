@@ -4,14 +4,17 @@
 <!--    undefined method `total_pages' for #<ActiveRecord::Relation-->
     <%= paginate @courses %>
 
-    <%= form_tag(course_list_path, method: :get) do %>
-      <%= text_field_tag(:search, params[:search]) %>
-      <%= submit_tag ("Search") %>
+    <%= form_with url: course_list_path, method: :get, local: true do |f| %>
+      <%= f.text_field(:search) %>
+      <%= f.select "options", @options, class: "border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" %>
+      <%= f.submit("Search") %>
     <% end %>
+
+    <%= render '/shared/Components/search_bar', path: course_list_path, options: @options %>
 
   <% @courses.each do |c| %>
 
-    <%= render 'courses/course_card', course: c, link: course_path(c) %>
+    <%#= render 'courses/course_card', course: c, link: course_path(c) %>
   <% end %>
   </div>
 </section>

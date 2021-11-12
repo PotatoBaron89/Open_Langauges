@@ -45,16 +45,15 @@ class CoursesController < ApplicationController
   end
 
   def courselist
+    @options = ["title" , "contents"]
 
     if params[:search]
-      @courses = Course.where('title ILIKE ?', "%#{params[:search]}%")
+      @courses = Course.where("#{params[:options]} LIKE ?", "%#{params[:search]}%")
                    .page(params[3])
     else
       @courses = Course.all
                        .order(created_at: :desc).page(params[3])
     end
-
-
   end
 
   # GET /courses/1/edit

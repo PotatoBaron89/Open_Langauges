@@ -188,8 +188,6 @@ V
 &app/views/users/_account_form.html.erb,1\b\1bba7e2607fcae108ff216f1f554b24d896e48cd
 W
 'app/views/admin/_add_role_form.html.erb,b\e\be6114bf9a057a92beacc6f388cae72577fb3cc8
-P
- app/views/courses/_form.html.erb,1\b\1bd3388ced05d6124ae969f8ae989c05bdad91e6
 B
 app/models/user.rb,4\e\4ed0c03b53dbc8320da88e7887465514cd9e90a4
 H

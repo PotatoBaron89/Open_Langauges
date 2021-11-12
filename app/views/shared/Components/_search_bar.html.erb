@@ -1,0 +1,7 @@
+
+
+<%= form_with url: path, method: :get, local: true do |f| %>
+  <%= f.text_field(:search) %>
+  <%= f.select "options", options, class: "border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400" %>
+  <%= f.submit("Search") %>
+<% end %>
