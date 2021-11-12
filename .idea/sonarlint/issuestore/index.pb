@@ -214,3 +214,12 @@ B
 config/storage.yml,9\8\98fb829828f5d6f179e3be17f70e2491a1b76852
 =
 .npmrc.sample,8\a\8ae42c0372fc6105a88c84b1f71324f5677b9c1e
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+D
+app/models/course.rb,4\3\43d653af1788821635516fba3b9ffeaea02f5f07
+;
+db/seeds.rb,8\1\816631bad3665c05f73dd7befe12c619677d6d62
+Y
+)app/controllers/definitions_controller.rb,7\2\72d589df429d74fe7060fa4efb16f9e1975807e5
