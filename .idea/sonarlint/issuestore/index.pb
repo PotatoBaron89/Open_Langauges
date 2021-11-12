@@ -132,8 +132,6 @@ M
 app/views/users/show.html.erb,6\8\68cf7821b7096974273803f96c10233fd50dbf5d
 N
 app/views/users/_user.html.erb,5\4\548e615f123e03babcfd51ac655a28c7ae9a17f3
-B
-app/models/role.rb,e\9\e917ad92a9cb12a731c1627ad7e5b16a44fc19e7
 i
 9app/views/shared/Components/_current_user_avatar.html.erb,7\6\763fe6b191562d5a2ac70d9006c4c1363055e3f0
 `
@@ -162,22 +160,14 @@ P
  app/views/users/account.html.erb,9\1\910c77bdfc62233dfd1bf5a61bfa7478e7fc8a4d
 M
 app/views/roles/show.html.erb,5\3\53e4dfb4a895c3a7b028e2d378e8e38cbf741555
-N
-app/views/admin/roles.html.erb,a\0\a0532d4cd2835f280693e286f689628d0b3adaf2
 V
 &app/views/users/_account_form.html.erb,1\b\1bba7e2607fcae108ff216f1f554b24d896e48cd
 W
 'app/views/admin/_add_role_form.html.erb,b\e\be6114bf9a057a92beacc6f388cae72577fb3cc8
-B
-app/models/user.rb,4\e\4ed0c03b53dbc8320da88e7887465514cd9e90a4
 H
 app/models/definition.rb,2\4\24e6da0a4d1b7d4b6c9caa4731e224e34ca25b52
 R
 "app/views/words/_add_word.html.erb,5\6\56197b854f5c393808211e5775e4b0cc1419605b
-@
-config/routes.rb,e\8\e801163eb9182955dca3eb9817d59af634f6665d
-S
-#app/controllers/users_controller.rb,2\8\28f48e0bc2718ddf87752d15b58a0016c13baf1c
 N
 app/views/words/index.html.erb,4\9\4945c8df2a92e979d8bba98df2d45bbe7a77e6e7
 ^
@@ -193,7 +183,5 @@ B
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-D
-app/models/course.rb,4\3\43d653af1788821635516fba3b9ffeaea02f5f07
 Y
 )app/controllers/definitions_controller.rb,7\2\72d589df429d74fe7060fa4efb16f9e1975807e5

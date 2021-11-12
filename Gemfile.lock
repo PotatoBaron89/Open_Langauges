@@ -159,6 +159,8 @@ GEM
     faraday-patron (1.0.0)
     faraday-rack (1.0.0)
     ffi (1.15.4)
+    font-awesome-rails (4.7.0.7)
+      railties (>= 3.2, < 7)
     friendly_id (5.4.2)
       activerecord (>= 4.0.0)
     geocoder (1.7.0)
@@ -380,6 +382,7 @@ DEPENDENCIES
   devise (~> 4.8)
   dotenv-rails
   faker
+  font-awesome-rails (~> 4.7)
   friendly_id (~> 5.4)
   geocoder
   gravatar_image_tag (~> 1.2)!

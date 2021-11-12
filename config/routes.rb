@@ -3,6 +3,7 @@
 
 Rails.application.routes.draw do
 
+  resources :channels
   # get 'definitions/index'
   # get 'definitions/show'
   # get 'definitions/delete'
@@ -11,6 +12,11 @@ Rails.application.routes.draw do
   resources :flashcards
   resources :lessons
   resources :definitions
+
+  resources :channels do
+    resource :channel_user
+  end
+
   # USERS
   devise_for :users
   resources :users

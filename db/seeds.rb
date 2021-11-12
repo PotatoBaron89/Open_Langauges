@@ -47,7 +47,7 @@ i = 0
 while i < 150 do
   Course.create!([{
                     title: Faker::Educator.course_name,
-                    contents: Faker::TvShows::GameOfThrones.quote,
+                    contents: Faker::Lorem.sentence(word_count: rand(70...150)),
                     user: @users.sample,
                     isarchived: rand(2),
                     Ispremium: rand(2),
@@ -103,8 +103,8 @@ i = 0
 while i < 550 do
   Lesson.create!([{
                     title: Faker::Educator.subject,
-                    content: Faker::TvShows::GameOfThrones.quote,
-                    user: @users.sample,
+                    content: Faker::Lorem.sentence(word_count: rand(70...150)),
+                    user: @course.class_educator.sample,
                     course_id: @courses.sample.id
                   }])
   i += 1

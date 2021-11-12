@@ -49,6 +49,11 @@ class User < ApplicationRecord
   # FILES
   has_one_attached :image, dependent: :purge_later
 
+  #CHAT FUNCTIONALITY
+  has_many :channel_users, dependent: :destroy
+  has_many :channels, through: :channel_users
+  has_many :messages, dependent: :destroy
+
   # JOIN TABLES
   has_many :class_list, dependent: :delete_all
   has_many :class_educator, dependent: :delete_all

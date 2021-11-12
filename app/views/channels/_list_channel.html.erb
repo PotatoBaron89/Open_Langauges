@@ -1,0 +1,20 @@
+<article class="flex">
+<% if params[:id] == local[:channel].id.to_s %>
+  <li class="h-8 btn btn-success w-full h-full btn-wide btn-xs">
+<% elsif current_user.channels.ids.include?(local[:channel].id) %>
+  <li class="h-8 btn btn-info btn-wide btn-xs w-full h-full">
+<% else %>
+  <li class="h-8 btn btn-accent btn-wide btn-xs">
+<% end %>
+  <div>
+    <%= link_to local[:channel].name, local[:channel] %>
+
+  </div>
+
+</li>
+<% if current_user.channels.include?(local[:channel]) %>
+  <div class="badge badge-error">
+    <%= link_to "x", channel_channel_user_path(local[:channel]), method: :delete %>
+  </div>
+<% end %>
+</article>

@@ -85,3 +85,5 @@ gem "faker"
 gem "prettier", "~> 2.0"
 
 gem "rubocop", "~> 1.22"
+
+gem "font-awesome-rails", "~> 4.7"
