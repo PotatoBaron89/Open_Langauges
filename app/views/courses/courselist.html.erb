@@ -10,8 +10,9 @@
     </div>
 
     <div class="flex flex-col gap-3">
+      <% admin = current_user.has_role? :admin %>
       <% @courses.each do |c| %>
-        <%= render 'courses/course_card', course: c, link: course_path(c) %>
+        <%= render 'courses/course_card', course: c, link: course_path(c), admin: :admin %>
       <% end %>
     </div>
   </div>

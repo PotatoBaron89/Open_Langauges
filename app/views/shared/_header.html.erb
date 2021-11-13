@@ -1,9 +1,9 @@
 <nav class="fmax-w-7xl mx-auto px-2 sm:px-6 lg:px-8 px-8 pt-2 shadow-md bg-gradient-to-r from-green-400 to-blue-500">
-  <div class="-mb-px flex justify-between items-center">
+  <div class="-mb-px flex  justify-between items-center">
     <div>
 
     </div>
-    <div class="justify-self-center ">
+    <div class="justify-self-center flex-col md:flex-row">
       <a class="no-underline text-white border-b-2 border-teal-dark uppercase tracking-wide font-bold text-s py-3 mr-8" href="<%= root_path %>">
         Home
       </a>
@@ -19,7 +19,7 @@
 
     </div>
 
-    <div class="-mb-px flex justify-self-end">
+    <div class="-mb-px flex flex-col sm:flex-row justify-self-end">
       <% if !user_signed_in? %>
 
         <%= link_to 'Sign Up', new_user_registration_path, method: :get, class: "mb-2 ml-8 whitespace-nowrap inline-flex items-center justify-center bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:from-purple-700 hover:to-indigo-700" %>

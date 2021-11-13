@@ -11,10 +11,12 @@ class CoursesController < ApplicationController
   # GET /courses/1 or /courses/1.json
   def show
     @user = [current_user]
+
     @like = current_user.likes.find_by(course: @course)
     @subscribe = current_user.subscribes.find_by(course: @course)
     @wish = current_user.wishes.find_by(course: @course)
     @lessons = Lesson.where(course_id: params[:id])
+                     .includes(:rich_text_content, user: [:image_attachment])
 
     ### There must be a cleaner way
     # Find All Students
@@ -50,10 +52,14 @@ class CoursesController < ApplicationController
 
     if params[:search]
       @courses = Course.where("#{params[:options]} LIKE ?", "%#{params[:search]}%")
+                   .includes(:rich_text_contents, cover_image_attachment: :blob, user: [:image_attachment, :roles] )
                    .page(params[3])
     else
       @courses = Course.all.order(created_at: :desc).page(params[3])
+                   .includes(:rich_text_contents, cover_image_attachment: :blob, user: [image_attachment: :blob] )
     end
+
+
 
     # @q = Course.ransack(params[:q])
     # @courses = @q.result(distinct: true)

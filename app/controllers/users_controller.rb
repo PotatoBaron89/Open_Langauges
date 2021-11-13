@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
                  .page(params[:page])
+                 .includes(:image_attachment)
   end
 
   # GET /users/1 or /users/1.json

@@ -70,8 +70,6 @@ Z
 *app/views/shared/Components/_like.html.erb,4\4\44b1a14e29fa4c611584a05c29fe213583cb3138
 Z
 *app/views/shared/Components/_wish.html.erb,4\3\43ab31d5ca26bdde47c572911a613c018a66ce9a
-D
-app/models/lesson.rb,3\0\30260448563ea29a154da8304c64a046b27e6868
 _
 /app/views/shared/Components/_subscribe.html.erb,c\3\c3a9d76c9cff572417ed64b9bdd84a9d10f29e8d
 ;

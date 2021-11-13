@@ -10,6 +10,7 @@ class ChannelsController < ApplicationController
   # GET /channels/1 or /channels/1.json
   def show
     @channels = Channel.all.page(params[3])
+                       .includes(users: [:image_attachment])
   end
 
   # GET /channels/new

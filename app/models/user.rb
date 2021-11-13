@@ -72,6 +72,7 @@ class User < ApplicationRecord
   has_many :wishes, dependent: :delete_all
 
 
+
   def default_values
     self.first_name ||= 'Anon'
   end

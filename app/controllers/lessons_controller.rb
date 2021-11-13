@@ -6,6 +6,7 @@ class LessonsController < ApplicationController
 
     @lessons = Lesson.all
                  .page(params[:page])
+                 .includes(:rich_text_content)
     @user = current_user
   end
 
