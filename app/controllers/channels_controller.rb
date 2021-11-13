@@ -4,13 +4,18 @@ class ChannelsController < ApplicationController
 
   # GET /channels or /channels.json
   def index
-    @channels = Channel.all.page(params[3])
+    # Temporary reroute until proper index page is made
+    redirect_to channel_path(Channel.first)
   end
 
   # GET /channels/1 or /channels/1.json
   def show
-    @channels = Channel.all.page(params[3])
-                       .includes(users: [:image_attachment])
+    @user = User.includes(:channels).find(current_user.id)
+    @channels = Channel.all
+                       .includes(users: [image_attachment: :blob])
+                        .page(params[3])
+                       # .includes(users: [image_attachment: :blob])
+
   end
 
   # GET /channels/new

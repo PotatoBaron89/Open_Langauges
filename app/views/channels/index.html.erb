@@ -1,14 +1,36 @@
-<div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
+<section class=" w-full">
+  <div class="flex flex-col w-4/12 bg-blue-400">
+    <div class="">
+      <div class="flex justify-between items-center gap-5">
+        <h2><strong>Channels</strong></h2>
+        <%= link_to "Create Channel", new_channel_path %>
+      </div>
+      <ul class="flex flex-col gap-1 glass w-12">
+        <%#= paginate @channels %>
 
-  <div class="flex justify-between items-center">
-    <h1 class="text-lg font-bold text-4xl">Channels</h1>
-    <%= link_to 'New channel', new_channel_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-  </div>
+        <% @channels.each do |channel| %>
+          <%= render '/channels/list_channel', local: { channel: channel}  %>
+        <% end %>
+      </ul>
 
-  <div id="channels" class="min-w-full">
-    <%= render @channels %>
+
+    </div>
+
+    <hr />
+
+    <div class="flex justify-between items-center gap-5 mt-12">
+      <h2><strong>Users</strong></h2>
+    </div>
+
+    <div class="">
+      <% if current_user.channels.include?(@channel) %>
+
+      <% else %>
+        <div class="btn btn-primary w-full ">
+          <%= link_to "Join #{@channel.name}", channel_channel_user_path(@channel), class: "", method: :post %>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
+</section>
+

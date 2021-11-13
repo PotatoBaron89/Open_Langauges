@@ -52,7 +52,7 @@ class CoursesController < ApplicationController
 
     if params[:search]
       @courses = Course.where("#{params[:options]} LIKE ?", "%#{params[:search]}%")
-                   .includes(:rich_text_contents, cover_image_attachment: :blob, user: [:image_attachment, :roles] )
+                   .includes(:rich_text_contents, cover_image_attachment: :blob, user: [:image_attachment] )
                    .page(params[3])
     else
       @courses = Course.all.order(created_at: :desc).page(params[3])

@@ -122,10 +122,6 @@ S
 #app/controllers/admin_controller.rb,8\b\8bb233bdca31b94b80d479014819350b2ea395ff
 ^
 .app/views/shared/_simple_card_w_title.html.erb,2\7\2727310d90387e16f967b6d93eb5c9903e23859e
-T
-$app/views/static_pages/home.html.erb,3\f\3f5e61ffd63c9aa71b19651f2f9a556a610ab4e2
-V
-&app/assets/stylesheets/actiontext.scss,9\4\94a00e25fdd0b585e2b9e32adc7e097130dce158
 M
 app/views/users/show.html.erb,6\8\68cf7821b7096974273803f96c10233fd50dbf5d
 N
@@ -152,8 +148,6 @@ H
 app/models/class_list.rb,c\b\cbf7b5403199b2d19a458fa2f58f627d3bfb2d52
 N
 app/views/users/index.html.erb,e\a\eab56d002bf9bd5f65a4f88c6e0cd08a9ad74b0c
-V
-&app/views/layouts/application.html.erb,e\8\e82294e631b91cb53fe2e362dfd3b8e4a3924ae2
 P
  app/views/users/account.html.erb,9\1\910c77bdfc62233dfd1bf5a61bfa7478e7fc8a4d
 M

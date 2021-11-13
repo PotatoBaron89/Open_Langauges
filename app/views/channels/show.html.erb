@@ -1,12 +1,12 @@
-<section class="grid-cols-4">
-  <div class="flex flex-col w-10/12 ">
+<section class=" w-full">
+  <div class="flex flex-col w-4/12 bg-blue-400">
     <div class="">
       <div class="flex justify-between items-center gap-5">
         <h2><strong>Channels</strong></h2>
         <%= link_to "Create Channel", new_channel_path %>
       </div>
       <ul class="flex flex-col gap-1 glass">
-        <%#= paginate @channels %>
+        <%= paginate @channels %>
 
         <% @channels.each do |channel| %>
           <%= render '/channels/list_channel', local: { channel: channel}  %>
@@ -21,11 +21,14 @@
     <div class="flex justify-between items-center gap-5 mt-12">
       <h2><strong>Users</strong></h2>
     </div>
+    <div class="h-42 bg-red-500 w-full overflow-hidden">
+      <%= paginate @channel.users.page(params[5]) %>
     <% @channel.users.each do |user| %>
       <div class="bg-indigo-300 flex justify-around gap-5 items-center">
         <%= render 'shared/Components/avatar', content: { user: user, path: user_path(user.id) } %>
       </div>
     <% end %>
+    </div>
 
 
     <div class="">
