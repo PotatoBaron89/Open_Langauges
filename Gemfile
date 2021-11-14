@@ -79,17 +79,15 @@ gem "aws-sdk-s3", "~> 1.105"
 
 gem "rolify", "~> 6.0"
 gem "public_activity"
-# gem "kaminari", :git => 'https://github.com/kaminari/kaminari'
+gem "hotwire-rails"
 gem 'pagy', "~> 5.3.1"
 gem "ransack"
+gem "prettier", "~> 2.0"
+gem "rubocop", "~> 1.22"
+gem "skylight"
+gem "font-awesome-rails", "~> 4.7"
 
 
 # TEMP INCLUDE FOLLOWING IN PRODUCTION
 gem "faker"
 
-
-gem "prettier", "~> 2.0"
-
-gem "rubocop", "~> 1.22"
-gem "skylight"
-gem "font-awesome-rails", "~> 4.7"

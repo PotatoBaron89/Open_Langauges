@@ -53,8 +53,6 @@ V
 .env.sample,8\4\84df4f99592c0f542d80a05bf5b4dd5552ddfd83
 \
 ,app/views/devise/registrations/edit.html.erb,e\f\ef09dda087d9d83c6ee88e4530bd3c6a8722109b
-M
-config/initializers/devise.rb,f\c\fc4baf9840b8a1ebe46afd7dce3b9656c1c51c47
 f
 6config/initializers/application_controller_renderer.rb,d\a\da67dd480ab205e55745e3ea422f34b095877f3b
 M
