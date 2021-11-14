@@ -15,7 +15,6 @@
 #  isarchived :boolean
 #
 class Course < ApplicationRecord
-  paginates_per 12
 
   # belongs_to :creator, class_name: 'User'
   belongs_to :user

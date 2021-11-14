@@ -4,9 +4,8 @@ class LessonsController < ApplicationController
   # GET /lessons or /lessons.json
   def index
 
-    @lessons = Lesson.all
-                 .page(params[:page])
-                 .includes(:rich_text_content)
+    @pagy, @lessons = pagy(Lesson.all
+                 .includes(:rich_text_content))
     @user = current_user
   end
 

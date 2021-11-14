@@ -9,7 +9,5 @@
 #  updated_at :datetime         not null
 #
 class Definition < ApplicationRecord
-  paginates_per 50
-
   belongs_to :word
 end

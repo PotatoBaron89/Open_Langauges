@@ -1,21 +1,4 @@
 GIT
-  remote: https://github.com/kaminari/kaminari
-  revision: 73b93405b95615b5ad3f53c3dffe419a59890cad
-  specs:
-    kaminari (1.2.1)
-      activesupport (>= 4.1.0)
-      kaminari-actionview (= 1.2.1)
-      kaminari-activerecord (= 1.2.1)
-      kaminari-core (= 1.2.1)
-    kaminari-actionview (1.2.1)
-      actionview
-      kaminari-core (= 1.2.1)
-    kaminari-activerecord (1.2.1)
-      activerecord
-      kaminari-core (= 1.2.1)
-    kaminari-core (1.2.1)
-
-GIT
   remote: https://github.com/mdeering/gravatar_image_tag.git
   revision: c02351f7d6649e2346394e33164a7154e671ec19
   specs:
@@ -225,6 +208,7 @@ GEM
       oauth2 (~> 1.4)
       omniauth (>= 1.9, < 3)
     orm_adapter (0.5.0)
+    pagy (5.3.1)
     parallel (1.21.0)
     parser (3.0.2.0)
       ast (~> 2.4.1)
@@ -394,9 +378,9 @@ DEPENDENCIES
   gravatar_image_tag (~> 1.2)!
   image_processing
   jbuilder (~> 2.7)
-  kaminari!
   listen (~> 3.3)
   omniauth-google-oauth2
+  pagy (~> 5.3.1)
   pg (~> 1.1)
   prettier (~> 2.0)
   public_activity

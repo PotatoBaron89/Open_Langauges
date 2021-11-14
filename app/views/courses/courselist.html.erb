@@ -4,9 +4,8 @@
 <!--    undefined method `total_pages' for #<ActiveRecord::Relation-->
 <!--    SEARCHBAR-->
     <%= render '/shared/Components/search_bar', path: course_list_path, options: @options %>
-
+    <%== pagy_nav(@pagy) %>
     <div class="">
-      <%= paginate @courses, outer_window: 16 %>
     </div>
 
     <div class="flex flex-col gap-3">

@@ -9,8 +9,6 @@
 #  side_two   :string
 #
 class Flashcard < ApplicationRecord
-  paginates_per 12
-
   has_rich_text :side_one
   has_rich_text :side_two
 

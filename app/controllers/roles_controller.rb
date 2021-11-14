@@ -1,7 +1,6 @@
 class RolesController < ApplicationController
   def index
-    @roles = Role.all
-               .page(params[:page])
+    redirect_to admin_roles_path
   end
 
   def show

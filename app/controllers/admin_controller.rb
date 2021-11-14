@@ -4,6 +4,6 @@ class AdminController < ApplicationController
   end
 
   def roles
-    @roles = Role.all
+    @pagy, @roles = pagy(Role.all)
   end
 end

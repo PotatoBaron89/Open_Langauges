@@ -3,7 +3,7 @@ class FlashcardsController < ApplicationController
 
   # GET /flashcards or /flashcards.json
   def index
-    @flashcards = Flashcard.all
+    @pagy, @flashcards = pagy(Flashcard.all)
   end
 
   # GET /flashcards/1 or /flashcards/1.json

@@ -1,6 +1,6 @@
 
 
-<%= paginate @definitions %>
+
 
 
 <div class="w-screen flex justify-center">
@@ -15,6 +15,7 @@
     </div>
     <!--    ROLES-->
     <p class="mb-3">
+      <%== pagy_nav(@pagy) %>
       <strong>Words: </strong> <%= @definitions.count %>
     </p>
 

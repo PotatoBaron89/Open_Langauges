@@ -51,12 +51,11 @@ class CoursesController < ApplicationController
 
 
     if params[:search]
-      @courses = Course.where("#{params[:options]} LIKE ?", "%#{params[:search]}%")
-                   .includes(:rich_text_contents, cover_image_attachment: :blob, user: [:image_attachment] )
-                   .page(params[3])
+      @pagy, @courses = pagy(Course.where("#{params[:options]} LIKE ?", "%#{params[:search]}%")
+                   .includes(:rich_text_contents, cover_image_attachment: :blob, user: [:image_attachment] ))
     else
-      @courses = Course.all.order(created_at: :desc).page(params[3])
-                   .includes(:rich_text_contents, cover_image_attachment: :blob, user: [image_attachment: :blob] )
+      @pagy, @courses = pagy(Course.all.order(created_at: :desc)
+                   .includes(:rich_text_contents, cover_image_attachment: :blob, user: [image_attachment: :blob] ))
     end
 
 

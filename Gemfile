@@ -77,7 +77,8 @@ gem "aws-sdk-s3", "~> 1.105"
 
 gem "rolify", "~> 6.0"
 gem "public_activity"
-gem "kaminari", :git => 'https://github.com/kaminari/kaminari'
+# gem "kaminari", :git => 'https://github.com/kaminari/kaminari'
+gem 'pagy', "~> 5.3.1"
 gem "ransack"
 
 

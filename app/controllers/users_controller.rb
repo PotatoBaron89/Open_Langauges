@@ -6,9 +6,8 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.all
-                 .page(params[:page])
-                 .includes(:image_attachment)
+    @pagy, @users = pagy(User.all
+                 .includes(image_attachment: :blob))
   end
 
   # GET /users/1 or /users/1.json

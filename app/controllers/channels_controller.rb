@@ -11,9 +11,8 @@ class ChannelsController < ApplicationController
   # GET /channels/1 or /channels/1.json
   def show
     @user = User.includes(:channels).find(current_user.id)
-    @channels = Channel.all
-                       .includes(users: [image_attachment: :blob])
-                        .page(params[3])
+    @pagy, @channels = pagy(Channel.all
+                       .includes(users: [image_attachment: :blob]))
                        # .includes(users: [image_attachment: :blob])
 
   end

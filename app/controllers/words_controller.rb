@@ -3,14 +3,13 @@ class WordsController < ApplicationController
 
   # GET /words or /words.json
   def index
-    @words = Word.all
-               .page(params[:page])
+    @pagy, @words = pagy(Word.all)
 
   end
 
   # GET /words/1 or /words/1.json
   def show
-    @definitions = Definition.where(word_id: @word.id).page(params[:page])
+    @pagy, @definitions = pagy(Definition.where(word_id: @word.id))
   end
 
   # GET /words/new

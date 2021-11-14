@@ -76,8 +76,6 @@ _
 .env.sample,8\4\84df4f99592c0f542d80a05bf5b4dd5552ddfd83
 P
  app/helpers/subscribes_helper.rb,2\7\27e0ddd02c562396381815562174e44b3b39c14f
-Q
-!app/helpers/application_helper.rb,0\4\040453e670f9bf522378f941c96f3881076fee1f
 K
 app/helpers/likes_helper.rb,0\2\02d919acd2a5140bcd03c71e516dcc24c1a42d94
 \
@@ -114,12 +112,6 @@ M
 app/views/users/edit.html.erb,f\3\f341a6263d9803e768a000b11a0a610ffacae2eb
 R
 "app/views/flashcards/show.html.erb,b\f\bf3ead567ae4013c1beb03816cbe2c3417028658
-X
-(app/controllers/flashcards_controller.rb,2\4\2486318c80ebe7b817b8a485732c0d7c21513668
-Y
-)app/controllers/application_controller.rb,7\d\7dc0dd94f601e507e2a20bad6adcf12a51caa380
-S
-#app/controllers/admin_controller.rb,8\b\8bb233bdca31b94b80d479014819350b2ea395ff
 ^
 .app/views/shared/_simple_card_w_title.html.erb,2\7\2727310d90387e16f967b6d93eb5c9903e23859e
 M
@@ -138,16 +130,10 @@ Q
 !app/views/kaminari/_page.html.erb,4\9\49decc025443b7496bcd89aabaae8e2b1eaa360f
 S
 #app/controllers/likes_controller.rb,c\6\c6d1185a1721c3e8a8de6e0b4d1d61d0e6afb5b5
-S
-#app/controllers/roles_controller.rb,1\0\10eb6ad358d487b77c7e79e0175145bce622b586
 L
 app/models/class_educator.rb,5\9\5968b2eb3d4d15331d4712914ffe1a59263bdb6a
-G
-app/models/flashcard.rb,e\f\ef326be5ccde03c73dddc77136b98d7b31f694b6
 H
 app/models/class_list.rb,c\b\cbf7b5403199b2d19a458fa2f58f627d3bfb2d52
-N
-app/views/users/index.html.erb,e\a\eab56d002bf9bd5f65a4f88c6e0cd08a9ad74b0c
 P
  app/views/users/account.html.erb,9\1\910c77bdfc62233dfd1bf5a61bfa7478e7fc8a4d
 M
@@ -156,18 +142,10 @@ V
 &app/views/users/_account_form.html.erb,1\b\1bba7e2607fcae108ff216f1f554b24d896e48cd
 W
 'app/views/admin/_add_role_form.html.erb,b\e\be6114bf9a057a92beacc6f388cae72577fb3cc8
-H
-app/models/definition.rb,2\4\24e6da0a4d1b7d4b6c9caa4731e224e34ca25b52
 R
 "app/views/words/_add_word.html.erb,5\6\56197b854f5c393808211e5775e4b0cc1419605b
-N
-app/views/words/index.html.erb,4\9\4945c8df2a92e979d8bba98df2d45bbe7a77e6e7
 ^
 .app/views/definitions/_add_definition.html.erb,7\3\73f47e39be36ab600c42231ff5c5c371e76b0573
-S
-#app/controllers/words_controller.rb,0\8\0878486ba52076dc66bd2034287d34e65b09e72a
-M
-app/views/words/show.html.erb,a\e\aea272323dd917efcab29649e2ce609a75daa1eb
 9
 	resize.sh,b\2\b2bc67738aa91fac9ce68876b59879ca92d57901
 B
