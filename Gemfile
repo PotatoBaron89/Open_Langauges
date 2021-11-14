@@ -54,6 +54,7 @@ group :development do
   gem 'annotate'
   gem "bullet"
   gem "slack-notifier"
+  gem "rails_best_practices", '~> 1.22.1'
 
   # gem "ruby-growl"
   # gem "faker"

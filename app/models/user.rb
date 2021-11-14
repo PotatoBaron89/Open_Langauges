@@ -45,6 +45,9 @@ class User < ApplicationRecord
          # :confirmable, :lockable, :timeoutable, :trackable,
          # :omniauthable
 
+
+
+
   # FILES
   has_one_attached :image, dependent: :purge_later
 
@@ -83,5 +86,8 @@ class User < ApplicationRecord
   def name
     self.first_name
   end
+
+  public
+
 
 end

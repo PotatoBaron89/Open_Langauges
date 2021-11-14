@@ -29,9 +29,6 @@ e
 5db/migrate/20211108132017_add_displayname_to_users.rb,f\1\f1db337884e2a21d44ef36ea1a47bf6249cb74e1
 _
 /db/migrate/20211108132055_add_about_to_users.rb,b\4\b40d47e5f33f4cf898f89d6ec8d623aa979adf7c
-:
-
-bin/bundle,8\d\8d6a126d12d5381c7693c27cad5d2eca28213623
 r
 Bdb/migrate/20211109055060_create_action_text_tables.action_text.rb,9\e\9eea876d8a5691b53255b4971e4553f1967223b9
 [
@@ -54,10 +51,6 @@ V
 +app/views/devise/registrations/new.html.erb,3\f\3f5f33da115bf173e0bae0a1ac8ef10f2438c0c8
 ;
 .env.sample,8\4\84df4f99592c0f542d80a05bf5b4dd5552ddfd83
-P
- app/helpers/subscribes_helper.rb,2\7\27e0ddd02c562396381815562174e44b3b39c14f
-K
-app/helpers/likes_helper.rb,0\2\02d919acd2a5140bcd03c71e516dcc24c1a42d94
 \
 ,app/views/devise/registrations/edit.html.erb,e\f\ef09dda087d9d83c6ee88e4530bd3c6a8722109b
 M
@@ -70,8 +63,6 @@ M
 .config/initializers/content_security_policy.rb,1\1\114e2cbb4b8f1d6fd040739efe38b2b28967b2c8
 Z
 *config/initializers/backtrace_silencers.rb,d\c\dc36c09098c6d4610258b459137d99566bcc6979
-J
-app/helpers/user_helper.rb,1\7\17dfd816d3f45b22a3d70874e4461d6dab51a161
 C
 config/database.yml,2\c\2c912561029efc03ffae15b01b7337417d7a99bd
 @
@@ -96,8 +87,6 @@ R
 .app/views/shared/_simple_card_w_title.html.erb,2\7\2727310d90387e16f967b6d93eb5c9903e23859e
 M
 app/views/users/show.html.erb,6\8\68cf7821b7096974273803f96c10233fd50dbf5d
-N
-app/views/users/_user.html.erb,5\4\548e615f123e03babcfd51ac655a28c7ae9a17f3
 i
 9app/views/shared/Components/_current_user_avatar.html.erb,7\6\763fe6b191562d5a2ac70d9006c4c1363055e3f0
 `

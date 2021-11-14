@@ -1,19 +1,27 @@
-<a href="<%= content[:path] %>" class=" flex justify-around items-center mb-3">
-<% if content[:user].image.attached? %>
-  <%= image_tag content[:user].image, width: 200, class: 'inline-block h-14 w-14 rounded-full object-cover' %>
-<% else %>
-  <%= image_tag 'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png', width: 200, class: 'inline-block h-14 w-14 rounded-full object-cover m-1' %>
-<% end %>
+<a href="<%= content[:path] %>" class="flex justify-around items-center mb-3 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
+<div class="h-full ">
+  <% if content[:user].updated_at > 2.minutes.ago %>
+    <i class="fas fa-circle   text-green-400 absolute "></i>
+  <% else %>
+    <i class="fas shadow-inner fa-circle text-red-500 absolute"></i>
+  <% end %>
+
+  <% if content[:user].image.attached? %>
+    <%= image_tag content[:user].image, width: 200, class: 'inline-block h-14 w-14 rounded-full object-cover m-1' %>
+  <% else %>
+    <%= image_tag 'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png', width: 200, class: 'inline-block h-14 w-14 rounded-full object-cover m-1' %>
+  <% end %>
+
+</div>
+
+
+
 <% if content[:user] %>
 
   <div class="ml-3 no-underline flex flex-col  ">
     <p class="text-sm font-medium text-gray-200 group-hover:text-gray-200 overflow-ellipsis">
       <%= content[:user].name %>
     </p>
-    <p class="text-xs font-medium text-gray-200 group-hover:text-gray-200">
-      View profile
-    </p>
   </div>
 
-<% end %>
-</a>
+<% end %></a>
