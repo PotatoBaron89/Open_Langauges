@@ -6,7 +6,7 @@
         <%= link_to "Create Channel", new_channel_path %>
       </div>
       <ul class="flex flex-col gap-1 glass">
-        <%== pagy_nav(@pagy) %>
+        <%== pagy_bootstrap_nav(@pagy) %>
 
         <% @channels.each do |channel| %>
           <%= render '/channels/list_channel', local: { channel: channel}  %>
