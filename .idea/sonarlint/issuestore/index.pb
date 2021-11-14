@@ -9,10 +9,6 @@ Z
 0app/controllers/user/registrations_controller.rb,e\9\e973796e453afc690aeeeafce8032abf1813ad69
 [
 +app/controllers/user/sessions_controller.rb,d\0\d03dfb878280d2c1de38cf8fe0bf6f7267e6fd3c
-T
-$app/controllers/wishes_controller.rb,e\b\eb7b681d51e73d53cf3bcaa42082c4850b0afcf5
-X
-(app/controllers/subscribes_controller.rb,7\5\75b1b4ad4c0de6f22289b8926321af8c84be8053
 ^
 .db/migrate/20211109010815_create_subscribes.rb,a\4\a4467761f3ffe1d0acfe32e447114ba86609d095
 Z
@@ -56,12 +52,6 @@ V
 &app/views/devise/sessions/new.html.erb,0\8\08409c853905fab195e12ec49b3d919f3d6a2b9c
 [
 +app/views/devise/registrations/new.html.erb,3\f\3f5f33da115bf173e0bae0a1ac8ef10f2438c0c8
-Z
-*app/views/shared/Components/_like.html.erb,4\4\44b1a14e29fa4c611584a05c29fe213583cb3138
-Z
-*app/views/shared/Components/_wish.html.erb,4\3\43ab31d5ca26bdde47c572911a613c018a66ce9a
-_
-/app/views/shared/Components/_subscribe.html.erb,c\3\c3a9d76c9cff572417ed64b9bdd84a9d10f29e8d
 ;
 .env.sample,8\4\84df4f99592c0f542d80a05bf5b4dd5552ddfd83
 P
@@ -118,8 +108,6 @@ W
 'app/views/kaminari/_first_page.html.erb,8\6\86b85c44233c6ce113850ce2ce573165d562bfe3
 Q
 !app/views/kaminari/_page.html.erb,4\9\49decc025443b7496bcd89aabaae8e2b1eaa360f
-S
-#app/controllers/likes_controller.rb,c\6\c6d1185a1721c3e8a8de6e0b4d1d61d0e6afb5b5
 P
  app/views/users/account.html.erb,9\1\910c77bdfc62233dfd1bf5a61bfa7478e7fc8a4d
 M

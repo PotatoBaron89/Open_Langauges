@@ -7,19 +7,17 @@ class WishesController < ApplicationController
       flash[:notice] = "Added this course to your wishlist :)"
     end
 
-    redirect_to @like.course
+    redirect_to @wish.course
   end
 
   def destroy
-    @like = current_user.likes.find(params[:id])
-    course = @wish.course
-    @wish.destroy
-    redirect_to course
+    @wish = Wish.find(params[:id]).destroy
+    redirect_to @wish.course
   end
 
   private
 
-  def eish_params
+  def wish_params
     params.require(:wish).permit(:course_id)
   end
 end

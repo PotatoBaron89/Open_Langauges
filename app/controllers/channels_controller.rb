@@ -1,6 +1,7 @@
 class ChannelsController < ApplicationController
   before_action :set_channel, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [:index]
+  before_action :set_user, only: [:show]
 
   # GET /channels or /channels.json
   def index
@@ -10,10 +11,10 @@ class ChannelsController < ApplicationController
 
   # GET /channels/1 or /channels/1.json
   def show
-    @user = User.includes(:channels).find(current_user.id)
-    @pagy, @channels = pagy(Channel.all
-                       .includes(users: [image_attachment: :blob]))
-                       # .includes(users: [image_attachment: :blob])
+    # @pagy, @channels = pagy(Channel.all
+    #                    .includes(users: [image_attachment: :blob]))
+    @pagy, @channels = pagy(Channel.includes(users: [image_attachment: :blob]).all)
+
 
   end
 
@@ -73,4 +74,8 @@ class ChannelsController < ApplicationController
     def channel_params
       params.require(:channel).permit(:name)
     end
+
+  def set_user
+    @current_user ||= User.includes(:channels).find(current_user.id)
+  end
 end

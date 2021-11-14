@@ -1,7 +1,7 @@
 <article class="flex w-full">
 <% if params[:id] == local[:channel].id.to_s %>
   <li class="h-8 btn btn-success h-full btn-xs w-full">
-<% elsif @user.channels.ids.include?(local[:channel].id) %>
+<% elsif @current_user.channels.ids.include?(local[:channel].id) %>
   <li class="h-8 btn btn-info btn-xs w-full h-full w-full">
 <% else %>
   <li class="h-8 btn btn-accent btn-xs w-full bg-blue-100">
@@ -12,7 +12,7 @@
   </div>
 
 </li>
-<% if @user.channels.include?(local[:channel]) %>
+<% if @current_user.channels.include?(local[:channel]) %>
   <div class="badge badge-error">
     <%= link_to "x", channel_channel_user_path(local[:channel]), method: :delete %>
   </div>

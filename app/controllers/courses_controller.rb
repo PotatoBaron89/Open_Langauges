@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: %i[ show edit update destroy ]
   before_action :check_auth
+  before_action :set_user, only: [:show]
 
   # GET /courses or /courses.json
   def index
@@ -10,30 +11,10 @@ class CoursesController < ApplicationController
 
   # GET /courses/1 or /courses/1.json
   def show
-    @user = [current_user]
-
     @like = current_user.likes.find_by(course: @course)
     @subscribe = current_user.subscribes.find_by(course: @course)
     @wish = current_user.wishes.find_by(course: @course)
-    @lessons = Lesson.where(course_id: params[:id])
-                     .includes(:rich_text_content, user: [:image_attachment])
-
-    ### There must be a cleaner way
-    # Find All Students
-    list = Course.find(params[:id]).class_list
-    student_list = []
-    list.each do |user|
-      student_list << user.user_id
-    end
-    @students = User.find(student_list)
-
-    # Find All Educators
-    list = Course.find(params[:id]).class_educator
-    educator_list = []
-    list.each do |user|
-      educator_list << user.user_id
-    end
-    @educators = User.find(educator_list)
+    @course = Course.includes(:user, lessons: [user: [image_attachment: :blob]]).find(params[:id])
   end
 
   # GET /courses/new
@@ -127,4 +108,9 @@ class CoursesController < ApplicationController
     flash[:notice] = "Insufficient privileges"
     redirect_to root_path
   end
+
+  def set_user
+    @current_user ||= User.includes(image_attachment: :blob).find(current_user.id)
+  end
+
 end

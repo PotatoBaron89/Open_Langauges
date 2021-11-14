@@ -11,10 +11,8 @@ class SubscribesController < ApplicationController
   end
 
   def destroy
-    @subscribe = current_user.subscribes.find(params[:id])
-    course = @subscribe.course
-    @subscribe.destroy
-    redirect_to course
+    @subscribe = Subscribe.find(params[:id]).destroy
+    redirect_to @subscribe.course
   end
 
   private
