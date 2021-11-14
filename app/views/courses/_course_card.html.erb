@@ -1,7 +1,7 @@
 <% if !course.isarchived? || (admin) %>
   <div class=" md:max-w-2xl flex items-center flex-wrap w-full px-4 py-10 bg-cover  bg-base-200 glass max-h-48" style="background-image:url(https://images.unsplash.com/photo-1557683311-eac922347aa1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1129&q=80/1000/300)">
     <div class="flex-col md:flex-row flex-wrap card glass card-side text-neutral-content w-full justify-around h-36 md:h-42">
-<!--      COURSE IMAGE-->
+      <!--      COURSE IMAGE-->
       <figure class="p-2  h-24 w-24">
         <% if course.cover_image.attached? %>
           <%= image_tag course.cover_image, class: ' h-24 md:h-48 md:w-48  object-cover ' %>
@@ -10,7 +10,7 @@
         <% end %>
       </figure>
 
-<!--      CONTENTS-->
+      <!--      CONTENTS-->
       <article class="flex flex-col w-full h-full justify-start overflow-hidden ">
         <div class="max-w-md card-body w-full  h-24 ">
           <h2 class="card-title"><%= course.title %></h2>
@@ -20,7 +20,7 @@
 
     </div>
 
-<!--    TAGS-->
+    <!--    TAGS-->
     <div class="absolute top-0 right-0 flex mt-3 mr-12 gap-1">
       <% if course.isarchived? %>
         <div class="badge badge-primary">Archived</div>
@@ -35,13 +35,13 @@
       <% end %>
     </div>
 
-<!--    BUTTONS-->
+    <!--    BUTTONS-->
     <div class="inline-flex   justify-start align-start gap-1 md:gap-3 h-10 absolute bottom-0 right-0 align-end  md:mr-12  overflow-hidden">
       <div class="card-actions">
         <%= link_to "See More", link, class: " shadow-2xl  btn glass rounded-full h-10 " %>
       </div>
 
-      <div class="shadow-2xl  btn glass rounded-full h-10  max-w-lg">
+      <div class="bg-indigo-300 hover:bg-purple-700 rounded-full flex w-40 h-10 gap-5 align-center">
         <%= render 'shared/Components/avatar', content: { user: course.user, path: user_path(course.user.id) } %>
       </div>
     </div>
