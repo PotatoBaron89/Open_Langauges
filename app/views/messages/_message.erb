@@ -1,0 +1,30 @@
+
+<% if @message %>
+  <div id="<%= dom_id @message %>" class="border">
+    <strong><%= @message.user.name %></strong>
+    <%= @message.body %>
+  </div>
+<% else %>
+  <div class="border">
+    <strong><%= message.user.name %></strong>
+    <%= message.body %>
+  </div>
+<% end %>
+
+
+<%# if params[:message] %>
+  <%#== params[:message] %>
+<%# end %>
+
+  <%# turbo_frame_tag "messages" do %>
+  <%# message = params[:message] if params[:message] %>
+  <%# message.each do |msg| %>
+<!--    <div class="border">-->
+<!--      <strong><%#= msg.user.name %></strong>-->
+      <%#= msg.body %>
+<!--    </div>-->
+  <%# end %>
+<%# end %>
+
+
+<!--https://youtu.be/csvaYIaBYpw?t=869-->

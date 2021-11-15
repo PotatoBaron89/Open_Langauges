@@ -23,7 +23,7 @@ class LessonsController < ApplicationController
     if params[:format]
       @course = [Course.find(params[:format])]
     else
-      raise
+      redirect_to course_list_path, notice: "Cannot create a Lesson that isn't attached to a lesson"
     end
   end
 

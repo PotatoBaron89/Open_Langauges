@@ -3,7 +3,10 @@
 
 Rails.application.routes.draw do
 
-  resources :channels
+  resources :channels do
+    resource :channel_user
+    resources :messages
+  end
   # get 'definitions/index'
   # get 'definitions/show'
   # get 'definitions/delete'

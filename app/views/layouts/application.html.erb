@@ -23,7 +23,7 @@
       <%=  render 'shared/header' %>
     </div>
     <div class="w-full">
-      <%= render '/shared/Notifications/header_notification_box' %>
+      <%= render '/shared/Notifications/header_notification_box', id: "notification-box" %>
     </div>
       <main class="container  mt-5 md:mt-28 flex mx-auto  flex justify-center">
         <%= yield %>

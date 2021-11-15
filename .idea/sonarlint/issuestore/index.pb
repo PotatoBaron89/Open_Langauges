@@ -71,8 +71,6 @@ K
 config/environments/test.rb,f\5\f52903eb564521c5ab86ad6edd6582a3b5f15b2f
 S
 #app/views/users/index.json.jbuilder,6\d\6dd560d81019fc8c1a60b9224987b22ae6242b38
-L
-app/views/users/new.html.erb,0\d\0dad2ae568e6e543c7b3773f6343332c883889a4
 N
 app/views/users/_form.html.erb,6\0\609b2a98004a46d75f0bbcdce0cfdaca785a1f99
 E
