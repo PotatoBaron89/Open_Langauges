@@ -56,8 +56,6 @@ group :development do
   gem "slack-notifier"
   gem "rails_best_practices", '~> 1.22.1'
 
-  # gem "ruby-growl"
-  # gem "faker"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
