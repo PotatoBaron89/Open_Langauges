@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_channel
+  before_action :set_channel, except: [:destroy]
 
   def create
     # @message = @channel.messages.create(message_params)
@@ -26,6 +26,15 @@ class MessagesController < ApplicationController
         end
         format.html { render :new, status: :unprocessable_entity }
       end
+    end
+  end
+
+
+  def destroy
+    Message.destroy(params[:id])
+    respond_to do |format|
+      format.html { redirect_to root, notice: "Message was successfully destroyed." }
+      format.json { head :no_content }
     end
   end
 

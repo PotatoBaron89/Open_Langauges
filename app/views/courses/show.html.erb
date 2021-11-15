@@ -16,53 +16,37 @@
     <section class="min-w-full">
       <div class="bg-white shadow overflow-hidden rounded-md">
         <ul role="list" class="divide-y divide-gray-200 ">
-<!--        CREATE NEW LESSON-->
-        <li class=" hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50 bg-blue-700">
+          <!--        CREATE NEW LESSON-->
+          <li class=" hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50 bg-blue-700">
             <div class="no-underline text-black ">
               <div class="w-full h-full px-6 py-4 flex justify-center items-center glass btn">
                 <%= link_to "Create New Lesson", new_lesson_path(@course.id) %>
               </div>
             </div>
-        </li>
-
+          </li>
+          <!--          List each associated lesson, if there are lessons -->
           <% if @course.lessons %>
             <% @course.lessons.each do |l| %>
               <li class=" hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50 bg-blue-300">
-                <% if @course.Ispremium? %>
-                  <div class="no-underline text-black glass">
-                    <div class="w-full h-full px-6 py-4">
-                      <%= l.title %>
-                      <%= link_to "Edit", edit_lesson_path(l.id) %>
-                      <%= render 'shared/Components/avatar', content: { user: l.user, path: user_path(l.user.id) } %>
-                    </div>
-                  </div>
-                <% end %>
-              </li>
-              <li class=" hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50 bg-blue-400">
-                <% if @course.Ispremium? %>
-                  <div class="no-underline text-black glass">
-                    <div class="w-full h-full px-6 py-4">
-                      <%= l.title %>
-                      <%= render 'shared/Components/avatar', content: { user: l.user, path: user_path(l.user.id) } %>
-                    </div>
-                  </div>
-                <% else %>
-                  <a href="<%= lesson_path(l.id) %>" class="no-underline text-black ">
-                    <div class="w-full h-full px-6 py-4 flex">
-                      <div class="flex-grow">
-                        <%= l.title %>
-                      </div>
-                      <div class="w-1/5">
+                <div class="no-underline text-black glass ">
+                  <div class="w-full h-full px-6 py-4 flex flex-col justify-center items-center">
+                    <% if @course.Ispremium? %>
+                      <%= link_to l.title, lesson_path(l.id), class: "text-3xl" %>
+                      <div class="flex items-center gap-5">
                         <%= render 'shared/Components/avatar', content: { user: l.user, path: user_path(l.user.id) } %>
+                        <%= link_to "Edit", edit_lesson_path(l.id) %>
                       </div>
-                    </div>
-                  </a>
-                <% end %>
-              </li>
-            <% end %>
+                  <% else %>
+                    <%= l.title %>
+                    <%= render 'shared/Components/avatar', content: { user: l.user, path: user_path(l.user.id) } %>
+                  <% end %>
+                </div>
+              </div>
+            </li>
           <% end %>
-        </ul>
-      </div>
+        <% end %>
+      </ul>
+    </div>
     </section>
     <%= render '/shared/Components/divider', content: 'Further Information' %>
     <!--    FURTHER INFO-->

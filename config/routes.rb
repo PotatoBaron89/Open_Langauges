@@ -7,10 +7,9 @@ Rails.application.routes.draw do
     resource :channel_user
     resources :messages
   end
-  # get 'definitions/index'
-  # get 'definitions/show'
-  # get 'definitions/delete'
-  # get 'definitions/edit'
+
+  resources :messages
+
   resources :words
   resources :flashcards
   resources :lessons

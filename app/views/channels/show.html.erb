@@ -45,8 +45,12 @@
           <% end %>
         </div>
         <div id="messages" class="">
-          <%= render @messages %>
 
+
+
+          <% @messages.each do |msg| %>
+            <%= render 'messages/message', message: msg %>
+          <% end %>
         </div>
     </div>
   </div>
