@@ -1,4 +1,5 @@
-<article class="flex w-full">
+<% @current_user.channels.include?(local[:channel] ? margin = "ml-5" : margin = "ml-1") %>
+<article class="flex <%= margin %>">
 <% if params[:id] == local[:channel].id.to_s %>
   <li class="h-8 btn btn-success h-full btn-xs w-full">
 <% elsif @current_user.channels.ids.include?(local[:channel].id) %>
@@ -13,7 +14,7 @@
 
 </li>
 <% if @current_user.channels.include?(local[:channel]) %>
-  <div class="badge badge-error">
+  <div class="badge badge-error ">
     <%= link_to "x", channel_channel_user_path(local[:channel]), method: :delete %>
   </div>
 <% end %>

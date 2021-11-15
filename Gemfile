@@ -82,7 +82,6 @@ gem "rolify", "~> 6.0"
 gem "hotwire-rails"
 gem 'pagy', "~> 5.3.1"
 gem "ransack"
-
 gem "skylight"
 gem "font-awesome-rails", "~> 4.7"
 
