@@ -5,6 +5,3 @@ import { application } from "./application"
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
-
-import DeviseController from "./devise_controller"
-application.register("devise", DeviseController)
