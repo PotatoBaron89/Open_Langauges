@@ -8,6 +8,7 @@ class QuizzesController < ApplicationController
 
   # GET /quizzes/1 or /quizzes/1.json
   def show
+    @pagy, @questions = pagy(Question.where(quiz_id: params[:id]))
   end
 
   # GET /quizzes/new

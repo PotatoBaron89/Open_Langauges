@@ -5,7 +5,7 @@ class LessonsController < ApplicationController
   def index
 
     @pagy, @lessons = pagy(Lesson.all
-                 .includes(:rich_text_content))
+                 .includes(:rich_text_content, user: [:image_attachment]))
     @user = current_user
   end
 
