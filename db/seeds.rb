@@ -28,7 +28,7 @@ Word.destroy_all
 Definition.destroy_all
 Quiz.destroy_all
 FlashcardList.destroy_all
-Lesson.destroy_all
+# Lesson.destroy_all
 Course.destroy_all
 User.destroy_all
 
@@ -118,7 +118,7 @@ end
 
 @courses = Course.all
 i = 0
-while i < 200 do
+while i < 100 do
   Lesson.create!([{
                     title: Faker::Educator.subject,
                     content: Faker::Lorem.sentence(word_count: rand(50...80)),
@@ -147,11 +147,11 @@ end
 @quiz = Quiz.all
 
 200.times do
-  Question.create!(question: Faker::JapaneseMedia::StudioGhibli.quote, answer: Faker::Movies::HitchhikersGuideToTheGalaxy.quote, quiz_id: @quiz.sample.id, user_id: @user.sample.id)
+  Question.create!(question: Faker::JapaneseMedia::StudioGhibli.quote, answer: Faker::Movies::HitchhikersGuideToTheGalaxy.quote, quiz_id: @quiz.sample.id)
 end
 
 55.times do
-  FlashcardList.create!(@lesson.sample.id, title: Faker::JapaneseMedia::StudioGhibli.quote)
+  FlashcardList.create!(lesson_id: @lesson.sample.id, title: Faker::JapaneseMedia::StudioGhibli.quote)
 end
 
 @flashcardlist = FlashcardList.all

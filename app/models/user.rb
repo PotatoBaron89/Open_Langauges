@@ -73,8 +73,8 @@ class User < ApplicationRecord
 
   # STUDENT RELATED
   has_many :results, dependent: :delete_all
-  has_many :results, through: :lesson_results, dependent: :delete_all
-  has_many :lesson_results, dependent: :delete_all
+  # has_many :results, through: :lesson_results, dependent: :delete_all
+  # has_many :lesson_results
 
 
   def default_values
