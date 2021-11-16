@@ -9,6 +9,6 @@
 #  updated_at :datetime         not null
 #
 class CourseTag < ApplicationRecord
-  belongs_to :tag
-  belongs_to :course
+  # belongs_to :tag
+  # belongs_to :course
 end

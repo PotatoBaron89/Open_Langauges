@@ -1,18 +1,35 @@
-<div class="flip-question">
-  <div class="flip-card-inner">
-    <article class="flip-card-front flex justify-center items-center bg-violet-400">
+
+    <article class="w-full flex items-center bg-violet-400 border-white border p-2 rounded-xl">
       <% if local[:path] %>
         <% local[:side_one].each do |item| %>
-          <strong><%= item[1] %></strong>
+          <div class="w-6/12">
+            <strong>Question: <%= item[1] %></strong>
+          </div>
         <% end %>
       <% end %>
-    </article>
-    <article class="flip-card-back flex justify-center items-center">
-      <% if local[:path] %>
-        <% local[:side_two].each do |item| %>
-          <strong><%= item[1] %></strong>
+
+      <%#= turbo_frame_tag "question_form", class: "w-full" do %>
+        <%= form_with(model: Result.new, class: "contents") do |form| %>
+
+          <div class="w-full flex flex-col">
+          <div class="flex">
+            <div class="my-5 hidden">
+              <%= form.label :answer %>
+              <%= form.collection_select :answer, [local[:question]], :answer, :answer, { value: :id }, selected: :id, class: "border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" %>
+            </div>
+            <div class="my-5 hidden">
+              <%= form.label :quiz_id %>
+              <%= form.collection_select :quiz_id, [@quiz], :id, :id, { value: :id }, selected: :id, class: "border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" %>
+            </div>
+            <div class="my-5 hidden">
+              <%= form.label :user_id %>
+              <%= form.collection_select :user_id, [@current_user], :id, :id, { value: :id }, selected: :id, class: "border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" %>
+            </div>
+            <%= form.label :Your_Answer %>
+            <%= form.submit "Submit", class: "ml-2 rounded-lg py-1 px-5 bg-blue-600 text-white inline-block font-medium" %>
+          </div>
+          <%= form.text_area :entry, class: "w-full block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+          </div>
         <% end %>
-      <% end %>
+      <%# end %>
     </article>
-  </div>
-</div>

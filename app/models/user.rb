@@ -66,13 +66,15 @@ class User < ApplicationRecord
   has_many :courses, through: :class_educator, dependent: :delete_all
 
 
-
-
   # SOCIAL / FEATURES
   has_many :likes, dependent: :delete_all
   has_many :subscribes, dependent: :delete_all
   has_many :wishes, dependent: :delete_all
 
+  # STUDENT RELATED
+  has_many :results, dependent: :delete_all
+  has_many :results, through: :lesson_results, dependent: :delete_all
+  has_many :lesson_results, dependent: :delete_all
 
 
   def default_values
@@ -86,8 +88,5 @@ class User < ApplicationRecord
   def name
     self.first_name
   end
-
-  public
-
 
 end

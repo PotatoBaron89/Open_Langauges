@@ -4,6 +4,8 @@
 Rails.application.routes.draw do
 
 
+  resources :results
+  resources :lesson_results
   resources :questions
   resources :quizzes
   resources :flashcard_list

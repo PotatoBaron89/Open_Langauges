@@ -9,16 +9,16 @@
 ClassList.destroy_all
 ClassEducator.destroy_all
 
-Course.destroy_all
+
 CourseChannel.destroy_all
 Tag.destroy_all
 CourseTag.destroy_all
 Flashcard.destroy_all
-FlashcardList.destroy_all
 Inbox.destroy_all
 Message.destroy_all
+Result.destroy_all
+Question.destroy_all
 Role.destroy_all
-Lesson.destroy_all
 Category.destroy_all
 Role.destroy_all
 Like.destroy_all
@@ -26,6 +26,10 @@ Subscribe.destroy_all
 Wish.destroy_all
 Word.destroy_all
 Definition.destroy_all
+Quiz.destroy_all
+FlashcardList.destroy_all
+Lesson.destroy_all
+Course.destroy_all
 User.destroy_all
 
 
@@ -54,7 +58,7 @@ end
 # CREATE COURSES
 i = 0
 
-while i < 60 do
+while i < 40 do
   Course.create!([{
                     title: Faker::Educator.course_name,
                     contents: Faker::Lorem.sentence(word_count: rand(70...150)),
@@ -114,7 +118,7 @@ end
 
 @courses = Course.all
 i = 0
-while i < 550 do
+while i < 200 do
   Lesson.create!([{
                     title: Faker::Educator.subject,
                     content: Faker::Lorem.sentence(word_count: rand(50...80)),
@@ -133,4 +137,26 @@ end
 450.times do
   Definition.create(title: Faker::Lorem.sentence(word_count: rand(20...50)))
   Definition.create(word_id: @words.sample)
+end
+
+@lesson = Lesson.all
+70.times do
+  Quiz.create!(lesson_id: @lesson.sample.id, title: Faker::JapaneseMedia::StudioGhibli.character )
+end
+
+@quiz = Quiz.all
+
+200.times do
+  Question.create!(question: Faker::JapaneseMedia::StudioGhibli.quote, answer: Faker::Movies::HitchhikersGuideToTheGalaxy.quote, quiz_id: @quiz.sample.id, user_id: @user.sample.id)
+end
+
+55.times do
+  FlashcardList.create!(@lesson.sample.id, title: Faker::JapaneseMedia::StudioGhibli.quote)
+end
+
+@flashcardlist = FlashcardList.all
+
+200.times do
+  Flashcard.create!(side_one: Faker::LoremFlickr.image(size: "300x300", search_terms: ['animals']),
+                    side_two: Faker::Creature::Animal.name, flashcard_list_id: @flashcardlist.sample.id)
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_16_120226) do
+ActiveRecord::Schema.define(version: 2021_11_16_181604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -178,6 +178,17 @@ ActiveRecord::Schema.define(version: 2021_11_16_120226) do
     t.index ["user_id"], name: "index_inboxes_on_user_id"
   end
 
+  create_table "lesson_results", force: :cascade do |t|
+    t.bigint "lesson_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "quiz_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["lesson_id"], name: "index_lesson_results_on_lesson_id"
+    t.index ["quiz_id"], name: "index_lesson_results_on_quiz_id"
+    t.index ["user_id"], name: "index_lesson_results_on_user_id"
+  end
+
   create_table "lessons", force: :cascade do |t|
     t.string "title"
     t.bigint "user_id", null: false
@@ -233,6 +244,18 @@ ActiveRecord::Schema.define(version: 2021_11_16_120226) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "title"
     t.index ["lesson_id"], name: "index_quizzes_on_lesson_id"
+  end
+
+  create_table "results", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "status"
+    t.string "entry"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "answer"
+    t.bigint "quiz_id", null: false
+    t.index ["quiz_id"], name: "index_results_on_quiz_id"
+    t.index ["user_id"], name: "index_results_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -349,6 +372,9 @@ ActiveRecord::Schema.define(version: 2021_11_16_120226) do
   add_foreign_key "grades", "users"
   add_foreign_key "inboxes", "messages"
   add_foreign_key "inboxes", "users"
+  add_foreign_key "lesson_results", "lessons"
+  add_foreign_key "lesson_results", "quizzes"
+  add_foreign_key "lesson_results", "users"
   add_foreign_key "lessons", "courses"
   add_foreign_key "lessons", "users"
   add_foreign_key "likes", "courses"
@@ -359,6 +385,8 @@ ActiveRecord::Schema.define(version: 2021_11_16_120226) do
   add_foreign_key "organisations", "users"
   add_foreign_key "questions", "quizzes"
   add_foreign_key "quizzes", "lessons"
+  add_foreign_key "results", "quizzes"
+  add_foreign_key "results", "users"
   add_foreign_key "subscribes", "courses"
   add_foreign_key "subscribes", "users"
   add_foreign_key "tag_lists", "courses"
