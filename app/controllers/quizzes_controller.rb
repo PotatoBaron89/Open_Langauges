@@ -39,7 +39,7 @@ class QuizzesController < ApplicationController
                                partial: 'shared/Components/list_item_turbo',
                                path: quiz_path(@quiz.id),
                                locals: { body: @quiz, edit: true,
-                                         path: flashcard_list_path(@quiz.id),
+                                         path: quiz_path(@quiz.id),
                                          content:
                                            [@quiz.title] })
           ]
