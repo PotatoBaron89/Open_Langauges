@@ -31,14 +31,6 @@ _
 /db/migrate/20211108132055_add_about_to_users.rb,b\4\b40d47e5f33f4cf898f89d6ec8d623aa979adf7c
 r
 Bdb/migrate/20211109055060_create_action_text_tables.action_text.rb,9\e\9eea876d8a5691b53255b4971e4553f1967223b9
-[
-+db/migrate/20211109061202_create_lessons.rb,e\e\eefef3b23f80ab36f9d530bfbd02de4cb7ceb739
-g
-7db/migrate/20211109082037_add_side_one_to_flashcards.rb,8\a\8ab66413dd35c183f42b5b613e2648bef72b1ee6
-l
-<db/migrate/20211109084433_add_lesson_to_flashcard_courses.rb,0\b\0bbcd34769ec74103a20d1ea37316c4db52d2db9
-e
-5db/migrate/20211109081241_create_flashcard_courses.rb,f\e\fe97cbea8e19bace0d0b5c48cb4a78ef83366b13
 _
 /db/migrate/20211108075216_create_class_lists.rb,b\5\b5f10d6d02cc367af9b2224a9027e9e4fbedb666
 c
@@ -61,8 +53,6 @@ M
 .config/initializers/content_security_policy.rb,1\1\114e2cbb4b8f1d6fd040739efe38b2b28967b2c8
 Z
 *config/initializers/backtrace_silencers.rb,d\c\dc36c09098c6d4610258b459137d99566bcc6979
-C
-config/database.yml,2\c\2c912561029efc03ffae15b01b7337417d7a99bd
 @
 config/cable.yml,4\4\44bb44c06ebf3546d3fa0b6c4fc0a4d3bd160834
 Q
@@ -77,8 +67,6 @@ E
 config/application.rb,7\f\7ff7049c1c8745b54f0a9ef78996f60b38f36268
 M
 app/views/users/edit.html.erb,f\3\f341a6263d9803e768a000b11a0a610ffacae2eb
-R
-"app/views/flashcards/show.html.erb,b\f\bf3ead567ae4013c1beb03816cbe2c3417028658
 ^
 .app/views/shared/_simple_card_w_title.html.erb,2\7\2727310d90387e16f967b6d93eb5c9903e23859e
 M
@@ -87,12 +75,6 @@ i
 9app/views/shared/Components/_current_user_avatar.html.erb,7\6\763fe6b191562d5a2ac70d9006c4c1363055e3f0
 `
 0app/views/shared/Components/_pagination.html.erb,e\4\e49bd65cb44fd1eee9af782ddabd0390ab6405f9
-V
-&app/views/kaminari/_prev_page.html.erb,0\f\0f058014577fe4b922813827a374dd57ecb08d00
-W
-'app/views/kaminari/_first_page.html.erb,8\6\86b85c44233c6ce113850ce2ce573165d562bfe3
-Q
-!app/views/kaminari/_page.html.erb,4\9\49decc025443b7496bcd89aabaae8e2b1eaa360f
 P
  app/views/users/account.html.erb,9\1\910c77bdfc62233dfd1bf5a61bfa7478e7fc8a4d
 M
@@ -114,3 +96,7 @@ B
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 Y
 )app/controllers/definitions_controller.rb,7\2\72d589df429d74fe7060fa4efb16f9e1975807e5
+7
+Gemfile,d\e\de3150c01c3a946a6168173c4116741379fe3579
+C
+config/database.yml,2\c\2c912561029efc03ffae15b01b7337417d7a99bd

@@ -1,24 +1,27 @@
-<div id="<%= dom_id lesson %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Title:</strong>
-    <%= lesson.title %>
-  </p>
+<div class="p-5 bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-500 min-w-full">
+  <div class="rounded overflow-hidden shadow-lg rounded-b-md fd-cl p-5 bg-white">
+    <div id="<%= dom_id lesson %>">
+      <div class="flex justify-between">
+        <%= render 'shared/Components/avatar', content: { user: lesson.user, path: user_path(lesson.user.id) } %>
+        <div>Created: <%= lesson.created_at.to_date.strftime("%h %d") %></div>
+        <div>Updated: <%= lesson.updated_at.to_date.strftime("%h %d") %></div>
+      </div>
+      <p class="my-5">
+        <strong class="block text-3xl font-medium mb-1"><%= lesson.title %></strong>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Content:</strong>
-    <%= lesson.content %>
-  </p>
+      </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">User:</strong>
-    <%= lesson.user_id %>
-  </p>
+      <p class="my-5">
+        <%= lesson.content %>
+
+      </p>
 
 
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this lesson", lesson, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this lesson', edit_lesson_path(lesson), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+      <% if action_name != "show" %>
+        <%= link_to "Show this lesson", lesson, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+        <%= link_to 'Edit this lesson', edit_lesson_path(lesson), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+        <hr class="mt-6">
+      <% end %>
+    </div>
+  </div>
 </div>

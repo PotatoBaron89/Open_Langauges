@@ -23,6 +23,8 @@ class Course < ApplicationRecord
   has_many :class_educator, dependent: :delete_all
   has_many :users, through: :class_list, dependent: :delete_all
   has_many :users, through: :class_educator, dependent: :delete_all
+  has_many :tags, through: :tag_list, dependent: :delete_all
+  has_many :categories, through: :course_category, dependent: :delete_all
 
   # SOCIAL / FEATURES
   has_many :likes, dependent: :delete_all

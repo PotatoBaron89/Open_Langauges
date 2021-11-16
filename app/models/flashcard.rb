@@ -11,8 +11,6 @@
 class Flashcard < ApplicationRecord
   has_rich_text :side_one
   has_rich_text :side_two
-
-  has_many :lessons
-  has_many :flashcard_courses, through: :lessons
-  has_many :flashcards, through: :flashcard_courses
+  
+  belongs_to :flashcard_list
 end

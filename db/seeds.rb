@@ -10,6 +10,16 @@ ClassList.destroy_all
 ClassEducator.destroy_all
 
 Course.destroy_all
+CourseChannel.destroy_all
+Tag.destroy_all
+CourseTag.destroy_all
+Flashcard.destroy_all
+FlashcardList.destroy_all
+Inbox.destroy_all
+Message.destroy_all
+Role.destroy_all
+Lesson.destroy_all
+Category.destroy_all
 Role.destroy_all
 Like.destroy_all
 Subscribe.destroy_all
@@ -44,7 +54,7 @@ end
 # CREATE COURSES
 i = 0
 
-while i < 150 do
+while i < 60 do
   Course.create!([{
                     title: Faker::Educator.course_name,
                     contents: Faker::Lorem.sentence(word_count: rand(70...150)),
@@ -53,6 +63,9 @@ while i < 150 do
                     Ispremium: rand(2),
                     price: Faker::Number.between(from: 2.0, to: 15.0).round(2)
                   }])
+
+  # Ensure every class has at least one educator, needed to seed lessons
+  ClassEducator.create(user_id: @users.sample.id, course_id: Course.last.id)
   i += 1
 end
 
@@ -73,6 +86,7 @@ end
 120.times do
   ClassEducator.create(user_id: @users.sample.id, course_id: @courses.sample.id)
 end
+
 
 650.times do
   begin
@@ -103,8 +117,8 @@ i = 0
 while i < 550 do
   Lesson.create!([{
                     title: Faker::Educator.subject,
-                    content: Faker::Lorem.sentence(word_count: rand(70...150)),
-                    user: @course.class_educator.sample,
+                    content: Faker::Lorem.sentence(word_count: rand(50...80)),
+                    user: @users.sample,
                     course_id: @courses.sample.id
                   }])
   i += 1

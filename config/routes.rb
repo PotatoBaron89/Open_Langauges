@@ -3,6 +3,9 @@
 
 Rails.application.routes.draw do
 
+
+  resources :quizzes
+  resources :flashcard_list
   resources :channels do
     resource :channel_user
     resources :messages
