@@ -1,4 +1,48 @@
-<div>
-  <h1 class="text-xl font-bold">FlastcardList#show</h1>
-  <p>Find me in app/views/flastcard_list/show.html.erb</p>
-<div>
+<div class="w-full flex min-h-screen ">
+  <div class="flex flex-col items-center mx-auto min-w-full bg-pink-50 p-5 rounded-3xl">
+
+
+      <!--    CREATE QUIZZES, IGNORE PARTIAL NANE, NEEDS REFACTORING-->
+
+    <section class="p-5 bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-500 min-w-full rounded-lg m-5">
+      <div class="rounded overflow-hidden shadow-lg rounded-b-md fd-cl p-5 bg-white">
+      <div  id="" class="">
+        <h1 class="font-extrabold text-3xl pb-5">Flashcard List: <%= @flashcard_list.title %></h1>
+      </div>
+
+    <%= render '/shared/Components/divider', content: 'Flashcards' %>
+
+
+    <div  id="" class="bg-white rounded-lg">
+      <%= render '/flashcards/form', flashcard: Flashcard.new, flashcard_list: @flashcard_list %>
+    </div>
+    </div>
+    </section>
+
+
+
+
+<!--    FLASHCARD PREVIEW-->
+    <div class="bg-gray-700 rounded-t-xl pt-2 px-5"><%== pagy_bootstrap_nav(@pagy) %></div>
+    <div class="p-5 bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-500 min-w-full rounded-lg mb-5 mx-5">
+
+
+    <section class="w-full rounded-xl bg-gray-700 p-5  flex justify-center flex-wrap">
+
+          <% if @flashcards %>
+            <% @flashcards.each do |f|  %>
+              <div id="<%= dom_id f %>" class="flex-shrink">
+                <%= render 'shared/Components/flashcard', local: { side_one:
+                                                                     { body: f.side_one },
+                                                                   side_two:
+                                                                     { body: f.side_two},
+                                                                   delete: true,
+                                                                   edit: true, edit_path: edit_flashcard_list_path(f.id),
+                                                                   path: flashcard_list_path(f.id)} %>
+              </div>
+            <% end %>
+          <% end %>
+    </section>
+  </div>
+  </div>
+</div>

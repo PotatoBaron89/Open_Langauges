@@ -16,9 +16,10 @@ class LessonsController < ApplicationController
     @pagy, @quizzes = pagy(Quiz.where(lesson_id: params[:id]).all)
   end
 
+
+
   # GET /lessons/new
   def new
-
     @lesson = Lesson.new
 
     @user = [current_user]
@@ -29,11 +30,15 @@ class LessonsController < ApplicationController
     end
   end
 
+
+
   # GET /lessons/1/edit
   def edit
     @user = [current_user]
     @course = [Course.find(@lesson.course.id)]
   end
+
+
 
   # POST /lessons or /lessons.json
   def create
@@ -66,6 +71,7 @@ class LessonsController < ApplicationController
       end
     end
   end
+
 
   # DELETE /lessons/1 or /lessons/1.json
   def destroy

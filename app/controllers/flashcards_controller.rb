@@ -3,11 +3,13 @@ class FlashcardsController < ApplicationController
 
   # GET /flashcards or /flashcards.json
   def index
-    @pagy, @flashcards = pagy(Flashcard.all)
+    @pagy, @flashcards = pagy(Flashcard.all.includes(:rich_text_side_one, :rich_text_side_two))
+
   end
 
   # GET /flashcards/1 or /flashcards/1.json
   def show
+
   end
 
   # GET /flashcards/new
@@ -22,6 +24,7 @@ class FlashcardsController < ApplicationController
   # POST /flashcards or /flashcards.json
   def create
     @flashcard = Flashcard.new(flashcard_params)
+    @flashcard_list = FlashcardList.find(params[:flashcard][:flashcard_list_id])
 
     respond_to do |format|
       if @flashcard.save
@@ -64,6 +67,6 @@ class FlashcardsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def flashcard_params
-      params.require(:flashcard).permit(:side_one, :side_two)
+      params.require(:flashcard).permit(:side_one, :side_two, :flashcard_list_id)
     end
 end

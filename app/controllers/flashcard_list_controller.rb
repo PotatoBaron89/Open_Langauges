@@ -1,9 +1,9 @@
 class FlashcardListController < ApplicationController
   def index
+
   end
 
   def destroy
-    raise
     FlashcardList.delete(params[:id])
 
     respond_to do |format|
@@ -54,6 +54,8 @@ class FlashcardListController < ApplicationController
   end
 
   def show
+    @pagy, @flashcards = pagy(Flashcard.where(flashcard_list: params[:id]).includes(:rich_text_side_one, :rich_text_side_two), items: 6)
+    @flashcard_list = FlashcardList.find(params[:id])
   end
 
   private

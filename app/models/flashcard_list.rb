@@ -12,4 +12,6 @@
 class FlashcardList < ApplicationRecord
   belongs_to :lesson
   has_many :flashcards, dependent: :delete_all
+
+  validates :title, presence: true
 end

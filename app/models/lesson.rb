@@ -18,4 +18,6 @@ class Lesson < ApplicationRecord
   has_many :flashcards, through: :flashcard_lists, dependent: :delete_all
   has_many :quizzes, dependent: :delete_all
   # has_many :flashcards, through: :flashcard_list, dependent: :delete_all
+
+  validates :title, presence: true
 end
