@@ -11,7 +11,9 @@ class LessonsController < ApplicationController
 
   # GET /lessons/1 or /lessons/1.json
   def show
+
     @user = current_user
+    @pagy, @quizzes = pagy(Quiz.where(lesson_id: params[:id]).all)
   end
 
   # GET /lessons/new

@@ -77,12 +77,8 @@ i
 0app/views/shared/Components/_pagination.html.erb,e\4\e49bd65cb44fd1eee9af782ddabd0390ab6405f9
 P
  app/views/users/account.html.erb,9\1\910c77bdfc62233dfd1bf5a61bfa7478e7fc8a4d
-M
-app/views/roles/show.html.erb,5\3\53e4dfb4a895c3a7b028e2d378e8e38cbf741555
 V
 &app/views/users/_account_form.html.erb,1\b\1bba7e2607fcae108ff216f1f554b24d896e48cd
-W
-'app/views/admin/_add_role_form.html.erb,b\e\be6114bf9a057a92beacc6f388cae72577fb3cc8
 R
 "app/views/words/_add_word.html.erb,5\6\56197b854f5c393808211e5775e4b0cc1419605b
 ^
@@ -96,7 +92,5 @@ B
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 Y
 )app/controllers/definitions_controller.rb,7\2\72d589df429d74fe7060fa4efb16f9e1975807e5
-7
-Gemfile,d\e\de3150c01c3a946a6168173c4116741379fe3579
 C
 config/database.yml,2\c\2c912561029efc03ffae15b01b7337417d7a99bd

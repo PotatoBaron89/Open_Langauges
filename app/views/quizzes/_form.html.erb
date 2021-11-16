@@ -1,22 +1,26 @@
-<%= form_with(model: quiz, class: "contents") do |form| %>
-  <% if quiz.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(quiz.errors.count, "error") %> prohibited this quiz from being saved:</h2>
+<% if @quiz %>
+  <% quiz_title = @quiz.title %>
+<% else %>
+  <% quiz_title = "" %>
+<% end %>
 
-      <ul>
-        <% quiz.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<%= turbo_frame_tag "quiz_form" do %>
+  <%= form_with(model: Quiz.new,  class: "contents", url: quizzes_path) do |form| %>
+    <div class="my-5 hidden">
+      <%= form.label :lesson_id %>
+      <%= form.collection_select :lesson_id, [@lesson], :id, :title, { value: :id }, selected: :id, class: "border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" %>
+    </div>
+
+    <div class="flex flex-col items-center w-full bg-gray-50 shadow overflow-hidden px-4 py-4 sm:px-6 sm:rounded-md flex justify-around item-center no-underline hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50">
+      <h4 class="text-2xl">Create Quiz</h4>
+      Lists: <%= Quiz.count %>
+      <div class="flex w-full items-center">
+        <span class="text-xl pr-3"><%= form.label :title %></span>
+        <%= form.text_area :title, value: quiz_title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+        <div class="inline">
+          <%= form.submit "Submit", class: "ml-2 rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium" %>
+        </div>
+      </div>
     </div>
   <% end %>
-
-  <div class="my-5">
-    <%= form.label :lesson_id %>
-    <%= form.text_field :lesson_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium" %>
-  </div>
 <% end %>

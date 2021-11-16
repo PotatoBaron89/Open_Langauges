@@ -17,14 +17,32 @@ class QuizzesController < ApplicationController
 
   # GET /quizzes/1/edit
   def edit
+    @lesson = Quiz.find(params[:id]).lesson
+    @questions = Question.where(quiz_id: params[:id])
   end
 
   # POST /quizzes or /quizzes.json
   def create
     @quiz = Quiz.new(quiz_params)
-
     respond_to do |format|
       if @quiz.save
+        format.turbo_stream do
+          @lesson = Lesson.find(@quiz.lesson_id)
+
+          render turbo_stream: [
+            turbo_stream.update('quiz_form',
+                                partial: '/quizzes/form',
+                                lesson: @lesson,
+                                quiz: Quiz.new ),
+          turbo_stream.prepend('quiz_list',
+                               partial: 'shared/Components/list_item_turbo',
+                               path: quiz_path(@quiz.id),
+                               locals: { body: @quiz, edit: true,
+                                         path: flashcard_list_path(@quiz.id),
+                                         content:
+                                           [@quiz.title] })
+          ]
+        end
         format.html { redirect_to @quiz, notice: "Quiz was successfully created." }
         format.json { render :show, status: :created, location: @quiz }
       else
@@ -38,6 +56,7 @@ class QuizzesController < ApplicationController
   def update
     respond_to do |format|
       if @quiz.update(quiz_params)
+
         format.html { redirect_to @quiz, notice: "Quiz was successfully updated." }
         format.json { render :show, status: :ok, location: @quiz }
       else
@@ -64,6 +83,6 @@ class QuizzesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def quiz_params
-      params.require(:quiz).permit(:lesson_id)
+      params.require(:quiz).permit(:lesson_id, :title)
     end
 end

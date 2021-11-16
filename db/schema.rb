@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_16_022029) do
+ActiveRecord::Schema.define(version: 2021_11_16_120226) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -142,15 +142,6 @@ ActiveRecord::Schema.define(version: 2021_11_16_022029) do
     t.index ["word_id"], name: "index_definitions_on_word_id"
   end
 
-  create_table "flashcard_courses", force: :cascade do |t|
-    t.bigint "flashcard_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "lesson_id"
-    t.index ["flashcard_id"], name: "index_flashcard_courses_on_flashcard_id"
-    t.index ["lesson_id"], name: "index_flashcard_courses_on_lesson_id"
-  end
-
   create_table "flashcard_lists", force: :cascade do |t|
     t.bigint "flashcard_id"
     t.bigint "lesson_id", null: false
@@ -166,6 +157,8 @@ ActiveRecord::Schema.define(version: 2021_11_16_022029) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "side_one"
     t.string "side_two"
+    t.bigint "flashcard_list_id", null: false
+    t.index ["flashcard_list_id"], name: "index_flashcards_on_flashcard_list_id"
   end
 
   create_table "grades", force: :cascade do |t|
@@ -225,10 +218,20 @@ ActiveRecord::Schema.define(version: 2021_11_16_022029) do
     t.index ["user_id"], name: "index_organisations_on_user_id"
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.string "question"
+    t.string "answer"
+    t.bigint "quiz_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["quiz_id"], name: "index_questions_on_quiz_id"
+  end
+
   create_table "quizzes", force: :cascade do |t|
     t.bigint "lesson_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "title"
     t.index ["lesson_id"], name: "index_quizzes_on_lesson_id"
   end
 
@@ -341,9 +344,8 @@ ActiveRecord::Schema.define(version: 2021_11_16_022029) do
   add_foreign_key "course_tags", "tags"
   add_foreign_key "courses", "users"
   add_foreign_key "definitions", "words"
-  add_foreign_key "flashcard_courses", "flashcards"
-  add_foreign_key "flashcard_courses", "lessons"
   add_foreign_key "flashcard_lists", "lessons"
+  add_foreign_key "flashcards", "flashcard_lists"
   add_foreign_key "grades", "users"
   add_foreign_key "inboxes", "messages"
   add_foreign_key "inboxes", "users"
@@ -355,6 +357,7 @@ ActiveRecord::Schema.define(version: 2021_11_16_022029) do
   add_foreign_key "messages", "users"
   add_foreign_key "organisations", "courses", column: "courses_id"
   add_foreign_key "organisations", "users"
+  add_foreign_key "questions", "quizzes"
   add_foreign_key "quizzes", "lessons"
   add_foreign_key "subscribes", "courses"
   add_foreign_key "subscribes", "users"

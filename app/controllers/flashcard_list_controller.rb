@@ -38,7 +38,7 @@ class FlashcardListController < ApplicationController
                                 lesson: @lesson),
             turbo_stream.prepend('flashcard-list',
                                  partial: "shared/Components/list_item_turbo",
-                                 locals: { flashlist: @flashcardlist,
+                                 locals: { body: @flashcardlist,
                                            path: flashcard_list_path(@flashcardlist.id),
                                            content:
                                              [@flashcardlist.title] })

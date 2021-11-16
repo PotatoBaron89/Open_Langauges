@@ -1,7 +1,34 @@
 <div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Editing quiz</h1>
+  <h1 class="font-bold text-4xl pb-3">Editing quiz</h1>
 
+<!--  RENDER FORM-->
+  Quiz ID: <%= @quiz.id %>
   <%= render "form", quiz: @quiz %>
+  <%= render '/shared/Components/divider', content: 'Quizzes' %>
+
+<!--  RENDER NEW QUESTION FORM-->
+  <div data-turbo="true">
+    <%= render '/questions/form', question: Question.new, quiz: @quiz %>
+  </div>
+
+<!--  RENDER QUESTIONS ASSOCIATED WITH QUIZ-->
+
+  <ul data-turbo="true" id="question_list" class="divide-y divide-gray-200">
+    <%#== pagy_bootstrap_nav(@pagy) %>
+    <% if @questions %>
+      <% @questions.each do |f|  %>
+        <div id="<%= dom_id f %>">
+          <%= render 'shared/Components/list_item', local: { contents:
+                                                               { first: "ID: #{ f.question }",
+                                                                 second: f.answer },
+                                                             delete: true,
+                                                             edit: true, edit_path: edit_question_path(f.id),
+                                                             path: question_path(f.id)} %>
+        </div>
+      <% end %>
+    <% end %>
+  </ul>
+
 
   <%= link_to "Show this quiz", @quiz, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   <%= link_to "Back to quizzes", quizzes_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
