@@ -18,7 +18,11 @@ Rails.application.routes.draw do
 
   resources :words
   resources :flashcards
-  resources :lessons
+  resources :lessons do
+    post '/register', to: 'lessons#register'
+    delete'/cancel', to: 'lessons#cancel'
+  end
+
   resources :definitions
 
   resources :channels do

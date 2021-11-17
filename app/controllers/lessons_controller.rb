@@ -11,12 +11,20 @@ class LessonsController < ApplicationController
 
   # GET /lessons/1 or /lessons/1.json
   def show
-
     @user = current_user
     @pagy, @quizzes = pagy(Quiz.where(lesson_id: params[:id]).all)
   end
 
+  def register
+    ClassList.create!(user_id:@current_user.id, course_id: params[:lesson_id])
+    redirect_to course_path(params[:lesson_id])
+  end
 
+  def cancel
+    registration = ClassList.where(user_id:@current_user.id, course_id: params[:lesson_id])
+    registration.destroy_all
+    redirect_to course_path(params[:lesson_id])
+  end
 
   # GET /lessons/new
   def new

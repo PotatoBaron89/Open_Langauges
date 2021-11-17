@@ -89,4 +89,13 @@ class User < ApplicationRecord
     self.first_name
   end
 
+  def enrolled?(user_id, course_id)
+
+    if ClassList.where(user_id: user_id, course_id: course_id).count > 0
+      true
+    else
+      false
+    end
+  end
+
 end

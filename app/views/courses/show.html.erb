@@ -8,12 +8,31 @@
     </div>
     <%= render '/shared/Components/divider', content: 'Course Information' %>
     <!--    COURSE INFO-->
-    <section class="min-w-full">
+    <section class="relative min-w-full">
       <%= render @course %>
+
+
+
+      <!--    TAGS-->
+      <div class="absolute top-0 right-0 flex mt-3 mr-12 gap-1 ">
+        <% if @course.isarchived? %>
+          <div class="badge badge-primary">Archived</div>
+        <% end %>
+        <% if @course.Ispremium? %>
+          <div class="badge badge-secondary">Premium</div>
+        <% end %>
+        <% if @course.created_at.between?(((Date.today - 14.days).beginning_of_day),(Date.today.end_of_day)) %>
+          <div class="badge badge-accent">New</div>
+        <% elsif  @course.updated_at.between?(((Date.today - 14.days).beginning_of_day),(Date.today.end_of_day)) %>
+          <div class="badge badge-accent">Recently Updated</div>
+        <% end %>
+      </div>
     </section>
     <%= render '/shared/Components/divider', content: 'Lessons' %>
+
+
     <!--    LESSONS-->
-    <section class="min-w-full">
+    <section class="min-w-full ">
       <div class="bg-white shadow overflow-hidden rounded-md">
         <ul role="list" class="divide-y divide-gray-200 ">
           <!--        CREATE NEW LESSON-->
@@ -25,19 +44,27 @@
             </div>
           </li>
           <!--          List each associated lesson, if there are lessons -->
+
+          <% if @course.Ispremium? || @course.isarchived? %>
+            <% bg = "bg-gray-500 hover:bg-gray-700" %>
+          <% else %>
+            <% bg = "bg-blue-300 hover:bg-blue-600" %>
+          <% end %>
+
+
           <% if @course.lessons %>
             <% @course.lessons.each do |l| %>
-              <li class=" hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50 bg-blue-300">
+              <li class="  focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50  <%= bg %>">
                 <div class="no-underline text-black glass ">
                   <div class="w-full h-full px-6 py-4 flex flex-col justify-center items-center">
-                    <% if @course.Ispremium? %>
+                    <% if !@course.Ispremium? %>
                       <%= link_to l.title, lesson_path(l.id), class: "text-3xl" %>
                       <div class="flex items-center gap-5">
                         <%= render 'shared/Components/avatar', content: { user: l.user, path: user_path(l.user.id) } %>
                         <%= link_to "Edit", edit_lesson_path(l.id) %>
                       </div>
                   <% else %>
-                    <%= l.title %>
+                    <%= link_to l.title, lesson_path(l.id), class: 'text-3xl' %>
                     <%= render 'shared/Components/avatar', content: { user: l.user, path: user_path(l.user.id) } %>
                   <% end %>
                 </div>
