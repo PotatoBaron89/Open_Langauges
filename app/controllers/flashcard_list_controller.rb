@@ -54,9 +54,26 @@ class FlashcardListController < ApplicationController
   end
 
   def show
-    @pagy, @flashcards = pagy(Flashcard.where(flashcard_list: params[:id]).includes(:rich_text_side_one, :rich_text_side_two), items: 12)
+    @pagy, @flashcards = pagy(Flashcard.where(flashcard_list: params[:id]).includes(:rich_text_side_one, :rich_text_side_two), items: 24)
     @flashcard_list = FlashcardList.find(params[:id])
   end
+
+  def shuffle
+    # raise StandardError.new params
+    # @flashcard_list = FlashcardList.find(params[:flashcard_list_id])
+    # raise StandardError.new @flashcard_list.id
+    @pagy, @flashcards = pagy(Flashcard.where(flashcard_list: params[:flashcard_list_id]).includes(:rich_text_side_one, :rich_text_side_two), items: 24)
+
+
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: [
+          turbo_stream.update('flashcard_panel',
+                               partial: "shared/Components/flashcard_panel",
+                               locals: {body: @flashcards} )]
+        end
+      end
+    end
 
   private
 

@@ -2,48 +2,31 @@
   <div class="flex flex-col items-center mx-auto min-w-full bg-pink-50 p-5 rounded-3xl">
     <section class="p-5 bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-500 min-w-full rounded-lg m-5">
       <div class="rounded overflow-hidden shadow-lg rounded-b-md fd-cl p-5 bg-white">
-      <article  id="" class="">
-        <h1 class="font-extrabold text-3xl pb-5">Flashcard List: <%= @flashcard_list.title %></h1>
-      </article>
-
-    <%= render '/shared/Components/divider', content: 'Flashcards' %>
-
-
-    <div  id="" class="bg-white rounded-lg">
-      <turbo-frame  data-turbo="true" id="flashcard_form">
-    <%= render '/flashcards/form', flashcard: Flashcard.new, flashcard_list: @flashcard_list %>
-      </turbo-frame>
-    </div>
-    </div>
-    </section>
-
-
-
-
-<!--    FLASHCARD PREVIEW-->
-    <div class="bg-gray-700 rounded-t-xl pt-2 px-5"><%== pagy_bootstrap_nav(@pagy) %></div>
-    <div class="p-5 bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-500 min-w-full rounded-lg mb-5 mx-5">
-    <div class="btn glass hover:bg-indigo-300 mb-1">
-      <%= link_to "Back to Lesson", lesson_path(@flashcard_list.lesson.id) %>
-    </div>
-
-    <section class="w-full">
-      <div data-turbo="true" id="flashcards" class="divide-y divide-gray-200 w-full rounded-xl bg-gray-700 p-5  flex justify-center flex-wrap">
-          <% if @flashcards %>
-            <% @flashcards.each do |f|  %>
-              <div id="<%= dom_id f %>" class="flex-shrink">
-                <%= render 'shared/Components/flashcard', local: { side_one:
-                                                                     { body: f.side_one },
-                                                                   side_two:
-                                                                     { body: f.side_two},
-                                                                   delete: true,
-                                                                   edit: true, edit_path: edit_flashcard_list_path(f.id),
-                                                                   path: flashcard_list_path(f.id)} %>
-              </div>
-            <% end %>
-          <% end %>
+        <article  id="" class="">
+          <h1 class="font-extrabold text-3xl pb-5">Flashcard List: <%= @flashcard_list.title %></h1>
+        </article>
+        <%= render '/shared/Components/divider', content: 'Flashcards' %>
+        <div  id="" class="bg-white rounded-lg">
+          <turbo-frame  data-turbo="true" id="flashcard_form">
+            <%= render '/flashcards/form', flashcard: Flashcard.new, flashcard_list: @flashcard_list %>
+          </turbo-frame>
+        </div>
       </div>
     </section>
-  </div>
+    <!--    FLASHCARD PREVIEW-->
+    <div class="bg-gray-700 rounded-t-xl pt-2 px-5"><%== pagy_bootstrap_nav(@pagy) %></div>
+    <div class="p-5 bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-500 min-w-full rounded-lg mb-5 mx-5">
+      <div class="flex gap-2">
+        <div class="btn glass hover:bg-indigo-300 mb-1">
+          <%= link_to "Back to Lesson", lesson_path(@flashcard_list.lesson.id) %>
+        </div>
+        <turbo-frame  data-turbo="true" id="shuffle_button" class="">
+          <%= button_to  "Shuffle", flashcard_list_shuffle_cards_path(@flashcard_list.id), method: :post, content: "dummy", class: "p-0 bg-transparent btn glass hover:bg-indigo-300 mb-1" %>
+        </turbo-frame>
+      </div>
+      <div id="flashcard_panel">
+        <%= render  'shared/Components/flashcard_panel' %>
+      </div>
+    </div>
   </div>
 </div>

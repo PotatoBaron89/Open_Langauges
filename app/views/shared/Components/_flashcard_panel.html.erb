@@ -1,0 +1,22 @@
+<% if local_assigns %>
+  <% flashcards = local_assigns[:body] %>
+<% end %>
+
+<section class="w-full">
+  <div data-turbo="true" id="flashcards" class="divide-y divide-gray-200 w-full rounded-xl bg-gray-700 p-5  flex justify-center flex-wrap">
+    <% if @flashcards %>
+      <% flashcards = @flashcards.shuffle %>
+      <% flashcards.each do |f|  %>
+        <div id="<%= dom_id f %>" class="flex-shrink">
+          <%= render 'shared/Components/flashcard', local: { side_one:
+                                                               { body: f.side_one },
+                                                             side_two:
+                                                               { body: f.side_two},
+                                                             delete: true,
+                                                             edit: true, edit_path: edit_flashcard_list_path(f.id),
+                                                             path: flashcard_list_path(f.id)} %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</section>

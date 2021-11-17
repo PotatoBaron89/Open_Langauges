@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   resources :lesson_results
   resources :questions
   resources :quizzes
-  resources :flashcard_list
+  resources :flashcard_list do
+    post '/shuffle_cards', to: 'flashcard_list#shuffle'
+  end
   resources :channels do
     resource :channel_user
     resources :messages
