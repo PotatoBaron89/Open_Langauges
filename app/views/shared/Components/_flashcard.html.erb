@@ -1,13 +1,13 @@
 <div class="flip-card h-full w-full">
   <div class="flip-card-inner">
-    <article class="flip-card-front flex justify-center items-center">
+    <article class="flip-card-front font-variant-numeric text-xl ordinal align-middle stacked-fractions subpixel-antialiased font-sans  tracking-wider bg-gray-800 text-white flex justify-center items-center">
       <% if local[:path] %>
         <% local[:side_one].each do |item| %>
-          <strong><%= item[1] %></strong>
+          <strong class=" stacked-fractions subpixel-antialiased"><%= item[1] %></strong>
         <% end %>
       <% end %>
     </article>
-    <article class="flip-card-back flex justify-center items-center">
+    <article class="flip-card-back text-xl ordinal align-middle  font-sans  tracking-wider bg-blue-400 text-white flex justify-center items-center">
       <% if local[:path] %>
         <% local[:side_two].each do |item| %>
           <strong><%= item[1] %></strong>

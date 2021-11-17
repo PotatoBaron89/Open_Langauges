@@ -54,7 +54,7 @@ class FlashcardListController < ApplicationController
   end
 
   def show
-    @pagy, @flashcards = pagy(Flashcard.where(flashcard_list: params[:id]).includes(:rich_text_side_one, :rich_text_side_two), items: 6)
+    @pagy, @flashcards = pagy(Flashcard.where(flashcard_list: params[:id]).includes(:rich_text_side_one, :rich_text_side_two), items: 12)
     @flashcard_list = FlashcardList.find(params[:id])
   end
 

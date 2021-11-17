@@ -21,7 +21,9 @@
 <!--    FLASHCARD PREVIEW-->
     <div class="bg-gray-700 rounded-t-xl pt-2 px-5"><%== pagy_bootstrap_nav(@pagy) %></div>
     <div class="p-5 bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-500 min-w-full rounded-lg mb-5 mx-5">
-
+    <div class="btn glass hover:bg-indigo-300 mb-1">
+      <%= link_to "Back to Lesson", lesson_path(@flashcard_list.lesson.id) %>
+    </div>
 
     <section class="w-full rounded-xl bg-gray-700 p-5  flex justify-center flex-wrap">
 
