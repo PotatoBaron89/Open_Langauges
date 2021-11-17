@@ -17,13 +17,17 @@ class LessonsController < ApplicationController
 
   def register
     ClassList.create!(user_id:@current_user.id, course_id: params[:lesson_id])
-    redirect_to course_path(params[:lesson_id])
+    redirect_to course_path(params[:lesson_id]), notice: "Successfully enrolled"
+  end
+
+  def paid_register
+    redirect_to course_path(params[:lesson_id]), notice: "Featured not implemented yet"
   end
 
   def cancel
     registration = ClassList.where(user_id:@current_user.id, course_id: params[:lesson_id])
     registration.destroy_all
-    redirect_to course_path(params[:lesson_id])
+    redirect_to course_path(params[:lesson_id]), notice: "Successfully Unenrolled"
   end
 
   # GET /lessons/new

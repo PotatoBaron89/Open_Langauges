@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :flashcards
   resources :lessons do
     post '/register', to: 'lessons#register'
+    post '/paid_register', to: 'lessons#paid_register'
     delete'/cancel', to: 'lessons#cancel'
   end
 

@@ -10,11 +10,14 @@
       <div class="border-2 border-purple-300 bg-blue-500 drop-shadow-xl hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50 w-max  px-5 rounded-xl my-2">
         <%= render 'shared/Components/avatar', content: { user: course.user, path: user_path(course.user.id) } %>
       </div>
-      <div class="btn btn-secondary btn-wide mt-1">
+      <div class="relative btn btn-primary btn-wide mt-1 flex flex-col gap-2">
         <% if @current_user.enrolled?(@current_user.id, @course.id) %>
           <%= link_to "Unenroll", lesson_cancel_path(@course.id), method: :delete %>
         <% elsif !@course.Ispremium && !@course.isarchived %>
           <%= link_to "Enrol", lesson_register_path(@course.id), method: :post %>
+        <% elsif @course.Ispremium%>
+          <%= link_to "Enrol", lesson_paid_register_path(@course.id), method: :post %>
+          <div class="absolute bottom-0 left-0 badge badge-primary">Cost: $<%= @course.price %> USD</div>
         <% else %>
           <%= "Registrations closed" %>
         <% end %>
