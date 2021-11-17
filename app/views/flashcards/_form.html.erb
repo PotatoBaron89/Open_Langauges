@@ -1,15 +1,9 @@
-<%= form_with(model: flashcard, class: "contents") do |form| %>
-  <% if flashcard.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(flashcard.errors.count, "error") %> prohibited this flashcard from being saved:</h2>
+<% if @flashcard %>
+  <% flashcard = Flashcard.new %>
+<% end %>
 
-      <ul>
-        <% flashcard.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+
+<%= form_with(model: flashcard, class: "contents") do |form| %>
 
   <div class="my-5 hidden">
     <%= form.label :flashcard_list_id %>
