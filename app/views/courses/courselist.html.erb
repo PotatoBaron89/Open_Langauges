@@ -3,12 +3,19 @@
 <!--    Broken, haven't figured out why-->
 <!--    undefined method `total_pages' for #<ActiveRecord::Relation-->
 <!--    SEARCHBAR-->
-    <%= render '/shared/Components/search_bar', path: course_list_path, options: @options %>
-    <%== pagy_bootstrap_nav(@pagy) %>
-    <div class="">
+
+    <div class="flex items-center flex-col">
+      <div>
+        <%= render '/shared/Components/search_bar', path: course_list_path, options: @options %>
+      </div>
+      <div class=" w-max px-5 pt-2 rounded-xl bg-gray-600">
+      <%== pagy_bootstrap_nav(@pagy) %>
+      </div>
+
     </div>
 
-    <div class="flex flex-col gap-3">
+    <div class="flex items-center justify-center flex-wrap gap-3">
+
       <% admin = @current_user.has_role? :admin %>
       <% @courses.each do |c| %>
         <%= render 'courses/course_card', course: c, link: course_path(c), admin: :admin %>

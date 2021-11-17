@@ -14,17 +14,25 @@
         <% if @current_user.enrolled?(@current_user.id, @course.id) %>
           <%= link_to "Unenroll", lesson_cancel_path(@course.id), method: :delete %>
         <% elsif !@course.Ispremium && !@course.isarchived %>
-          <%= link_to "Enrol", lesson_register_path(@course.id), method: :post %>
+          <div class="flex gap-4">
+           <i class="fas fa-sign-in-alt"></i>
+            <%= link_to "Enrol", lesson_register_path(@course.id), method: :post %>
+          </div>
         <% elsif @course.Ispremium%>
-          <%= link_to "Enrol", lesson_paid_register_path(@course.id), method: :post %>
-          <div class="absolute bottom-0 left-0 badge badge-primary">Cost: $<%= @course.price %> USD</div>
+          <div class="flex gap-4">
+          <i class="far fa-credit-card"></i>
+            <%= link_to "Enrol", lesson_paid_register_path(@course.id), method: :post %>
+            <div class="absolute bottom-0 left-0 badge badge-primary">Cost: $<%= @course.price %> USD</div>
+          </div>
         <% else %>
-          <%= "Registrations closed" %>
+          <div class="flex gap-3"><i class="fas fa-lock"></i><%= "Registrations closed" %></div>
         <% end %>
       </div>
     </div>
     <% if @course.Ispremium? || @course.isarchived? %>
-      <div class="absolute top-0 left-0 flex mt-3 ml-12 gap-1 badge text-white flex-grow-0 py-1 px-3 w-max bg-gray-800 rounded-xl">You currently do not have access to this Course.</div>
+      <div class="absolute top-0 left-0 flex mt-3 ml-12 gap-1 badge text-white flex-grow-0 py-1 px-3 w-max bg-gray-800 rounded-xl flex gap-5">
+        <i class="fas fa-lock"></i>
+        You currently do not have access to this Course.</div>
     <% end %>
     <% if action_name != "show" %>
       <%= link_to "Show this course", course, class: "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
