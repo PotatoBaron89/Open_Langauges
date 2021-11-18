@@ -71,8 +71,6 @@ M
 .app/views/shared/_simple_card_w_title.html.erb,2\7\2727310d90387e16f967b6d93eb5c9903e23859e
 M
 app/views/users/show.html.erb,6\8\68cf7821b7096974273803f96c10233fd50dbf5d
-i
-9app/views/shared/Components/_current_user_avatar.html.erb,7\6\763fe6b191562d5a2ac70d9006c4c1363055e3f0
 `
 0app/views/shared/Components/_pagination.html.erb,e\4\e49bd65cb44fd1eee9af782ddabd0390ab6405f9
 P

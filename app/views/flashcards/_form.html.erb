@@ -1,25 +1,19 @@
 <% if @flashcard %>
   <% flashcard = Flashcard.new %>
 <% end %>
-
-
 <%= form_with(model: flashcard, class: "contents") do |form| %>
-
   <div class="my-5 hidden">
     <%= form.label :flashcard_list_id %>
     <%= form.collection_select :flashcard_list_id, [@flashcard_list], :id, :title, { value: :id }, selected: :id, class: "border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" %>
   </div>
-
   <div class="my-5">
     <%= form.label :side_one %>
     <%= form.rich_text_area :side_one, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
-
   <div class="my-5">
     <%= form.label :side_two %>
     <%= form.rich_text_area :side_two, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
-
   <div class="inline">
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium" %>
   </div>

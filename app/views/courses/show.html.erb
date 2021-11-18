@@ -10,9 +10,6 @@
     <!--    COURSE INFO-->
     <section class="relative min-w-full">
       <%= render @course %>
-
-
-
       <!--    TAGS-->
       <div class="absolute top-0 right-0 flex mt-3 mr-12 gap-1 ">
         <% if @course.isarchived? %>
@@ -28,9 +25,13 @@
         <% end %>
       </div>
     </section>
+    <%= render '/shared/Components/divider', content: 'Navigation' %>
+    <nav class="flex justify-center gap-3">
+      <%= link_to 'Edit this course', edit_course_path(@course), class: "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+      <%= button_to 'Delete this course', course_path(@course), method: :delete, data: { confirm: "Are you sure you want to delete this course?" }, class: "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+      <%= link_to 'Back to courses', courses_path, class: "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+    </nav>
     <%= render '/shared/Components/divider', content: 'Lessons' %>
-
-
     <!--    LESSONS-->
     <section class="min-w-full ">
       <div class="bg-white shadow overflow-hidden rounded-md">
@@ -44,14 +45,11 @@
             </div>
           </li>
           <!--          List each associated lesson, if there are lessons -->
-
           <% if @course.Ispremium? || @course.isarchived? %>
             <% bg = "bg-gray-500 hover:bg-gray-700" %>
           <% else %>
             <% bg = "bg-blue-300 hover:bg-blue-600" %>
           <% end %>
-
-
           <% if @course.lessons %>
             <% @course.lessons.each do |l| %>
               <li class="  focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50  <%= bg %>">
@@ -63,17 +61,17 @@
                         <%= render 'shared/Components/avatar', content: { user: l.user, path: user_path(l.user.id) } %>
                         <%= link_to "Edit", edit_lesson_path(l.id) %>
                       </div>
-                  <% else %>
-                    <%= link_to l.title, lesson_path(l.id), class: 'text-3xl' %>
-                    <%= render 'shared/Components/avatar', content: { user: l.user, path: user_path(l.user.id) } %>
-                  <% end %>
+                    <% else %>
+                      <%= link_to l.title, lesson_path(l.id), class: 'text-3xl' %>
+                      <%= render 'shared/Components/avatar', content: { user: l.user, path: user_path(l.user.id) } %>
+                    <% end %>
+                  </div>
                 </div>
-              </div>
-            </li>
+              </li>
+            <% end %>
           <% end %>
-        <% end %>
-      </ul>
-    </div>
+        </ul>
+      </div>
     </section>
     <%= render '/shared/Components/divider', content: 'Further Information' %>
     <!--    FURTHER INFO-->
@@ -98,12 +96,6 @@
           <% end %>
         </ul>
       <% end %>
-      <div class="mt-12"></div>
-      <%= link_to 'Edit this course', edit_course_path(@course), class: "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
-      <div class="inline-block ml-2">
-        <%= button_to 'Delete this course', course_path(@course), method: :delete, data: { confirm: "Are you sure you want to delete this course?" }, class: "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
-      </div>
-      <%= link_to 'Back to courses', courses_path, class: "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
     </div>
   </div>
 </div>

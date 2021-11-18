@@ -59,11 +59,8 @@ class FlashcardListController < ApplicationController
   end
 
   def shuffle
-    # raise StandardError.new params
-    # @flashcard_list = FlashcardList.find(params[:flashcard_list_id])
-    # raise StandardError.new @flashcard_list.id
+    # Need to figure out how to properly cache data so we don't need to requery the data each shuffle
     @pagy, @flashcards = pagy(Flashcard.where(flashcard_list: params[:flashcard_list_id]).includes(:rich_text_side_one, :rich_text_side_two), items: 24)
-
 
     respond_to do |format|
       format.turbo_stream do
