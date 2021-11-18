@@ -1,6 +1,4 @@
 
-Z
-*app/controllers/static_pages_controller.rb,e\4\e411ad7eefd53bf4aa08f4a552ee9cbdb8f5a0f2
 ^
 .app/views/static_pages/privacy_policy.html.erb,9\1\9150119dd3f7f3c5683931b3b45fa78c16242f6f
 [
@@ -59,8 +57,6 @@ S
 #app/views/users/index.json.jbuilder,6\d\6dd560d81019fc8c1a60b9224987b22ae6242b38
 M
 app/views/users/edit.html.erb,f\3\f341a6263d9803e768a000b11a0a610ffacae2eb
-^
-.app/views/shared/_simple_card_w_title.html.erb,2\7\2727310d90387e16f967b6d93eb5c9903e23859e
 `
 0app/views/shared/Components/_pagination.html.erb,e\4\e49bd65cb44fd1eee9af782ddabd0390ab6405f9
 R
