@@ -20,17 +20,15 @@ class CoursesController < ApplicationController
   # GET /courses/new
   def new
     @course = Course.new
+    authorize @course
 
     # May want to add options later to pass in more options. Don't want to pass in entire list of users, however.
     # For now just provide current user.
     @user = [current_user]
-    # @user = User.all
   end
 
   def courselist
     @options = ["title" , "contents"]
-
-
     if params[:search]
       @pagy, @courses = pagy(Course.where("#{params[:options]} LIKE ?", "%#{params[:search]}%")
                    .includes(:rich_text_contents, cover_image_attachment: :blob, user: [:image_attachment] ))
@@ -38,15 +36,11 @@ class CoursesController < ApplicationController
       @pagy, @courses = pagy(Course.all.order(created_at: :desc)
                    .includes(:rich_text_contents, cover_image_attachment: :blob, user: [image_attachment: :blob] ))
     end
-
-
-
-    # @q = Course.ransack(params[:q])
-    # @courses = @q.result(distinct: true)
   end
 
   # GET /courses/1/edit
   def edit
+    authorize @course
     @user = [current_user]
   end
 
@@ -69,7 +63,7 @@ class CoursesController < ApplicationController
 
   # PATCH/PUT /courses/1 or /courses/1.json
   def update
-
+    authorize @course
     respond_to do |format|
       if @course.update(course_params)
         format.html { redirect_to course_list_path, notice: "Course was successfully updated." }
@@ -83,6 +77,7 @@ class CoursesController < ApplicationController
 
   # DELETE /courses/1 or /courses/1.json
   def destroy
+    authorize @course
     @course.destroy
     respond_to do |format|
       format.html { redirect_to courses_url, notice: "Course was successfully destroyed." }

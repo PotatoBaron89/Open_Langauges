@@ -89,3 +89,5 @@ gem "font-awesome-rails", "~> 4.7"
 # TEMP INCLUDE FOLLOWING IN PRODUCTION
 gem "faker"
 
+
+gem "pundit", "~> 2.1"

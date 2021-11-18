@@ -32,20 +32,27 @@ class LessonsController < ApplicationController
 
   # GET /lessons/new
   def new
-    @lesson = Lesson.new
-
-    @user = [current_user]
     if params[:format]
-      @course = [Course.find(params[:format])]
+      @lesson = Lesson.new(course_id: params[:format])
+      authorize @lesson
+
+      @user = [current_user]
+      if params[:format]
+        @course = [Course.find(params[:format])]
+      else
+        redirect_to course_list_path, notice: "Cannot create a Lesson that isn't attached to a course"
+      end
     else
-      redirect_to course_list_path, notice: "Cannot create a Lesson that isn't attached to a lesson"
+      redirect_to course_list_path, notice: "Lessons can only be created from within Course page"
     end
+
   end
 
 
 
   # GET /lessons/1/edit
   def edit
+    authorize @lesson
     @user = [current_user]
     @course = [Course.find(@lesson.course.id)]
   end
@@ -56,6 +63,7 @@ class LessonsController < ApplicationController
   def create
     @user = [current_user]
     @lesson = Lesson.new(lesson_params)
+    authorize @lesson
 
     respond_to do |format|
       if @lesson.save
@@ -73,6 +81,7 @@ class LessonsController < ApplicationController
 
   # PATCH/PUT /lessons/1 or /lessons/1.json
   def update
+    authorize @lesson
     respond_to do |format|
       if @lesson.update(lesson_params)
         format.html { redirect_to @lesson, notice: "Lesson was successfully updated." }
@@ -87,6 +96,7 @@ class LessonsController < ApplicationController
 
   # DELETE /lessons/1 or /lessons/1.json
   def destroy
+    authorize @lesson
     @lesson.destroy
     respond_to do |format|
       format.html { redirect_to lessons_url, notice: "Lesson was successfully destroyed." }

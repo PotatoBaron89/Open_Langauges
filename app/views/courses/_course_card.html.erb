@@ -1,4 +1,4 @@
-<% if !course.isarchived? || (admin) %>
+<% if !course.isarchived? or @current_user.has_role? :admin %>
   <div class=" md:max-w-2xl flex items-center flex-wrap w-full px-4 py-10 bg-cover rounded-xl glass max-h-48" style="background-image:url(https://images.unsplash.com/photo-1557683311-eac922347aa1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1129&q=80/1000/300)">
     <div class="flex-col md:flex-row flex-wrap card glass card-side text-neutral-content w-full justify-around h-36 md:h-42">
       <!--      COURSE IMAGE-->
