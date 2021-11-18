@@ -53,10 +53,6 @@ M
 .config/initializers/content_security_policy.rb,1\1\114e2cbb4b8f1d6fd040739efe38b2b28967b2c8
 Z
 *config/initializers/backtrace_silencers.rb,d\c\dc36c09098c6d4610258b459137d99566bcc6979
-@
-config/cable.yml,4\4\44bb44c06ebf3546d3fa0b6c4fc0a4d3bd160834
-Q
-!config/environments/production.rb,4\a\4a310e0d78d1faa88d49084f8149abd3441b1f25
 K
 config/environments/test.rb,f\5\f52903eb564521c5ab86ad6edd6582a3b5f15b2f
 S

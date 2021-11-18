@@ -91,3 +91,5 @@ gem "faker"
 
 
 gem "pundit", "~> 2.1"
+
+gem "exception_notification", "~> 4.4"

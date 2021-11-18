@@ -117,4 +117,14 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+  #
+  #
+  # EXCEPTION NOTIFICATION
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+                                          email: {
+                                            deliver_with: :deliver, # Rails >= 4.2.1 do not need this option since it defaults to :deliver_now
+                                            email_prefix: '[PREFIX] ',
+                                            sender_address: %{"Open_Languages Error" <support@open_languages.com>},
+                                            exception_recipients: %w{samboy29@gmail.com}
+                                          }
 end

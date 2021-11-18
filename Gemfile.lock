@@ -114,6 +114,9 @@ GEM
       railties (>= 3.2)
     erubi (1.10.0)
     erubis (2.7.0)
+    exception_notification (4.4.3)
+      actionmailer (>= 4.0, < 7)
+      activesupport (>= 4.0, < 7)
     faker (2.19.0)
       i18n (>= 1.6, < 2)
     faraday (1.8.0)
@@ -362,6 +365,7 @@ DEPENDENCIES
   byebug
   devise (~> 4.8)
   dotenv-rails
+  exception_notification (~> 4.4)
   faker
   font-awesome-rails (~> 4.7)
   geocoder

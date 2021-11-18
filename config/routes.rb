@@ -20,11 +20,7 @@ Rails.application.routes.draw do
 
   resources :words
   resources :flashcards
-  resources :lessons do
-    post '/register', to: 'lessons#register'
-    post '/paid_register', to: 'lessons#paid_register'
-    delete'/cancel', to: 'lessons#cancel'
-  end
+
 
   resources :definitions
 
@@ -46,6 +42,11 @@ Rails.application.routes.draw do
   resources :organisations
   resources :courses
   get '/course/list', to: 'courses#courselist'
+  resources :lessons do
+    post '/register', to: 'lessons#register'
+    post '/paid_register', to: 'lessons#paid_register'
+    delete'/cancel', to: 'lessons#cancel'
+  end
 
   # SOCIAL
   resources :likes, only: [ :create, :destroy ]
