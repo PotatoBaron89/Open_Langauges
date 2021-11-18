@@ -3,7 +3,7 @@
 
 Rails.application.routes.draw do
 
-
+  resources :youtube, only: :show
   resources :results
   resources :lesson_results
   resources :questions

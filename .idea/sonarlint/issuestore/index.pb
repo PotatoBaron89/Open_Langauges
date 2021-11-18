@@ -57,8 +57,6 @@ K
 config/environments/test.rb,f\5\f52903eb564521c5ab86ad6edd6582a3b5f15b2f
 S
 #app/views/users/index.json.jbuilder,6\d\6dd560d81019fc8c1a60b9224987b22ae6242b38
-E
-config/application.rb,7\f\7ff7049c1c8745b54f0a9ef78996f60b38f36268
 M
 app/views/users/edit.html.erb,f\3\f341a6263d9803e768a000b11a0a610ffacae2eb
 ^
