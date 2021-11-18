@@ -61,22 +61,14 @@ K
 config/environments/test.rb,f\5\f52903eb564521c5ab86ad6edd6582a3b5f15b2f
 S
 #app/views/users/index.json.jbuilder,6\d\6dd560d81019fc8c1a60b9224987b22ae6242b38
-N
-app/views/users/_form.html.erb,6\0\609b2a98004a46d75f0bbcdce0cfdaca785a1f99
 E
 config/application.rb,7\f\7ff7049c1c8745b54f0a9ef78996f60b38f36268
 M
 app/views/users/edit.html.erb,f\3\f341a6263d9803e768a000b11a0a610ffacae2eb
 ^
 .app/views/shared/_simple_card_w_title.html.erb,2\7\2727310d90387e16f967b6d93eb5c9903e23859e
-M
-app/views/users/show.html.erb,6\8\68cf7821b7096974273803f96c10233fd50dbf5d
 `
 0app/views/shared/Components/_pagination.html.erb,e\4\e49bd65cb44fd1eee9af782ddabd0390ab6405f9
-P
- app/views/users/account.html.erb,9\1\910c77bdfc62233dfd1bf5a61bfa7478e7fc8a4d
-V
-&app/views/users/_account_form.html.erb,1\b\1bba7e2607fcae108ff216f1f554b24d896e48cd
 R
 "app/views/words/_add_word.html.erb,5\6\56197b854f5c393808211e5775e4b0cc1419605b
 ^

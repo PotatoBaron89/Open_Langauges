@@ -3,15 +3,15 @@ class LessonsController < ApplicationController
 
   # GET /lessons or /lessons.json
   def index
-
+    # Include course[:user], used to check permissions, rich content, used to display text, user:image < user avatars
     @pagy, @lessons = pagy(Lesson.all
-                 .includes(:rich_text_content, user: [:image_attachment]))
+                 .includes(:rich_text_content, course: [:user], user: [:image_attachment]))
     @user = current_user
   end
 
   # GET /lessons/1 or /lessons/1.json
   def show
-    @user = current_user
+    # Get list of quizzes and paginate them, default 20 per page.
     @pagy, @quizzes = pagy(Quiz.where(lesson_id: params[:id]).all)
   end
 
@@ -25,6 +25,7 @@ class LessonsController < ApplicationController
   end
 
   def cancel
+    # Find current registration and delete it
     registration = ClassList.where(user_id:@current_user.id, course_id: params[:lesson_id])
     registration.destroy_all
     redirect_to course_path(params[:lesson_id]), notice: "Successfully Unenrolled"
@@ -32,6 +33,8 @@ class LessonsController < ApplicationController
 
   # GET /lessons/new
   def new
+    authorize @lesson
+
     if params[:format]
       @lesson = Lesson.new(course_id: params[:format])
       authorize @lesson

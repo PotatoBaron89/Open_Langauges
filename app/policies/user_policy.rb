@@ -6,27 +6,32 @@ class UserPolicy < ApplicationPolicy
   end
 
   def edit?
-    @user.has_role? :admin || @record.user_id == @user.id
+    @user.has_role? :admin
   end
 
   def index?
-    true
+    # Only admins can see all users for privacy reasons
+    @user.has_role? :admin
   end
 
   def show?
-    true
+    @user.has_role? :admin or @record.id == @user.id
   end
 
   def create?
-    true
+    false
   end
 
   def new?
-    true
+    false
   end
 
   def update?
     @user.has_role? :admin || @record.user_id == @user.id
+  end
+
+  def account?
+    @record.id == @user.id
   end
 
   def destroy?

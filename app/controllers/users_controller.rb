@@ -13,27 +13,32 @@ class UsersController < ApplicationController
   # GET /users/1 or /users/1.json
   def show
     @user = User.find(params[:id])
+    authorize @user
   end
 
   # GET /users/new
   def new
     @user = User.new
+    authorize @user
   end
 
   def account
     @user = User.find(current_user[:id])
     @timezones = ActiveSupport::TimeZone.all
+    authorize @user
   end
 
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
     @timezones = ActiveSupport::TimeZone.all
+    authorize @user
   end
 
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
+    authorize @user
 
     respond_to do |format|
       if @user.save
