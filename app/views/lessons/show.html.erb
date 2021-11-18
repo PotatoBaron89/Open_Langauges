@@ -8,8 +8,10 @@
         <%= render @lesson %>
         <!--    CREATE QUIZZES, IGNORE PARTIAL NANE, NEEDS REFACTORING-->
         <nav class="flex justify-center gap-2 mt-2">
-          <%= link_to 'Edit this lesson', edit_lesson_path(@lesson), class: "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
-          <%= button_to 'Delete this lesson', lesson_path(@lesson), method: :delete, data: { confirm: "Are you sure you want to delete this lesson?" }, class: "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+          <% if policy(@lesson).edit? %>
+            <%= link_to 'Edit this lesson', edit_lesson_path(@lesson), class: "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+            <%= button_to 'Delete this lesson', lesson_path(@lesson), method: :delete, data: { confirm: "Are you sure you want to delete this lesson?" }, class: "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+          <% end %>
           <%= link_to 'Back to lessons', lessons_path, class: "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
           <%= link_to 'Back to Course', course_path(@lesson.course.id), class: "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
         </nav>
@@ -20,11 +22,13 @@
           <% end %>
         </section>
         <%= render '/shared/Components/divider', content: 'Quizzes' %>
-        <div class="p-1 bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-500 w-42 rounded-xl">
-          <div class="rounded overflow-hidden shadow-lg rounded-b-md fd-cl p-1 text-lg flex justify-center w-full rounded-xl  bg-gray-700  text-2xl py-3">
-            <%= render '/quizzes/form', flashcard_list: Quiz.new, lesson: @lesson %>
+        <% if policy(@lesson).edit? %>
+          <div class="p-1 bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-500 w-42 rounded-xl">
+            <div class="rounded overflow-hidden shadow-lg rounded-b-md fd-cl p-1 text-lg flex justify-center w-full rounded-xl  bg-gray-700  text-2xl py-3">
+              <%= render '/quizzes/form', flashcard_list: Quiz.new, lesson: @lesson %>
+            </div>
           </div>
-        </div>
+        <% end %>
         <div class="p-1 bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-500 w-42 rounded-xl">
           <div class="rounded overflow-hidden shadow-lg rounded-b-md fd-cl p-1 text-lg flex justify-center w-full rounded-xl  bg-gray-700 text-white text-2xl py-3">
             Quiz Lists
@@ -47,9 +51,11 @@
         </ul>
         <!--    CREATE FLASHCARD LIST-->
         <%= render '/shared/Components/divider', content: 'Flashcard Lists' %>
-        <div  id="" class="">
-          <%= render '/flashcard_list/form', flashcard_list: FlashcardList.new, lesson: @lesson %>
-        </div>
+        <% if policy(@lesson).edit? %>
+          <div  id="" class="">
+            <%= render '/flashcard_list/form', flashcard_list: FlashcardList.new, lesson: @lesson %>
+          </div>
+          <% end %>
         <div class="p-1 bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-500 w-42 rounded-xl">
           <div class="rounded overflow-hidden shadow-lg rounded-b-md fd-cl p-1 text-lg flex justify-center w-full rounded-xl  bg-gray-700 text-white text-2xl py-3">
             Flashcard Lists
