@@ -1,4 +1,6 @@
 class RolesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     redirect_to admin_roles_path
   end

@@ -10,7 +10,7 @@
 
     <ul data-turbo="true" id="question_list" class="divide-y divide-gray-200 pt-3">
       <% if @quiz.questions %>
-        <% @quiz.questions.each do |f|  %>
+        <% @quiz.questions.shuffle.each do |f|  %>
           <div id="<%= dom_id f %>">
             <%= render 'questions/question_prompt', local: { side_one:
                                                                  { body: f.question },
