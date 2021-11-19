@@ -6,7 +6,7 @@ class QuestionPolicy < ApplicationPolicy
   end
 
   def edit?
-    @user.has_role? :admin || @record.user_id == @user.id
+    @user.has_role? :admin or Question.find(@record.id).quiz.lesson.user_id == @user.id
   end
 
   # User doesn't need index or show, it is rendered from within Lessons for them to view
@@ -15,7 +15,7 @@ class QuestionPolicy < ApplicationPolicy
   end
 
   def show?
-    @user.has_role? :admin
+    @user.has_role? :admin or Question.find(@record.id).quiz.lesson.user_id == @user.id
   end
 
   def create?
@@ -27,10 +27,10 @@ class QuestionPolicy < ApplicationPolicy
   end
 
   def update?
-    @user.has_role? :admin || @record.user_id == @user.id
+    @user.has_role? :admin or Question.find(@record.id).quiz.lesson.user_id == @user.id
   end
 
   def destroy?
-    @user.has_role? :admin || @record.user_id == @user.id
+    @user.has_role? :admin or Question.find(@record.id).quiz.lesson.user_id == @user.id
   end
 end

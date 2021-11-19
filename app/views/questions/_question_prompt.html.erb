@@ -62,6 +62,10 @@
             </div>
             <%= form.label :Your_Answer %>
             <%= form.submit "Submit", class: "ml-2 rounded-lg py-1 px-5 bg-blue-600 text-white inline-block font-medium" %>
+            <% if policy(local_assigns[:local][:question]).edit? %>
+              <%= link_to "Edit", edit_question_path(local_assigns[:local][:question][:id]), class: "text-center ml-2 rounded-lg py-1 px-5 bg-green-600 text-white inline-block font-medium"  %>
+              <%= link_to "Delete", question_path(local_assigns[:local][:question][:id]), class: "ml-2 rounded-lg py-1 px-5 bg-red-600 text-white inline-block font-medium", method: :delete  %>
+            <% end %>
 
           </div>
           <%= form.text_area :user_answer, class: "w-full block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
