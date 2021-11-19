@@ -1,12 +1,35 @@
 <div class="w-full flex min-h-screen ">
-  <div class=" min-w-full bg-pink-50 p-5 rounded-3xl">
+
+  <div id="lesson_anchor" class="relative min-w-full bg-pink-50 p-5 rounded-3xl">
+    <!--    PAGE ANCHORS TOP OF PAGE-->
+    <div class="absolute top-0 left-0 flex mt-3 mr-12 gap-1 ml-5 ">
+      <div class="flex flex-wrap flex-shrink ">
+        <a href="#quiz_anchor"><span class="px-2 bg-white text-sm text-gray-500 p-1 w-48 rounded-full flex justify-center border-2">
+        Quizzes
+      </span></a>
+        <a href="#flashcard_anchor"><span class="px-2 bg-white text-sm text-gray-500 p-1 w-48 rounded-full flex justify-center border-2">
+        Flashcards
+      </span></a>
+      </div>
+    </div>
+<!--    PAGE ANCHORS BOTTOM OF PAGE-->
+    <div class="absolute bottom-0 left-0 flex mt-3 mr-12 gap-1 ml-5 ">
+      <div class="flex flex-wrap flex-shrink ">
+        <a href="#quiz_anchor"><span class="px-2 bg-white text-sm text-gray-500 p-1 w-48 rounded-full flex justify-center border-2">
+        Quizzes
+      </span></a>
+        <a href="#lesson_anchor"><span class="px-2 bg-white text-sm text-gray-500 p-1 w-48 rounded-full flex justify-center border-2">
+        Top
+      </span></a>
+      </div>
+    </div>
     <div data-turbo="true" class="mx-auto  w-full flex">
       <div class="w-full" >
         <% if notice.present? %>
           <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
         <% end %>
         <%= render @lesson %>
-        <!--    CREATE QUIZZES, IGNORE PARTIAL NANE, NEEDS REFACTORING-->
+<!--SUB NAVIGATION OPTIONS EDIT DELETE BACK TO COURSES BACK TO LESSON-->
         <nav class="flex justify-center gap-2 mt-2">
           <% if policy(@lesson).edit? %>
             <%= link_to 'Edit this lesson', edit_lesson_path(@lesson), class: "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
@@ -16,15 +39,17 @@
           <%= link_to 'Back to Course', course_path(@lesson.course.id), class: "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
         </nav>
         <%= render '/shared/Components/divider', content: 'Lesson Index' %>
+<!--        LIST COURSE LESSONS + LINKS-->
         <section class="flex flex-wrap flex-shrink flex-grow w-full gap-2">
           <% @lesson.course.lessons.each do |lesson| %>
             <%= render 'lessons/mini_lesson_card', locals: lesson %>
           <% end %>
         </section>
+<!--        QUIZZES-->
         <%= render '/shared/Components/divider', content: 'Quizzes' %>
         <% if policy(@lesson).edit? %>
           <div class="p-1 bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-500 w-42 rounded-xl">
-            <div class="rounded overflow-hidden shadow-lg rounded-b-md fd-cl p-1 text-lg flex justify-center w-full rounded-xl  bg-gray-700  text-2xl py-3">
+            <div id="quiz_anchor" class="rounded overflow-hidden shadow-lg rounded-b-md fd-cl p-1 text-lg flex justify-center w-full rounded-xl  bg-gray-700  text-2xl py-3">
               <%= render '/quizzes/form', flashcard_list: Quiz.new, lesson: @lesson %>
             </div>
           </div>
@@ -52,7 +77,7 @@
         <!--    CREATE FLASHCARD LIST-->
         <%= render '/shared/Components/divider', content: 'Flashcard Lists' %>
         <% if policy(@lesson).edit? %>
-          <div  id="" class="">
+          <div  id="flashcard_anchor" class="">
             <%= render '/flashcard_list/form', flashcard_list: FlashcardList.new, lesson: @lesson %>
           </div>
           <% end %>

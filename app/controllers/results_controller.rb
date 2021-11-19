@@ -23,10 +23,10 @@ class ResultsController < ApplicationController
   def create
 
     @result = Result.new(result_params)
-    raise
+
     respond_to do |format|
       if @result.save!
-        format.html { redirect_to @result, notice: "Result was successfully created." }
+        format.html { redirect_to quiz_path(@result.quiz), notice: "Result was successfully created." }
         format.json { render :show, status: :created, location: @result }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -65,6 +65,6 @@ class ResultsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def result_params
-      params.require(:result).permit(:user_id, :lesson_results_id, :status, :entry, :answer, :quiz_id)
+      params.require(:result).permit(:user_id, :answer, :status, :question, :quiz_id)
     end
 end

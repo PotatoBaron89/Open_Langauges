@@ -17,6 +17,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1/edit
   def edit
+    @quiz = Quiz.find(@question.quiz.id)
 
   end
 
@@ -82,6 +83,6 @@ class QuestionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def question_params
-      params.require(:question).permit(:question, :answer, :quiz_id)
+      params.require(:question).permit(:question, :answer, :quiz_id, :working_out_example, :hint)
     end
 end
