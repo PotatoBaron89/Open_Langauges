@@ -48,6 +48,10 @@
               <%= form.collection_select :answer, [local[:question]], :answer, :answer, { value: :id }, selected: :id, class: "border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" %>
             </div>
             <div class="my-5 hidden">
+              <%= form.label :answer %>
+              <%= form.collection_select :answer, [local[:question]], :question, :question, { value: :id }, selected: :id, class: "border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" %>
+            </div>
+            <div class="my-5 hidden">
               <%= form.label :quiz_id %>
               <%= form.collection_select :quiz_id, [@quiz], :id, :id, { value: :id }, selected: :id, class: "border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" %>
             </div>
@@ -59,7 +63,7 @@
             <%= form.submit "Submit", class: "ml-2 rounded-lg py-1 px-5 bg-blue-600 text-white inline-block font-medium" %>
 
           </div>
-          <%= form.text_area :entry, class: "w-full block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+          <%= form.text_area :user_answer, class: "w-full block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
           </div>
         <% end %>
       <%# end %>

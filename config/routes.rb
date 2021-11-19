@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :lesson_results
   resources :questions
   resources :quizzes
+  # TODO, FIX ISSUE WITH QUIZZES FORM, Hacky fix for a bug
+  post '/quizzes/:id', to: 'quizzes#create'
   resources :flashcard_list do
     post '/shuffle_cards', to: 'flashcard_list#shuffle'
   end

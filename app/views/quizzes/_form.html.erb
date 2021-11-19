@@ -10,7 +10,7 @@
 
 <!--HTML START-->
 <%= turbo_frame_tag "quiz_form", class: "w-full md:px-10" do %>
-  <%= form_with(model: quiz_model,  class: "contents", url: quiz_path) do |form| %>
+  <%= form_with(model: quiz_model,  class: "contents", url: quiz_path ) do |form| %>
     <div class="my-5 hidden">
       <%= form.label :lesson_id %>
       <%= form.collection_select :lesson_id, [@lesson], :id, :title, { value: :id }, selected: :id, class: "border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" %>
