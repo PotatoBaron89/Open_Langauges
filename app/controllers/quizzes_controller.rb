@@ -1,5 +1,6 @@
 class QuizzesController < ApplicationController
   before_action :set_quiz, only: %i[ show edit update destroy ]
+  before_action :signed_in?
 
   # GET /quizzes or /quizzes.json
   def index
@@ -86,4 +87,12 @@ class QuizzesController < ApplicationController
     def quiz_params
       params.require(:quiz).permit(:lesson_id, :title, :multiple_attempts, :hints_enabled, :is_test)
     end
+
+  def signed_in?
+    if user_signed_in?
+      true
+    else
+      redirect_to root_path, notice: "Must log in to access this page"
+    end
+  end
 end
