@@ -33,7 +33,6 @@ class LessonsController < ApplicationController
 
   # GET /lessons/new
   def new
-    authorize @lesson
 
     if params[:format]
       @lesson = Lesson.new(course_id: params[:format])
