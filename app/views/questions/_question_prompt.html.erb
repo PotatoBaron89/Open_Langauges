@@ -60,7 +60,6 @@
               <%= form.label :user_id %>
               <%= form.collection_select :user_id, [@current_user], :id, :id, { value: :id }, selected: :id, class: "border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" %>
             </div>
-            <%= form.label :Your_Answer %>
             <%= form.submit "Submit", class: "ml-2 rounded-lg py-1 px-5 bg-blue-600 text-white inline-block font-medium" %>
             <% if policy(local_assigns[:local][:question]).edit? %>
               <%= link_to "Edit", edit_question_path(local_assigns[:local][:question][:id]), class: "text-center ml-2 rounded-lg py-1 px-5 bg-green-600 text-white inline-block font-medium"  %>
@@ -68,7 +67,7 @@
             <% end %>
 
           </div>
-          <%= form.text_area :user_answer, class: "w-full block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+          <%= form.text_area :user_answer, placeholder: "Your answer here", class: "w-full block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
           </div>
         <% end %>
       <%# end %>
