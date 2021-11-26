@@ -8,6 +8,8 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+#
+# # FUTURE FEATURE, NOT IMPLEMENTED YET
 class Grade < ApplicationRecord
   belongs_to :user
 end

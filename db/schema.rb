@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_19_044807) do
+ActiveRecord::Schema.define(version: 2021_11_24_061127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -130,6 +130,8 @@ ActiveRecord::Schema.define(version: 2021_11_19_044807) do
     t.boolean "Ispremium"
     t.decimal "price", precision: 8, scale: 2
     t.boolean "isarchived"
+    t.index ["Ispremium"], name: "index_courses_on_Ispremium"
+    t.index ["title"], name: "index_courses_on_title"
     t.index ["user_id"], name: "index_courses_on_user_id"
   end
 
@@ -139,6 +141,7 @@ ActiveRecord::Schema.define(version: 2021_11_19_044807) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "word_id", null: false
+    t.string "type"
     t.index ["word_id"], name: "index_definitions_on_word_id"
   end
 
@@ -187,6 +190,17 @@ ActiveRecord::Schema.define(version: 2021_11_19_044807) do
     t.index ["lesson_id"], name: "index_lesson_results_on_lesson_id"
     t.index ["quiz_id"], name: "index_lesson_results_on_quiz_id"
     t.index ["user_id"], name: "index_lesson_results_on_user_id"
+  end
+
+  create_table "lesson_vocabs", force: :cascade do |t|
+    t.bigint "lesson_id", null: false
+    t.bigint "word_id", null: false
+    t.string "title"
+    t.integer "language"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["lesson_id"], name: "index_lesson_vocabs_on_lesson_id"
+    t.index ["word_id"], name: "index_lesson_vocabs_on_word_id"
   end
 
   create_table "lessons", force: :cascade do |t|
@@ -382,6 +396,8 @@ ActiveRecord::Schema.define(version: 2021_11_19_044807) do
   add_foreign_key "lesson_results", "lessons"
   add_foreign_key "lesson_results", "quizzes"
   add_foreign_key "lesson_results", "users"
+  add_foreign_key "lesson_vocabs", "lessons"
+  add_foreign_key "lesson_vocabs", "words"
   add_foreign_key "lessons", "courses"
   add_foreign_key "lessons", "users"
   add_foreign_key "likes", "courses"

@@ -8,6 +8,8 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+#
+# # FUTURE FEATURE, NOT IMPLEMENTED YET
 class TagList < ApplicationRecord
   belongs_to :course
   belongs_to :tag

@@ -3,6 +3,7 @@
 
 Rails.application.routes.draw do
 
+  resources :lesson_vocabs
   resources :youtube, only: :show
   resources :results
   resources :lesson_results
@@ -61,4 +62,5 @@ Rails.application.routes.draw do
 
   root to: 'static_pages#home'
   get 'static_pages/privacy_policy'
+  get 'about', to: 'about#show'
 end

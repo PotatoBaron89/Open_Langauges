@@ -2,11 +2,15 @@
 <%= form_with(model: @definition, class: "contents") do |form| %>
   <li class=" h-24 bg-gradient-to-r from-green-400 via-pink-500 to-yellow-500 shadow overflow-hidden px-4 py-4 sm:px-6 sm:rounded-md flex justify-around item-center bg-red-100 items-center">
     <div class="my-5">
-      <%= form.text_field :title, placeholder: 'Definition Title', class: "w-4/6 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      <%= form.text_field :title, placeholder: 'Definition', class: "2/6 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
     </div>
 
     <div class="my-5">
-      <%= form.text_field :text, placeholder: 'Explanation', class: "w-4/6 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      <%= form.text_field :text, placeholder: 'Example', class: "w-2/6 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
+
+    <div class="my-5">
+      <%= form.text_field :text, placeholder: 'type, eg verb', class: "w-2/6 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
     </div>
 
     <input type="hidden" name="definition[word_id]" value="<%= @word.id %>">

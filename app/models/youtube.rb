@@ -6,6 +6,8 @@ class Youtube
 
   attribute :id
 
+  # THIS MODEL IS NEEDED FOR TRIX YOUTUBE EMBEDDING SUPPORT
+
   def self.find(id)
     new(id: id)
   end

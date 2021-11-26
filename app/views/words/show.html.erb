@@ -7,30 +7,30 @@
   <div class="lg:w-8/12 sm:w-full">
     <!--    HEADING-->
     <h1 class="mb-5 text-5xl font-black">Words Management</h1>
-    <div class="mx-auto md:w-2/3 w-full flex flex-row">
-      <div class="mx-auto">
 
-        <%= render @word %>
-      </div>
-    </div>
-    <!--    ROLES-->
-    <p class="mb-3">
-      <%== pagy_nav(@pagy) %>
-      <strong>Words: </strong> <%= @definitions.count %>
-    </p>
 
-    <!--    CREATE NEW ROLES-->
+
     <ul role="list" class="space-y-3">
       <% @definition = Definition.new %>
       <%= render '/definitions/add_definition' %>
 
-      <!--    LIST CURRENT ROLES-->
+<!--      PRINT WORD-->
 
+      <div class="mx-auto md:w-2/3 w-full flex flex-row">
+        <div class="mx-auto">
+          <%= render @word %>
+        </div>
+      </div>
+
+      <p class="mb-3">
+        <strong>Definitions: </strong> <%= @word.definitions.count %>
+      </p>
+      <!--    LIST  CURRENT DEFINITIONS-->
       <% if @definitions %>
         <% @definitions.each do |definition| %>
           <%= render 'shared/Components/list_item', local: { contents:
-                                                               { first: "ID: #{ definition.id }",
-                                                                 second: definition.title },
+                                                               { first: "(#{definition.text}): #{ definition.title }",
+                                                                 second: definition.type },
                                                              edit: true, edit_path: edit_definition_path(definition.id),
                                                              delete: true, path: definition_path(definition.id)} %>
         <% end %>

@@ -61,8 +61,6 @@ M
 0app/views/shared/Components/_pagination.html.erb,e\4\e49bd65cb44fd1eee9af782ddabd0390ab6405f9
 R
 "app/views/words/_add_word.html.erb,5\6\56197b854f5c393808211e5775e4b0cc1419605b
-^
-.app/views/definitions/_add_definition.html.erb,7\3\73f47e39be36ab600c42231ff5c5c371e76b0573
 9
 	resize.sh,b\2\b2bc67738aa91fac9ce68876b59879ca92d57901
 B
@@ -70,7 +68,7 @@ B
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-Y
-)app/controllers/definitions_controller.rb,7\2\72d589df429d74fe7060fa4efb16f9e1975807e5
 C
 config/database.yml,2\c\2c912561029efc03ffae15b01b7337417d7a99bd
+N
+app/views/words/_word.html.erb,1\a\1adceac839bd43f49e769e1cfc21aa7899efb04e

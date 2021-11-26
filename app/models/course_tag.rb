@@ -8,6 +8,9 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+#
+#
+# # TRYING AND FAILING AT DELETING THIS TABLE
 class CourseTag < ApplicationRecord
   # belongs_to :tag
   # belongs_to :course
