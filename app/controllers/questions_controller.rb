@@ -24,6 +24,7 @@ class QuestionsController < ApplicationController
   # POST /questions or /questions.json
   def create
     @question = Question.new(question_params)
+    # Check Response type, this method faciliates Turbo, allowing better performance via reduced need for page refreshes.
 
     respond_to do |format|
       if @question.save!

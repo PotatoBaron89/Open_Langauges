@@ -1,6 +1,8 @@
 class LessonResultsController < ApplicationController
   before_action :set_lesson_result, only: %i[ show edit update destroy ]
 
+  #### IN DEVELOPMENT FEATURE, STILL IN EARLY STAGES OF DEVELOPMENT
+
   # GET /lesson_results or /lesson_results.json
   def index
     @lesson_results = LessonResult.all

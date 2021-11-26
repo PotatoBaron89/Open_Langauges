@@ -5,6 +5,7 @@ class CoursesController < ApplicationController
 
   # GET /courses or /courses.json
   def index
+    # Return an array of all courses, in desc order by creation date, paginated to improve performance.
     @courses = Course.all
                  .order(created_at: :desc).page(params[3])
   end

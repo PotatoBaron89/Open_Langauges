@@ -6,23 +6,27 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
+    # Return a list of all users. Eager load their avatar which we know will be displayed. paginate them to increase performance.
     @pagy, @users = pagy(User.all
                  .includes(image_attachment: :blob))
   end
 
   # GET /users/1 or /users/1.json
   def show
+    # Retreive user with the id provided
     @user = User.find(params[:id])
     authorize @user
   end
 
   # GET /users/new
   def new
+    # Create a new instance of User, pass it to our form
     @user = User.new
     authorize @user
   end
 
   def account
+    # Set user as current user, prevents users from accessing other peoples account page. Set @timezone which is used in the form.
     @user = User.find(current_user[:id])
     @timezones = ActiveSupport::TimeZone.all
     authorize @user

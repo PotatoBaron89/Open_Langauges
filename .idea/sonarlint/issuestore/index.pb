@@ -1,8 +1,6 @@
 
 ^
 .app/views/static_pages/privacy_policy.html.erb,9\1\9150119dd3f7f3c5683931b3b45fa78c16242f6f
-[
-+app/controllers/organisations_controller.rb,e\8\e8ac7bb53ec5e909555b292975284a7e06898fb8
 `
 0app/controllers/user/registrations_controller.rb,e\9\e973796e453afc690aeeeafce8032abf1813ad69
 [

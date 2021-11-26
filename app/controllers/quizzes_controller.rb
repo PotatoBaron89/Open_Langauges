@@ -9,6 +9,7 @@ class QuizzesController < ApplicationController
 
   # GET /quizzes/1 or /quizzes/1.json
   def show
+    # Return a list of all the questions that belong to that quiz. Paginate the results to increase performance. (to-do: Known bug, currently ignored pagination due to error in Views)
     @pagy, @questions = pagy(Question.where(quiz_id: params[:id]))
   end
 
@@ -25,6 +26,8 @@ class QuizzesController < ApplicationController
 
   # POST /quizzes or /quizzes.json
   def create
+    # Check format, this currently has support for Turbo to increase page performance (less page refrshes required.)
+
     @quiz = Quiz.new(quiz_params)
     respond_to do |format|
       if @quiz.save

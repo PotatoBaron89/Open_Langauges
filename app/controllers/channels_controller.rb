@@ -3,6 +3,9 @@ class ChannelsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :set_user, only: [:show]
 
+  # THIS FEATURE IS STILL IN DEVELOPMENT AND IS MISSING SOME FEATURES
+  #
+  #
   # GET /channels or /channels.json
   def index
     # Temporary reroute until proper index page is made

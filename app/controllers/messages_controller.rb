@@ -3,8 +3,8 @@ class MessagesController < ApplicationController
   before_action :set_channel, except: [:destroy]
 
   def create
-    # @message = @channel.messages.create(message_params)
-    # redirect_to channel_path(@message.channel.id)
+    # Uses turbo so users can send messages without the user having to refresh the page after each message
+    # to-do... Find a way to refresh the page when other users send messages
 
     @message = @channel.messages.new(message_params)
     respond_to do |format|

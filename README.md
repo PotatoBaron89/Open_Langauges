@@ -402,5 +402,22 @@ Flashcard Page Mobile
 - Describe the models in terms of relationships they have with each other
 ###Database Schema
 
+[ERD Link 1 LucidChart](https://lucid.app/lucidchart/3a3c8154-1349-4154-846b-944135d7b0d3/edit?viewport_loc=1937%2C-41%2C1715%2C1532%2C0_0&invitationId=inv_dc6f0c99-ef48-464e-bec3-bfe7ba7f4096)
 
-###How tasks are allocated and tracked
+![ERD Link 2 PNG](https://i.imgur.com/ErBeJow.png)
+
+##How tasks are allocated and tracked
+
+Tasks are tracked on the website `Trello`.  
+
+What task is being worked on is decided by importance.  If it is critical to the general functionality of the site as a whole, eg the Users and authentication system, it is prioritised.   If task is part of the MVP (minimal viable product), it is also placed very highly on the priority list.  This branches down until at the bottom we can finally begin working on 'Sprinkles', such as Avatars.  This is because it is critical that we do what we can to provide the best possible experience for the user as quickly as possible, then from there we can add the 'nice to have' features.
+
+To track when they are completed and when they are done by, I have used the inbuilt tools of Trello which allows you to set target dates for when any given feature should be completed.
+
+
+[UserStories Link Trello](https://trello.com/invite/b/k5bZmGHE/3fbdea456775dc9eb67030ccaf4c44b1/t2a3-trelloboard)
+
+[UserStories Link Trello - Backup](https://trello.com/b/k5bZmGHE/t2a3-trelloboard)
+
+![UserStores PNG](https://i.imgur.com/11fKDHS.png)
+

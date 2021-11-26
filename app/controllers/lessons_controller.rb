@@ -3,7 +3,7 @@ class LessonsController < ApplicationController
 
   # GET /lessons or /lessons.json
   def index
-    # Include course[:user], used to check permissions, rich content, used to display text, user:image < user avatars
+    # Return a paginated list of all the courses, eager load rich text, user and user avatar which we know will be displayed.
     @pagy, @lessons = pagy(Lesson.all
                  .includes(:rich_text_content, course: [:user], user: [:image_attachment]))
     @user = current_user
@@ -16,15 +16,19 @@ class LessonsController < ApplicationController
   end
 
   def register
+    # In development feature
     ClassList.create!(user_id:@current_user.id, course_id: params[:lesson_id])
     redirect_to course_path(params[:lesson_id]), notice: "Successfully enrolled"
   end
 
   def paid_register
+    # In development feature
+    # to-do link it to the subscribe system, prevent option to subscribe to non premium courses.
     redirect_to course_path(params[:lesson_id]), notice: "Featured not implemented yet"
   end
 
   def cancel
+    # In development feature
     # Find current registration and delete it
     registration = ClassList.where(user_id:@current_user.id, course_id: params[:lesson_id])
     registration.destroy_all
