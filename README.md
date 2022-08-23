@@ -1,31 +1,18 @@
-Todo
-- URL DONE
-- Sreenshots DONE
-- User Stories DONE
-- Wireframes DONE
-- ERD DONE
-- Third party services DONE
-- Slide Deck DONE
-- Description DONE
-  - Purpose DONE
-  - Features DONE
-  - Sitemap DONE
-  - Target Audience DONE
-  - Tech Stack DONE
-- Identification of problem being solved DONE
-- Why is it a problem that needs solving DONE
-
-NOT DONE
-
-- Database Schema
-- Describe the way tasks are allocated and tracked
-- Discuss the database relations
-- Describe the models in terms of relationships they have with each other
-- Explain the different high-level components (abstractions) in your app
 
 #OPEN LANGUAGES README
 
 ###Samuel O'Donnell T2A2 Marketplace Application
+
+
+## Setting Up
+
+Development Version shouldn't require configuration beyond `bundle install`
+Production version will require Api keys for Amazon S3.  It is also recommend that you comment out external servers such as Skylight, or add them to Herokus .ENV file if you wish to enable them.
+
+```ENV
+AWS_KEY_ID=123
+AWS_SECRET_KEY=123
+```
 
 ### Links
 [Open Langauges Website](https://open-languages.herokuapp.com/)
@@ -115,14 +102,14 @@ There are many planned features, we will discuss both MVP features and future fe
 
 Open Languages includes a basic Messenger app, allowing you to communicate with fellow students and educators.  Similar to slack, the messenger App includes a channel select layout, where users can view, join and leave channels at their leisure.
 
-![Messenger App](!https://i.imgur.com/srVk3xr.png)
+![Messenger App](https://i.imgur.com/srVk3xr.png)
 
 Note, future versions will include an enhanced version of this.  For one, it will include private chat channels for specific courses and lessons, as well as the ability to private message (PM) other users.
 
 
 
 
-###Sitemap
+##Sitemap
 
 Note that some pages can be accessed from anywhere, via the Header.
 

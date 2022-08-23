@@ -54,7 +54,6 @@ GEM
       activesupport (= 6.1.4.1)
       marcel (~> 1.0.0)
       mini_mime (>= 1.1.0)
-    activestorage-cloudinary-service (0.2.3)
     activesupport (6.1.4.1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
@@ -114,9 +113,6 @@ GEM
       railties (>= 3.2)
     erubi (1.10.0)
     erubis (2.7.0)
-    exception_notification (4.4.3)
-      actionmailer (>= 4.0, < 7)
-      activesupport (>= 4.0, < 7)
     faker (2.19.0)
       i18n (>= 1.6, < 2)
     faraday (1.8.0)
@@ -254,10 +250,6 @@ GEM
       thor (~> 1.0)
     rainbow (3.0.0)
     rake (13.0.6)
-    ransack (2.4.2)
-      activerecord (>= 5.2.4)
-      activesupport (>= 5.2.4)
-      i18n
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -354,7 +346,6 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  activestorage-cloudinary-service (~> 0.2.3)
   annotate
   aws-sdk-s3 (~> 1.105)
   bcrypt (~> 3.1.7)
@@ -365,7 +356,6 @@ DEPENDENCIES
   byebug
   devise (~> 4.8)
   dotenv-rails
-  exception_notification (~> 4.4)
   faker
   font-awesome-rails (~> 4.7)
   geocoder
@@ -382,7 +372,6 @@ DEPENDENCIES
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4, >= 6.1.4.1)
   rails_best_practices (~> 1.22.1)
-  ransack
   rolify (~> 6.0)
   rubocop (~> 1.22)
   sass-rails (>= 6)
