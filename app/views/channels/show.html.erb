@@ -52,6 +52,23 @@
           <% end %>
         </div>
     </div>
+
+    <div class="divider"></div>
+
+    <div class="flex justify-between items-center gap-5 mt-12">
+      <h2><strong>Users</strong></h2>
+    </div>
+
+    <%= render 'shared/Components/avatar_group_sm', users: @channel.users  %>
+  </div>
+
+  <div class="w-full bg-green-100 rounded-xl ml-5">
+    <% @channel.messages.each do |message| %>
+      <div>
+      <strong><%= message.user.name %></strong>
+      <%= message.body %>
+      </div>
+    <% end %>
   </div>
 </section>
 

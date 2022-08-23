@@ -36,6 +36,12 @@ class MessagesController < ApplicationController
       format.html { redirect_to root, notice: "Message was successfully destroyed." }
       format.json { head :no_content }
     end
+
+  before_action :set_channel
+
+  def create
+    @message = @channel.messages.create(message_params)
+    redirect_to channel_path(@message.channel.id)
   end
 
   private
