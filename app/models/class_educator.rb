@@ -9,8 +9,6 @@
 #  updated_at :datetime         not null
 #
 class ClassEducator < ApplicationRecord
-  paginates_per 12
-
   belongs_to :user
   belongs_to :course
 end

@@ -10,7 +10,5 @@
 #  word_id    :bigint           not null
 #
 class Definition < ApplicationRecord
-  paginates_per 50
-
   belongs_to :word
 end

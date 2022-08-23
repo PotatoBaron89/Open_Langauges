@@ -3,40 +3,73 @@ class LessonsController < ApplicationController
 
   # GET /lessons or /lessons.json
   def index
-
-    @lessons = Lesson.all
-                 .page(params[:page])
+    # Return a paginated list of all the courses, eager load rich text, user and user avatar which we know will be displayed.
+    @pagy, @lessons = pagy(Lesson.all
+                 .includes(:rich_text_content, course: [:user], user: [:image_attachment]))
     @user = current_user
   end
 
   # GET /lessons/1 or /lessons/1.json
   def show
-    @user = current_user
+    # Get list of quizzes and paginate them, default 20 per page.
+    @pagy, @quizzes = pagy(Quiz.where(lesson_id: params[:id]).all)
+  end
+
+  def register
+    # In development feature
+    ClassList.create!(user_id:@current_user.id, course_id: params[:lesson_id])
+    redirect_to course_path(params[:lesson_id]), notice: "Successfully enrolled"
+  end
+
+  def paid_register
+    # In development feature
+    # to-do link it to the subscribe system, prevent option to subscribe to non premium courses.
+    redirect_to course_path(params[:lesson_id]), notice: "Featured not implemented yet"
+  end
+
+  def cancel
+    # In development feature
+    # Find current registration and delete it
+    registration = ClassList.where(user_id:@current_user.id, course_id: params[:lesson_id])
+    registration.destroy_all
+    redirect_to course_path(params[:lesson_id]), notice: "Successfully Unenrolled"
   end
 
   # GET /lessons/new
   def new
 
-    @lesson = Lesson.new
-
-    @user = [current_user]
     if params[:format]
-      @course = [Course.find(params[:format])]
+      @lesson = Lesson.new(course_id: params[:format])
+      authorize @lesson
+
+      @user = [current_user]
+      if params[:format]
+        @course = [Course.find(params[:format])]
+      else
+        redirect_to course_list_path, notice: "Cannot create a Lesson that isn't attached to a course"
+      end
     else
-      raise
+      redirect_to course_list_path, notice: "Lessons can only be created from within Course page"
     end
+
   end
+
+
 
   # GET /lessons/1/edit
   def edit
+    authorize @lesson
     @user = [current_user]
     @course = [Course.find(@lesson.course.id)]
   end
+
+
 
   # POST /lessons or /lessons.json
   def create
     @user = [current_user]
     @lesson = Lesson.new(lesson_params)
+    authorize @lesson
 
     respond_to do |format|
       if @lesson.save
@@ -54,6 +87,7 @@ class LessonsController < ApplicationController
 
   # PATCH/PUT /lessons/1 or /lessons/1.json
   def update
+    authorize @lesson
     respond_to do |format|
       if @lesson.update(lesson_params)
         format.html { redirect_to @lesson, notice: "Lesson was successfully updated." }
@@ -65,8 +99,10 @@ class LessonsController < ApplicationController
     end
   end
 
+
   # DELETE /lessons/1 or /lessons/1.json
   def destroy
+    authorize @lesson
     @lesson.destroy
     respond_to do |format|
       format.html { redirect_to lessons_url, notice: "Lesson was successfully destroyed." }

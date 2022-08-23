@@ -1,15 +1,21 @@
 class ChannelsController < ApplicationController
   before_action :set_channel, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [:index]
+  before_action :set_user, only: [:show]
 
+  # THIS FEATURE IS STILL IN DEVELOPMENT AND IS MISSING SOME FEATURES
+  #
+  #
   # GET /channels or /channels.json
   def index
-    @channels = Channel.all.page(params[3])
+    # Temporary reroute until proper index page is made
+    redirect_to channel_path(Channel.first)
   end
 
   # GET /channels/1 or /channels/1.json
   def show
-    @channels = Channel.all.page(params[3])
+    @channels = Channel.includes(users: [image_attachment: :blob],
+                                             messages: [:user, :rich_text_body]).all
   end
 
   # GET /channels/new
@@ -23,6 +29,7 @@ class ChannelsController < ApplicationController
 
   # POST /channels or /channels.json
   def create
+
     @channel = Channel.new(channel_params)
 
     respond_to do |format|
@@ -62,10 +69,15 @@ class ChannelsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_channel
       @channel = Channel.find(params[:id])
+      @pagy, @messages = pagy(@channel.messages.includes(:user, :rich_text_body).order(created_at: :desc))
     end
 
     # Only allow a list of trusted parameters through.
     def channel_params
       params.require(:channel).permit(:name)
     end
+
+  def set_user
+    @current_user = User.find(current_user.id)
+  end
 end

@@ -1,66 +1,47 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: %i[ show edit update destroy ]
   before_action :check_auth
+  before_action :set_user, only: [:show]
 
   # GET /courses or /courses.json
   def index
+    # Return an array of all courses, in desc order by creation date, paginated to improve performance.
     @courses = Course.all
                  .order(created_at: :desc).page(params[3])
   end
 
   # GET /courses/1 or /courses/1.json
   def show
-    @user = [current_user]
     @like = current_user.likes.find_by(course: @course)
     @subscribe = current_user.subscribes.find_by(course: @course)
     @wish = current_user.wishes.find_by(course: @course)
-    @lessons = Lesson.where(course_id: params[:id])
-
-    ### There must be a cleaner way
-    # Find All Students
-    list = Course.find(params[:id]).class_list
-    student_list = []
-    list.each do |user|
-      student_list << user.user_id
-    end
-    @students = User.find(student_list)
-
-    # Find All Educators
-    list = Course.find(params[:id]).class_educator
-    educator_list = []
-    list.each do |user|
-      educator_list << user.user_id
-    end
-    @educators = User.find(educator_list)
+    @course = Course.includes(:user, lessons: [user: [image_attachment: :blob]]).find(params[:id])
   end
 
   # GET /courses/new
   def new
     @course = Course.new
+    authorize @course
 
     # May want to add options later to pass in more options. Don't want to pass in entire list of users, however.
     # For now just provide current user.
     @user = [current_user]
-    # @user = User.all
   end
 
   def courselist
     @options = ["title" , "contents"]
-
-
     if params[:search]
-      @courses = Course.where("#{params[:options]} LIKE ?", "%#{params[:search]}%")
-                   .page(params[3])
+      @pagy, @courses = pagy(Course.where("#{params[:options]} LIKE ?", "%#{params[:search]}%")
+                   .includes(:rich_text_contents, cover_image_attachment: :blob, user: [:image_attachment] ))
     else
-      @courses = Course.all.order(created_at: :desc).page(params[3])
+      @pagy, @courses = pagy(Course.all.order(created_at: :desc)
+                   .includes(:rich_text_contents, cover_image_attachment: :blob, user: [image_attachment: :blob] ))
     end
-
-    # @q = Course.ransack(params[:q])
-    # @courses = @q.result(distinct: true)
   end
 
   # GET /courses/1/edit
   def edit
+    authorize @course
     @user = [current_user]
   end
 
@@ -83,7 +64,7 @@ class CoursesController < ApplicationController
 
   # PATCH/PUT /courses/1 or /courses/1.json
   def update
-
+    authorize @course
     respond_to do |format|
       if @course.update(course_params)
         format.html { redirect_to course_list_path, notice: "Course was successfully updated." }
@@ -97,6 +78,7 @@ class CoursesController < ApplicationController
 
   # DELETE /courses/1 or /courses/1.json
   def destroy
+    authorize @course
     @course.destroy
     respond_to do |format|
       format.html { redirect_to courses_url, notice: "Course was successfully destroyed." }
@@ -122,4 +104,9 @@ class CoursesController < ApplicationController
     flash[:notice] = "Insufficient privileges"
     redirect_to root_path
   end
+
+  def set_user
+    @current_user ||= User.includes(image_attachment: :blob).find(current_user.id)
+  end
+
 end

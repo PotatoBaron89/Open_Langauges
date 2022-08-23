@@ -10,6 +10,6 @@
     <div class="inline-block ml-2">
       <%= button_to 'Delete this flashcard', flashcard_path(@flashcard), method: :delete, data: { confirm: "Are you sure you want to delete this flashcard?" }, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
     </div>
-    <%= link_to 'Back to flashcards', flashcards_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Back to List', flashcard_list_path(@flashcard.flashcard_list), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
 </div>

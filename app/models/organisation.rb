@@ -10,6 +10,9 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+#
+#
+# # FUTURE FEATURE, NOT IMPLEMENTED YET
 class Organisation < ApplicationRecord
   belongs_to :user
   belongs_to :courses

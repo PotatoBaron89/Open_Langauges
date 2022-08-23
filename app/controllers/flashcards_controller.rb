@@ -3,11 +3,13 @@ class FlashcardsController < ApplicationController
 
   # GET /flashcards or /flashcards.json
   def index
-    @flashcards = Flashcard.all
+    @pagy, @flashcards = pagy(Flashcard.all.includes(:rich_text_side_one, :rich_text_side_two))
+
   end
 
   # GET /flashcards/1 or /flashcards/1.json
   def show
+
   end
 
   # GET /flashcards/new
@@ -22,9 +24,26 @@ class FlashcardsController < ApplicationController
   # POST /flashcards or /flashcards.json
   def create
     @flashcard = Flashcard.new(flashcard_params)
+    @flashcard_list = FlashcardList.find(params[:flashcard][:flashcard_list_id])
 
     respond_to do |format|
-      if @flashcard.save
+      if @flashcard.save!
+
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update('flashcard_form',
+                                partial: '/flashcards/form',
+                                flashcard: Flashcard.new,
+                                flashcard_list: @flashcard_list),
+            turbo_stream.prepend('flashcards',
+                                 partial: "shared/Components/flashcard_turbo",
+                                   local: { side_one:
+                                                { body: @flashcard.side_one },
+                                              side_two:
+                                                { body: @flashcard.side_two},
+                                           path: flashcard_list_path(@flashcard.id)})
+          ]
+        end
         format.html { redirect_to @flashcard, notice: "Flashcard was successfully created." }
         format.json { render :show, status: :created, location: @flashcard }
       else
@@ -64,6 +83,6 @@ class FlashcardsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def flashcard_params
-      params.require(:flashcard).permit(:side_one, :side_two)
+      params.require(:flashcard).permit(:side_one, :side_two, :flashcard_list_id)
     end
 end

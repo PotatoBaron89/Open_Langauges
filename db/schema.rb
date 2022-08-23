@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_12_084426) do
+ActiveRecord::Schema.define(version: 2021_11_24_061127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,12 @@ ActiveRecord::Schema.define(version: 2021_11_12_084426) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "channel_users", force: :cascade do |t|
     t.bigint "channel_id", null: false
     t.bigint "user_id", null: false
@@ -86,6 +92,33 @@ ActiveRecord::Schema.define(version: 2021_11_12_084426) do
     t.index ["user_id"], name: "index_class_lists_on_user_id"
   end
 
+  create_table "course_categories", force: :cascade do |t|
+    t.bigint "course_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_course_categories_on_category_id"
+    t.index ["course_id"], name: "index_course_categories_on_course_id"
+  end
+
+  create_table "course_channels", force: :cascade do |t|
+    t.bigint "message_id", null: false
+    t.bigint "course_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_course_channels_on_course_id"
+    t.index ["message_id"], name: "index_course_channels_on_message_id"
+  end
+
+  create_table "course_tags", force: :cascade do |t|
+    t.bigint "tag_id", null: false
+    t.bigint "course_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_course_tags_on_course_id"
+    t.index ["tag_id"], name: "index_course_tags_on_tag_id"
+  end
+
   create_table "courses", force: :cascade do |t|
     t.string "title", null: false
     t.text "contents"
@@ -97,6 +130,8 @@ ActiveRecord::Schema.define(version: 2021_11_12_084426) do
     t.boolean "Ispremium"
     t.decimal "price", precision: 8, scale: 2
     t.boolean "isarchived"
+    t.index ["Ispremium"], name: "index_courses_on_Ispremium"
+    t.index ["title"], name: "index_courses_on_title"
     t.index ["user_id"], name: "index_courses_on_user_id"
   end
 
@@ -106,16 +141,18 @@ ActiveRecord::Schema.define(version: 2021_11_12_084426) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "word_id", null: false
+    t.string "type"
     t.index ["word_id"], name: "index_definitions_on_word_id"
   end
 
-  create_table "flashcard_courses", force: :cascade do |t|
-    t.bigint "flashcard_id", null: false
+  create_table "flashcard_lists", force: :cascade do |t|
+    t.bigint "flashcard_id"
+    t.bigint "lesson_id", null: false
+    t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "lesson_id"
-    t.index ["flashcard_id"], name: "index_flashcard_courses_on_flashcard_id"
-    t.index ["lesson_id"], name: "index_flashcard_courses_on_lesson_id"
+    t.index ["flashcard_id"], name: "index_flashcard_lists_on_flashcard_id"
+    t.index ["lesson_id"], name: "index_flashcard_lists_on_lesson_id"
   end
 
   create_table "flashcards", force: :cascade do |t|
@@ -123,6 +160,47 @@ ActiveRecord::Schema.define(version: 2021_11_12_084426) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "side_one"
     t.string "side_two"
+    t.bigint "flashcard_list_id", null: false
+    t.index ["flashcard_list_id"], name: "index_flashcards_on_flashcard_list_id"
+  end
+
+  create_table "grades", force: :cascade do |t|
+    t.string "score"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_grades_on_user_id"
+  end
+
+  create_table "inboxes", force: :cascade do |t|
+    t.bigint "message_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["message_id"], name: "index_inboxes_on_message_id"
+    t.index ["user_id"], name: "index_inboxes_on_user_id"
+  end
+
+  create_table "lesson_results", force: :cascade do |t|
+    t.bigint "lesson_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "quiz_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["lesson_id"], name: "index_lesson_results_on_lesson_id"
+    t.index ["quiz_id"], name: "index_lesson_results_on_quiz_id"
+    t.index ["user_id"], name: "index_lesson_results_on_user_id"
+  end
+
+  create_table "lesson_vocabs", force: :cascade do |t|
+    t.bigint "lesson_id", null: false
+    t.bigint "word_id", null: false
+    t.string "title"
+    t.integer "language"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["lesson_id"], name: "index_lesson_vocabs_on_lesson_id"
+    t.index ["word_id"], name: "index_lesson_vocabs_on_word_id"
   end
 
   create_table "lessons", force: :cascade do |t|
@@ -165,6 +243,42 @@ ActiveRecord::Schema.define(version: 2021_11_12_084426) do
     t.index ["user_id"], name: "index_organisations_on_user_id"
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.string "question"
+    t.string "answer"
+    t.bigint "quiz_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "working_out_example"
+    t.string "hint"
+    t.string "user_answer"
+    t.index ["quiz_id"], name: "index_questions_on_quiz_id"
+  end
+
+  create_table "quizzes", force: :cascade do |t|
+    t.bigint "lesson_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "title"
+    t.boolean "is_test"
+    t.boolean "multiple_attempts"
+    t.boolean "hints_enabled"
+    t.index ["lesson_id"], name: "index_quizzes_on_lesson_id"
+  end
+
+  create_table "results", force: :cascade do |t|
+    t.string "answer"
+    t.string "question"
+    t.bigint "user_id", null: false
+    t.bigint "quiz_id", null: false
+    t.integer "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "user_answer"
+    t.index ["quiz_id"], name: "index_results_on_quiz_id"
+    t.index ["user_id"], name: "index_results_on_user_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
@@ -183,6 +297,21 @@ ActiveRecord::Schema.define(version: 2021_11_12_084426) do
     t.index ["course_id"], name: "index_subscribes_on_course_id"
     t.index ["user_id", "course_id"], name: "index_subscribes_on_user_id_and_course_id", unique: true
     t.index ["user_id"], name: "index_subscribes_on_user_id"
+  end
+
+  create_table "tag_lists", force: :cascade do |t|
+    t.bigint "course_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_tag_lists_on_course_id"
+    t.index ["tag_id"], name: "index_tag_lists_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -251,10 +380,24 @@ ActiveRecord::Schema.define(version: 2021_11_12_084426) do
   add_foreign_key "class_educators", "users"
   add_foreign_key "class_lists", "courses"
   add_foreign_key "class_lists", "users"
+  add_foreign_key "course_categories", "categories"
+  add_foreign_key "course_categories", "courses"
+  add_foreign_key "course_channels", "courses"
+  add_foreign_key "course_channels", "messages"
+  add_foreign_key "course_tags", "courses"
+  add_foreign_key "course_tags", "tags"
   add_foreign_key "courses", "users"
   add_foreign_key "definitions", "words"
-  add_foreign_key "flashcard_courses", "flashcards"
-  add_foreign_key "flashcard_courses", "lessons"
+  add_foreign_key "flashcard_lists", "lessons"
+  add_foreign_key "flashcards", "flashcard_lists"
+  add_foreign_key "grades", "users"
+  add_foreign_key "inboxes", "messages"
+  add_foreign_key "inboxes", "users"
+  add_foreign_key "lesson_results", "lessons"
+  add_foreign_key "lesson_results", "quizzes"
+  add_foreign_key "lesson_results", "users"
+  add_foreign_key "lesson_vocabs", "lessons"
+  add_foreign_key "lesson_vocabs", "words"
   add_foreign_key "lessons", "courses"
   add_foreign_key "lessons", "users"
   add_foreign_key "likes", "courses"
@@ -263,8 +406,14 @@ ActiveRecord::Schema.define(version: 2021_11_12_084426) do
   add_foreign_key "messages", "users"
   add_foreign_key "organisations", "courses", column: "courses_id"
   add_foreign_key "organisations", "users"
+  add_foreign_key "questions", "quizzes"
+  add_foreign_key "quizzes", "lessons"
+  add_foreign_key "results", "quizzes"
+  add_foreign_key "results", "users"
   add_foreign_key "subscribes", "courses"
   add_foreign_key "subscribes", "users"
+  add_foreign_key "tag_lists", "courses"
+  add_foreign_key "tag_lists", "tags"
   add_foreign_key "wishes", "courses"
   add_foreign_key "wishes", "users"
 end

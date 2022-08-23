@@ -52,7 +52,12 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem 'annotate'
-  # gem "faker"
+  gem "bullet"
+  gem "slack-notifier"
+  gem "rails_best_practices", '~> 1.22.1'
+  gem "prettier", "~> 2.0"
+  gem "rubocop", "~> 1.22"
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -65,25 +70,25 @@ gem 'image_processing'
 gem "store_attribute", "~> 0.9.2"
 gem "sentry-ruby"
 gem "sentry-rails"
-gem "friendly_id", "~> 5.4"
-gem "gravatar_image_tag", "~> 1.2", github: 'mdeering/gravatar_image_tag'
-gem "cloudinary", "~> 1.21"
-gem "activestorage-cloudinary-service", "~> 0.2.3"
+# gem "friendly_id", "~> 5.4"
+# gem "gravatar_image_tag", "~> 1.2", github: 'mdeering/gravatar_image_tag'
+# gem "cloudinary", "~> 1.21"
+# gem "activestorage-cloudinary-service", "~> 0.2.3"
 gem "aws-sdk-s3", "~> 1.105"
 
 
 gem "rolify", "~> 6.0"
-gem "public_activity"
-gem "kaminari", :git => 'https://github.com/kaminari/kaminari'
-gem "ransack"
-
+# gem "public_activity"
+gem "hotwire-rails"
+gem 'pagy', "~> 5.3.1"
+# gem "ransack"
+gem "skylight"
+gem "font-awesome-rails", "~> 4.7"
+gem "pundit", "~> 2.1"
+# gem "exception_notification", "~> 4.4"
 
 # TEMP INCLUDE FOLLOWING IN PRODUCTION
 gem "faker"
 
 
-gem "prettier", "~> 2.0"
 
-gem "rubocop", "~> 1.22"
-
-gem "font-awesome-rails", "~> 4.7"

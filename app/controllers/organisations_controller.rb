@@ -1,6 +1,10 @@
 class OrganisationsController < ApplicationController
   before_action :set_organisation, only: %i[ show edit update destroy ]
 
+  # FUTURE FEATURE, NOT Currently implemented.
+  # #########################################
+
+
   # GET /organisations or /organisations.json
   def index
     @organisations = Organisation.all

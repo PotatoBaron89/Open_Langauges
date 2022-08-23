@@ -1,0 +1,81 @@
+<section class="flex flex-col bg-violet-400 border-white border p-2 rounded-xl gap-2">
+  <div class="accordion flex" id="accordionExample">
+  <% if @quiz.hints_enabled? %>
+    <div class="accordion-item w-6/12">
+      <h2 class="accordion-header" id="headingTwo">
+
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= local_assigns[:local][:question][:id] %>" aria-expanded="false" aria-controls="collapseTwo">
+          Hint
+        </button>
+      </h2>
+      <div id="collapse<%= local_assigns[:local][:question][:id] %>" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <%= local_assigns[:local][:question][:hint] %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <% if @quiz.is_test? %>
+    <div class="accordion-item w-6/12">
+      <h2 class="accordion-header " id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_answer<%= local_assigns[:local][:question][:id] %>" aria-expanded="false" aria-controls="collapseThree">
+          Answer
+        </button>
+      </h2>
+      <div id="collapse_answer<%= local_assigns[:local][:question][:id] %>" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <%= local_assigns[:local][:question][:answer] %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+    <article class="w-full flex items-center ">
+      <% if local[:path] %>
+        <% local[:side_one].each do |item| %>
+          <div class="w-6/12">
+            <strong>Question: <%= item[1] %></strong>
+          </div>
+        <% end %>
+      <% end %>
+
+      <%#= turbo_frame_tag "question_form", class: "w-full" do %>
+        <%= form_with(model: Result.new, class: "contents") do |form| %>
+
+          <div class="w-full flex flex-col">
+          <div class="flex">
+            <div class="my-5 hidden">
+              <%= form.label :answer %>
+              <%= form.collection_select :answer, [local[:question]], :answer, :answer, { value: :id }, selected: :id, class: "border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" %>
+            </div>
+            <div class="my-5 hidden">
+              <%= form.label :answer %>
+              <%= form.collection_select :answer, [local[:question]], :question, :question, { value: :id }, selected: :id, class: "border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" %>
+            </div>
+            <div class="my-5 hidden">
+              <%= form.label :quiz_id %>
+              <%= form.collection_select :quiz_id, [@quiz], :id, :id, { value: :id }, selected: :id, class: "border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" %>
+            </div>
+            <div class="my-5 hidden">
+              <%= form.label :user_id %>
+              <%= form.collection_select :user_id, [@current_user], :id, :id, { value: :id }, selected: :id, class: "border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" %>
+            </div>
+            <%= form.submit "Submit", class: "ml-2 rounded-lg py-1 px-5 bg-blue-600 text-white inline-block font-medium" %>
+            <% if policy(local_assigns[:local][:question]).edit? %>
+              <%= link_to "Edit", edit_question_path(local_assigns[:local][:question][:id]), class: "text-center ml-2 rounded-lg py-1 px-5 bg-green-600 text-white inline-block font-medium"  %>
+              <%= link_to "Delete", question_path(local_assigns[:local][:question][:id]), class: "ml-2 rounded-lg py-1 px-5 bg-red-600 text-white inline-block font-medium", method: :delete  %>
+            <% end %>
+
+          </div>
+          <%= form.text_area :user_answer, placeholder: "Your answer here", class: "w-full block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+          </div>
+        <% end %>
+      <%# end %>
+    </article>
+</section>
+
+<%= render 'shared/Components/modal_small', id: "hint_modal", content: local_assigns[:local][:question][:hint] %>
+
+
+
+

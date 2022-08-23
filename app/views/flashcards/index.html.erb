@@ -5,6 +5,7 @@
 
   <div class="flex justify-between items-center">
     <h1 class="text-lg font-bold text-4xl">Flashcards</h1>
+    <%== pagy_nav(@pagy) %>
     <%= link_to 'New flashcard', new_flashcard_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 

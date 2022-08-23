@@ -1,0 +1,42 @@
+<!--Need this for Turbo to work properly, I clearly haven't set something up correctly elsewhere but this works for now-->
+<% if question %>
+  <% question_form = question %>
+<% else %>
+  <% question_form = Question.new %>
+<% end %>
+
+<%= turbo_frame_tag "quiz_form" do %>
+  <%= form_with(model: question_form, class: "contents") do |form| %>
+    <div class="flex flex-col bg-indigo-100 w-full shadow  sm:rounded-md  no-underline hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50">
+      <section class=" flex flex align-center items-center  flex justify-around item-center">
+        <div class="my-1 flex items-center gap-2">
+          <%= form.label :question %>
+          <%= form.text_area :question, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+        </div>
+        <div class="my-2 flex items-center gap-2">
+          <%= form.label :answer %>
+          <%= form.text_area :answer, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+        </div>
+        <div class="my-5 hidden">
+          <%= form.label :quiz_id %>
+          <%= form.collection_select :quiz_id, [@quiz], :id, :title, { value: :id }, selected: :id, class: "border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" %>
+        </div>
+
+      </section>
+      <div class="flex flex-wrap items-center justify-between">
+        <div class="my-2 flex items-center gap-2">
+          <%= form.label "Hint (Optional)" %>
+          <%= form.text_area :hint,  class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+        </div>
+        <div class="my-2 flex items-center gap-2">
+          <%= form.label "Working Out" %>
+          <%= form.text_area :working_out_example,  class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+        </div>
+        <div class="inline">
+          <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium" %>
+        </div>
+      </div>
+
+    </div>
+  <% end %>
+<% end %>

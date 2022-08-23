@@ -4,6 +4,7 @@ class AdminController < ApplicationController
   end
 
   def roles
-    @roles = Role.all
+    # Return a list of all roles and paginate them
+    @pagy, @roles = pagy(Role.all)
   end
 end

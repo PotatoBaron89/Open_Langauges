@@ -1,0 +1,34 @@
+<div id="<%= dom_id quiz %>">
+  <p class="text-3xl my-5">
+    <h1 class="font-extrabold text-3xl pb-5">Quiz: <%= quiz.title %></h1>
+  </p>
+  <section class="w-full flex flex-col rounded-xl bg-indigo-300 p-5  flex justify-center flex-wrap">
+    <div  id="" class="pb-3">
+      <%= render '/questions/form', question: Question.new, quiz: @quiz %>
+    </div>
+    <div class="flex justify-center"><%== pagy_bootstrap_nav(@pagy) %></div>
+
+    <ul data-turbo="true" id="question_list" class="divide-y divide-gray-200 pt-3">
+      <% if @quiz.questions %>
+        <% @quiz.questions.shuffle.each do |f|  %>
+          <div id="<%= dom_id f %>">
+            <%= render 'questions/question_prompt', local: { side_one:
+                                                                 { body: f.question },
+                                                               side_two:
+                                                                 { body: f.answer},
+                                                               delete: true, question: f,
+                                                               edit: true, edit_path: edit_quiz_path(f.id),
+                                                               path: quiz_path(f.id)} %>
+          </div>
+        <% end %>
+      <% end %>
+    </ul>
+  </section>
+  <% if action_name != "show" %>
+    <nav class="mt-5 flex flex-wrap justify-center w-full">
+      <%= link_to "Show this quiz", quiz, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <%= link_to 'Edit this quiz', edit_quiz_path(quiz), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+      <hr class="mt-6">
+    </nav>
+  <% end %>
+</div>

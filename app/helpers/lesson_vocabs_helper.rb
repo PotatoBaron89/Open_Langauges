@@ -1,0 +1,2 @@
+module LessonVocabsHelper
+end

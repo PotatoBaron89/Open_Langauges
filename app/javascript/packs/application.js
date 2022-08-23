@@ -3,10 +3,17 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+// require("@hotwired/turbo")
+
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
+import "youtube"
+import "@hotwired/turbo-rails"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import "controllers"
+
+Turbo.session.drive = false
 
 Rails.start()
 Turbolinks.start()
@@ -14,3 +21,5 @@ ActiveStorage.start()
 
 require("trix")
 require("@rails/actiontext")
+
+

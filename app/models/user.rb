@@ -32,7 +32,6 @@
 #
 class User < ApplicationRecord
   rolify
-  paginates_per 12
 
   before_save :default_values
   after_create :assign_default_role
@@ -45,6 +44,9 @@ class User < ApplicationRecord
          :trackable
          # :confirmable, :lockable, :timeoutable, :trackable,
          # :omniauthable
+
+
+
 
   # FILES
   has_one_attached :image, dependent: :purge_later
@@ -64,12 +66,15 @@ class User < ApplicationRecord
   has_many :courses, through: :class_educator, dependent: :delete_all
 
 
-
-
   # SOCIAL / FEATURES
   has_many :likes, dependent: :delete_all
   has_many :subscribes, dependent: :delete_all
   has_many :wishes, dependent: :delete_all
+
+  # STUDENT RELATED
+  has_many :results, dependent: :delete_all
+  # has_many :results, through: :lesson_results, dependent: :delete_all
+  # has_many :lesson_results
 
 
   def default_values
@@ -82,6 +87,15 @@ class User < ApplicationRecord
 
   def name
     self.first_name
+  end
+
+  def enrolled?(user_id, course_id)
+
+    if ClassList.where(user_id: user_id, course_id: course_id).count > 0
+      true
+    else
+      false
+    end
   end
 
 end

@@ -1,0 +1,12 @@
+<% if locals[:id] == params[:id].to_i %>
+  <% bg = "bg-gradient-to-r from-purple-400 via-pink-500 border-5 border-white shadow-inner text-white" %>
+<% else %>
+  <% bg= "bg-white border-5 border-gray-200" %>
+<% end %>
+<%= link_to lesson_path(locals[:id]) do %>
+  <div class="p-1 bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-500 w-42 rounded-xl">
+    <div class="rounded overflow-hidden shadow-lg rounded-b-md fd-cl p-1 text-lg flex justify-center w-full rounded-xl  <%= bg %>">
+      <%= locals[:title] %>
+    </div>
+  </div>
+<% end %>

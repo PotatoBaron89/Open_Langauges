@@ -1,6 +1,4 @@
-
 <div class="border-2 border-purple-500 bg-green-300 flex items-center justify-around  rounded-xl py-1 px-2 gap-3 drop-shadow-xl hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50">
-
   <% if current_user.image.attached? %>
     <%= image_tag current_user.image, width: 200, class: 'inline-block h-14 w-14 rounded-full object-cover m-1' %>
   <% else %>
@@ -12,10 +10,8 @@
         <%= content[:name] %>
       </p>
       <p class="text-xs font-medium text-gray-500 group-hover:text-gray-700">
-
         View profile
       </p>
     </div>
   <% end %>
-
 </div>

@@ -1,0 +1,29 @@
+<!--Check message source (@message / message), if it is @message it is new, format as such. -->
+
+
+<% if @message %>
+  <% message = @message %>
+  <% new_format="bg-blue-300" %>
+<% else %>
+  <% new_format="" %>
+<% end %>
+
+<% msg_time= message.created_at.in_time_zone%>
+
+<!--  CHECK THERE IS A MESSAGE, PRINT IT-->
+  <% if message %>
+  <div id="<%= dom_id message %>" class="border flex <%= new_format %>">
+    <div class="flex" data-turbo="true" >
+      <strong><%= message.user.name %></strong>
+      <div class="ml-5 mr-2 flex gap-3">
+        <span class="text-gray-500"><%= message.created_at.today? ? "Today at #{msg_time.strftime('%k:%M')}" : message.created_at.to_date.strftime("%h %d") %></span>
+      </div>
+    </div>
+
+<!--    MESSAGE BODY + EDITED?-->
+    <%= message.body %>
+    <span class="text-gray-500 ml-5"><%= "(edited)" if message.changed? %></span>
+  </div>
+<% end %>
+
+

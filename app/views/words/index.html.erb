@@ -1,12 +1,12 @@
 
-  <%= paginate @words %>
+
 
 
 <div class="w-screen flex justify-center">
   <div class="lg:w-8/12 sm:w-full">
     <!--    HEADING-->
     <h1 class="mb-5 text-5xl font-black">Words Management</h1>
-
+    <%== pagy_nav(@pagy) %>
     <!--    ROLES-->
     <p class="mb-3">
       <strong>Words: </strong> <%= @words.count %>

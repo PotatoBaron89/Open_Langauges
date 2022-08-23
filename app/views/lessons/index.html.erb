@@ -4,12 +4,11 @@
   <% end %>
 
   <div class="">
-    <%= paginate @lessons, outer_window: 16 %>
+    <%== pagy_bootstrap_nav(@pagy) %>
   </div>
 
   <div class="flex justify-between items-center">
     <h1 class="text-lg font-bold text-4xl">Lessons</h1>
-    <%= link_to 'New lesson', new_lesson_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
   <div id="lessons" class="min-w-full">

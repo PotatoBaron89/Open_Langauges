@@ -3,18 +3,20 @@ class WordsController < ApplicationController
 
   # GET /words or /words.json
   def index
-    @words = Word.all
-               .page(params[:page])
+    # Retreive all words and paginate them to increase performance
+    @pagy, @words = pagy(Word.all)
 
   end
 
   # GET /words/1 or /words/1.json
   def show
-    @definitions = Definition.where(word_id: @word.id).page(params[:page])
+    # Retreive definitions of the selected word. If there is more than 20 (default) definitions, paginate them to increase performance.
+    @pagy, @definitions = pagy(Definition.where(word_id: @word.id))
   end
 
   # GET /words/new
   def new
+    #Create a new instance of the word model, pass it to our form
     @word = Word.new
               .page(params[:page])
   end
@@ -25,6 +27,7 @@ class WordsController < ApplicationController
 
   # POST /words or /words.json
   def create
+    #Assign the params passed back to @word through words_param, attempt to save.
     @word = Word.new(word_params)
 
     respond_to do |format|

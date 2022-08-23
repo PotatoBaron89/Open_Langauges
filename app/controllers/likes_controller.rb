@@ -11,10 +11,8 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @like = current_user.likes.find(params[:id])
-    course = @like.course
-    @like.destroy
-    redirect_to course
+    @like = Like.find(params[:id]).destroy
+    redirect_to @like.course
   end
 
   private

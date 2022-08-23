@@ -9,7 +9,5 @@
 #  Wordtype   :string
 #
 class Word < ApplicationRecord
-  paginates_per 50
-
   has_many :definitions, dependent: :delete_all
 end

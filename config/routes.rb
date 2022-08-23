@@ -3,14 +3,28 @@
 
 Rails.application.routes.draw do
 
-  resources :channels
-  # get 'definitions/index'
-  # get 'definitions/show'
-  # get 'definitions/delete'
-  # get 'definitions/edit'
+  resources :lesson_vocabs
+  resources :youtube, only: :show
+  resources :results
+  resources :lesson_results
+  resources :questions
+  resources :quizzes
+  # TODO, FIX ISSUE WITH QUIZZES FORM, Hacky fix for a bug
+  post '/quizzes/:id', to: 'quizzes#create'
+  resources :flashcard_list do
+    post '/shuffle_cards', to: 'flashcard_list#shuffle'
+  end
+  resources :channels do
+    resource :channel_user
+    resources :messages
+  end
+
+  resources :messages
+
   resources :words
   resources :flashcards
-  resources :lessons
+
+
   resources :definitions
 
   resources :channels do
@@ -32,6 +46,11 @@ Rails.application.routes.draw do
   resources :organisations
   resources :courses
   get '/course/list', to: 'courses#courselist'
+  resources :lessons do
+    post '/register', to: 'lessons#register'
+    post '/paid_register', to: 'lessons#paid_register'
+    delete'/cancel', to: 'lessons#cancel'
+  end
 
   # SOCIAL
   resources :likes, only: [ :create, :destroy ]
@@ -44,4 +63,5 @@ Rails.application.routes.draw do
 
   root to: 'static_pages#home'
   get 'static_pages/privacy_policy'
+  get 'about', to: 'about#show'
 end
